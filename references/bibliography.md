@@ -43,7 +43,12 @@ use matches the source. (Page/edition details to be filled in as sources are con
 - **[Lagarias2002]** J. Lagarias, *An elementary problem equivalent to the Riemann
   hypothesis*, Amer. Math. Monthly 109 (2002).
 - **[Li1997]** X.‑J. Li, *The positivity of a sequence of numbers and the Riemann
-  hypothesis*, J. Number Theory 65 (1997).
+  hypothesis*, J. Number Theory 65 (1997), 325–333. Defines `λ_n`; RH ⇔ `λ_n ≥ 0 ∀n`.
+- **[BombieriLagarias1999]** E. Bombieri, J. C. Lagarias, *Complements to Li's criterion
+  for the Riemann hypothesis*, J. Number Theory 77 (1999), 274–287. Li's criterion as a
+  case of Weil positivity; arithmetic (explicit‑formula) expression for `λ_n`.
+- **[Maslanka2004]** K. Maślanka, *Li's criterion for the Riemann hypothesis — numerical
+  approach*, Opuscula Math. 24 (2004). Numerical computation of `λ_n`. (Evidence only.)
 - **[Baez-Duarte2003]** L. Báez‑Duarte, *A strengthening of the Nyman–Beurling criterion
   for the Riemann hypothesis*, 2003.
 - **[OdlyzkoteRiele1985]** A. Odlyzko, H. te Riele, *Disproof of the Mertens conjecture*,
@@ -57,6 +62,10 @@ use matches the source. (Page/edition details to be filled in as sources are con
   asymptotics*, SIAM Review 41 (1999).
 - **[Connes1999]** A. Connes, *Trace formula in noncommutative geometry and the zeros of
   the Riemann zeta function*, Selecta Math. 5 (1999).
+- **[ConnesConsani2021]** A. Connes, C. Consani, *Weil positivity and trace formula, the
+  archimedean place*, Selecta Math. 27 (2021), no. 77. Weil positivity proved for test
+  functions of restricted scaling support (the prime‑free window); the frontier is
+  crossing the first prime.
 - **[ConreyLi2000]** J. B. Conrey, X.‑J. Li, *A note on some positivity conditions related
   to zeta and L‑functions*, IMRN 2000 — obstruction to the de Branges approach.
 - **[Weil1948]** A. Weil, *Sur les courbes algébriques et les variétés qui s'en déduisent*,
@@ -89,6 +98,17 @@ use matches the source. (Page/edition details to be filled in as sources are con
 - **[Platt-Trudgian]** D. Platt, T. Trudgian — rigorous verification of RH to large height;
   rigorous `ζ` computation via interval arithmetic.
 - **[OdlyzkoZeros]** A. Odlyzko — tables and statistics of zeros at height ~10^20–10^22.
+
+## Classical analysis (textbook theorems cited by name)
+
+- **[Remmert1991]** R. Remmert, *Theory of Complex Functions*, GTM 122, Springer, 1991.
+  Used for: **Pringsheim's theorem** (a power series with non‑negative coefficients and
+  finite radius of convergence `R` has a singularity at `z = R`), Cauchy–Hadamard.
+- **[Apostol1976]** T. Apostol, *Introduction to Analytic Number Theory*, Springer, 1976.
+  Used for: Dirichlet‑series convergence (Abel summation), `η(s) = (1−2^{1−s})ζ(s)`,
+  alternating‑series bounds.
+- **[Spira1968]** R. Spira, *Some zeros of the Titchmarsh counterexample*, Math. Comp. 22
+  (1968). Numerical location of off‑line zeros of the Davenport–Heilbronn function.
 
 ## Formalization
 
