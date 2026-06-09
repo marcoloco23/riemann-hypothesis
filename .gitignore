@@ -1,0 +1,23 @@
+# Lean / Lake build artifacts
+/formal/.lake/
+/formal/build/
+/formal/lake-packages/
+*.olean
+*.ilean
+
+# Python / numerics
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Scratch computational outputs (keep notes, ignore large generated data)
+workspace/scratch/**/data/
+*.log
+
+# OS / editor
+.DS_Store
+*.swp
+.vscode/
+.idea/
