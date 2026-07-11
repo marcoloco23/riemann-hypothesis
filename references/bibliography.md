@@ -45,8 +45,14 @@ use matches the source. (Page/edition details to be filled in as sources are con
 - **[Li1997]** X.‑J. Li, *The positivity of a sequence of numbers and the Riemann
   hypothesis*, J. Number Theory 65 (1997), 325–333. Defines `λ_n`; RH ⇔ `λ_n ≥ 0 ∀n`.
 - **[BombieriLagarias1999]** E. Bombieri, J. C. Lagarias, *Complements to Li's criterion
-  for the Riemann hypothesis*, J. Number Theory 77 (1999), 274–287. Li's criterion as a
-  case of Weil positivity; arithmetic (explicit‑formula) expression for `λ_n`.
+  for the Riemann hypothesis*, J. Number Theory 77 (1999), 274–287,
+  DOI 10.1006/jnth.1999.2392. Li's criterion as a case of Weil positivity; arithmetic
+  (explicit-formula) expression for `λ_n`. **Multiset theorem** (pinned 2026-07-12 from
+  secondary sources; exact theorem number in the original UNCONFIRMED — Elsevier
+  paywall): for ANY multiset R ⊂ ℂ with 1 ∉ R and `Σ_{ρ∈R}(1+|Re ρ|)/(1+|ρ|)² < ∞`:
+  `Re ρ ≤ ½ ∀ρ ∈ R ⟺ Σ_ρ Re[1−(1−1/ρ)^{−n}] ≥ 0 ∀n ≥ 1` (+ an `e^{εn}`-tolerant
+  variant). No ζ-structure used — this is the "Li positivity holds for arbitrary
+  multisets" phenomenon cited in fourier-rigidity K1.
 - **[Maslanka2004]** K. Maślanka, *Li's criterion for the Riemann hypothesis — numerical
   approach*, Opuscula Math. 24 (2004). Numerical computation of `λ_n`. (Evidence only.)
 - **[Baez-Duarte2003]** L. Báez‑Duarte, *A strengthening of the Nyman–Beurling criterion
@@ -189,6 +195,77 @@ use matches the source. (Page/edition details to be filled in as sources are con
   combining with [PlattTrudgian2021]. No better bound known as of 2026‑07.
 - **[PlattTrudgian2021]** D. Platt, T. Trudgian, *The Riemann hypothesis is true up to
   3·10¹²*, Bull. LMS 53 (2021), 792–797, arXiv:2004.09765.
+
+## Fourier quasicrystals, crystalline measures, interpolation (fourier-rigidity program; all pinned by web agent 2026-07-12)
+
+- **[Dyson2009]** F. Dyson, *Birds and frogs*, Notices AMS 56 (2009), no. 2, 212–223.
+  Quasicrystal–RH proposal pp. 214–215: "classify all point distributions that have a
+  discrete point spectrum… search for one corresponding to the Riemann zeta-function."
+  His "quasicrystal" definition is loose (no temperedness/uniform-discreteness
+  qualifiers) — the rigorous literature shows everything depends on those.
+- **[LevOlevskii2015]** N. Lev, A. Olevskii, *Quasicrystals and Poisson's summation
+  formula*, Invent. Math. 200 (2015), 585–606, arXiv:1312.6884. (Announcement: C. R.
+  Math. 351 (2013), 599–603.) Thm 1 (n=1): complex measure with **uniformly discrete**
+  support AND spectrum ⟹ support ⊂ finite union of lattice translates (no positivity
+  needed in 1-D); Thm 2 (n>1): same with positivity; Thm 3: on a lattice ⟹ generalized
+  Dirac comb. Load-bearing hypothesis: uniform discreteness of BOTH sets — ζ's pair
+  fails both (zero gaps → 0; log-comb accumulates).
+- **[LevOlevskii2016]** N. Lev, A. Olevskii, *Quasicrystals with discrete support and
+  spectrum*, Rev. Mat. Iberoam. 32 (2016), 1341–1352, arXiv:1501.00085. Sharpness:
+  positive measures exist with discrete-closed (not u.d.) support+spectrum that are NOT
+  generalized Dirac combs — plain discreteness does not rigidify.
+- **[LevOlevskii2017]** N. Lev, A. Olevskii, *Fourier quasicrystals and discreteness of
+  the diffraction spectrum*, Adv. Math. 315 (2017), 1–26, arXiv:1512.08735.
+  Positive-definite measure, u.d. support, discrete-closed spectrum ⟹ finite combination
+  of translated/modulated Dirac combs. (Also: Lev–Reti, J. Funct. Anal. 281 (2021),
+  109072, distribution version.)
+- **[KurasovSarnak2020]** P. Kurasov, P. Sarnak, *Stable polynomials and crystalline
+  measures*, J. Math. Phys. 61 (2020), 083501, arXiv:2004.05678. Lee–Yang/stable pairs
+  (P,Q), F(s) = P(b₁^{−s},…): stability forces all zeros of F onto Re s = 0; the zero
+  counting measure is a POSITIVE crystalline measure / Fourier quasicrystal with
+  integer masses, spectrum in the ℕ-span of log b_j (locally finite, not u.d. for
+  n ≥ 2 — how it evades [LevOlevskii2015]). Their eq. (27) is structurally a Weil
+  explicit formula with all zeros on the line. **Explicit remark: Guinand's measure
+  from ζ's explicit formula is NOT a Fourier quasicrystal even under RH** (temperedness
+  of the variation fails) — ζ's pair sits outside the FQ classification.
+- **[OlevskiiUlanovskii2020]** A. Olevskii, A. Ulanovskii, *Fourier quasicrystals with
+  unit masses*, C. R. Math. 358 (2020), 1207–1211. **1-D inverse theorem:**
+  `Σ_{λ∈Λ}δ_λ` is a Fourier quasicrystal ⟺ Λ = zero set of a real-rooted exponential
+  polynomial (purely imaginary frequencies) with simple real zeros. (Companion:
+  *A simple crystalline measure*, arXiv:2006.12037.)
+- **[Meyer2016]** Y. Meyer, *Measures with locally finite support and spectrum*, PNAS
+  113 (2016), 3152–3158. Survey + examples beyond generalized Dirac combs.
+- **[RadchenkoViazovska2019]** D. Radchenko, M. Viazovska, *Fourier interpolation on
+  the real line*, Publ. Math. IHÉS 129 (2019), 51–81, arXiv:1701.00265. Even Schwartz f
+  determined by {f(√n)} ∪ {f̂(√n)}; basis via weakly holomorphic modular forms for the
+  theta group; the only relation among the data is Poisson summation.
+- **[BRS2023]** A. Bondarenko, D. Radchenko, K. Seip, *Fourier interpolation with zeros
+  of zeta and L-functions*, Constr. Approx. 57 (2023), 405–461, arXiv:2005.02996.
+  **Unconditional** interpolation basis for even f analytic in |Im z| < ½+ε with
+  (1+|x|)-weighted L¹ bounds: f is reconstructed from f̂(log n/4π) (n ≥ 1) plus
+  f^{(j)}((ρ−½)/i) over nontrivial zeros ρ (with multiplicities, wherever they are).
+  Non-redundant: "breaks down if one removes any single point." Cor 1.1: the combined
+  data has only trivial kernel. §5: Dirichlet L versions.
+- **[CKMRV2022]** H. Cohn, A. Kumar, S. D. Miller, D. Radchenko, M. Viazovska,
+  *Universal optimality of the E₈ and Leech lattices and interpolation formulas*, Ann.
+  of Math. 196 (2022), 983–1082, arXiv:1902.05438. ±1-eigenfunction interpolation from
+  values+derivatives of f, f̂ at √(2n).
+- **[AKKV2025]** L. Alon, M. Kummer, P. Kurasov, C. Vinzant, *Higher dimensional
+  Fourier quasicrystals from Lee–Yang varieties*, Invent. Math. 239 (2025), 321–376,
+  arXiv:2407.11184. Unit-mass FQs in ℝⁿ from Lee–Yang varieties; supports are Delone,
+  almost periodic, highly non-periodic. No converse claimed for n > 1.
+- **[AlonCohenVinzant2024]** L. Alon, A. Cohen, C. Vinzant, *Every real-rooted
+  exponential polynomial is the restriction of a Lee–Yang polynomial*, J. Funct. Anal.
+  286 (2024), 110226, arXiv:2303.03201. **Closes the 1-D classification** with
+  [OlevskiiUlanovskii2020]: every ℕ-valued (unit-mass) Fourier quasicrystal on ℝ comes
+  from the Kurasov–Sarnak Lee–Yang construction. Converse open for n > 1
+  (posed in Lawton–Tsikh, J. Geom. Anal. 2025, arXiv:2403.08659).
+- **[Goncalves2026]** F. Gonçalves, *A classification of Fourier summation formulas and
+  crystalline measures*, arXiv:2312.11185 (v3 2026). Hermite–Biehler/de Branges
+  classification of crystalline measures with quadratic decay and of nonnegative
+  measures with u.d. support; extends [KurasovSarnak2020], [OlevskiiUlanovskii2020].
+  (Sequel: Gonçalves–Vedana, arXiv:2504.02741, *A complete classification of Fourier
+  summation formulas on the real line*, 2025.)
 
 ## Numerical verification
 

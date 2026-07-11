@@ -78,20 +78,37 @@ young and moving (unlike docs/05 §1–8, which are old and stuck), and that the
 constructive engines transfer. It may take decades. That is acceptable; the roadmap is
 built for it.
 
-## C. Citations to pin (next session with web access — do NOT use before pinned)
+## C. Citations — PINNED 2026-07-12 (full data + exact hypotheses in
+## `references/bibliography.md`, "Fourier quasicrystals" section)
 
-- Dyson, "Birds and frogs" (Notices AMS 2009) — the quasicrystal proposal. UNCONFIRMED details.
-- Lev–Olevskii — rigidity for uniformly discrete quasicrystals ("measures with
-  uniformly discrete support and spectrum"), ~2013–2017. UNCONFIRMED details.
-- Kurasov–Sarnak, "Stable polynomials and crystalline measures" (~2020, J. Math.
-  Phys.?) — Fourier quasicrystals from Lee–Yang polynomials. UNCONFIRMED details.
-- Olevskii–Ulanovskii, Meyer — crystalline measures surveys. UNCONFIRMED.
-- Radchenko–Viazovska, "Fourier interpolation on the real line" (Publ. IHÉS 2019). UNCONFIRMED details.
-- Bondarenko–Radchenko–Seip, Fourier interpolation with zeros of ζ (≈2021+); also
-  Cohn–Kumar–Miller–Radchenko–Viazovska universal optimality (Ann. of Math 2022) for
-  the ±1-eigenfunction machinery. UNCONFIRMED details.
-- Alon–Cohen–Vishne / Alon–Kurasov-adjacent work on higher-dim Fourier quasicrystals
-  from Lee–Yang varieties (~2023–2025). UNCONFIRMED.
+[Dyson2009] · [LevOlevskii2015/2016/2017] · [KurasovSarnak2020] ·
+[OlevskiiUlanovskii2020] · [Meyer2016] · [RadchenkoViazovska2019] · [BRS2023] ·
+[CKMRV2022] · [AKKV2025] · [AlonCohenVinzant2024] · [Goncalves2026] ·
+[BombieriLagarias1999] (multiset theorem pinned; original theorem numbering still
+UNCONFIRMED behind paywall). "Alon–Cohen–Vishne" in the original list was a slip for
+**Alon–Cohen–Vinzant**.
+
+**Three strategic facts from the pinning pass (they reshape Rungs 1 and 4):**
+
+1. **The 1-D converse/classification is DONE in the literature for unit masses:**
+   [OlevskiiUlanovskii2020] (unit-mass FQ ⟺ zero set of a real-rooted exponential
+   polynomial with simple zeros) + [AlonCohenVinzant2024] (every real-rooted
+   exponential polynomial = Lee–Yang restriction) ⟹ **every ℕ-valued Fourier
+   quasicrystal on ℝ arises from the Kurasov–Sarnak stable-polynomial construction.**
+   Rung 4's "K–S converse" is answered for that class; [Goncalves2026] +
+   Gonçalves–Vedana extend to a de Branges-flavored classification.
+2. **BUT ζ's pair is outside that class:** [KurasovSarnak2020] remark explicitly that
+   Guinand's measure (the explicit-formula measure) is NOT a Fourier quasicrystal even
+   under RH — the spectrum has a continuous (archimedean) part and temperedness of the
+   variation fails. Exponential polynomials have FINITELY many frequencies; ζ needs
+   infinitely many (the full prime comb) plus a smooth background. So Rung 4's real
+   question is now sharp: **extend the 1-D Lee–Yang classification from finite
+   frequency sets to infinite frequency sets with an explicit smooth background** —
+   i.e., "FQ modulo smooth background". Nobody has done this; it is well-posed.
+3. **Lev–Olevskii rigidity needs uniform discreteness of BOTH sets (1-D; positivity
+   replaces nothing in 1-D), and [LevOlevskii2016] shows mere discreteness admits
+   non-comb examples even for positive measures.** ζ fails u.d. on both sides, as the
+   original counterweight (§B) guessed — now with exact statements.
 
 ## D. The rungs (each with a decidable outcome; do not skip; update STATUS.md per rung)
 
@@ -162,6 +179,24 @@ built for it.
   that K1 becomes a theorem-or-counterexample question, then hunt the counterexample
   seriously (a non-real positive-comb system would kill (R′) and refocus the program
   on the ζ-local Rung-3 statement only).
+
+  **K1 RESOLUTION (2026-07-12, Rung 0 delivered — see `lemmas/L8`):** the preliminary
+  analysis is now PROVED. L8b (pinning lemma): the exact (EF) over the even-C_c^∞
+  class determines the multiset — the naive class IS the singleton {Z_ζ}, so naive (R)
+  ⟺ RH but vacuous, and K1's "fake zero set with the exact ζ comb" cannot exist.
+  The positive-comb class 𝒫 and (R′) are now precisely defined (L8 §6). Two
+  structural theorems constrain the K1 counterexample hunt: (i) for FIXED comb
+  weights w the multiset is unique if it exists (L8b) — the class injects into
+  {admissible w ≥ 0}; (ii) L8c (finite-defect rigidity): any non-real member of 𝒫
+  differs from Z_ζ in INFINITELY many atoms — no "move one zero + re-tune the comb"
+  counterexample exists, unconditionally. The hunt is now: find w ≥ 0 (necessarily
+  differing from Λ(n)/√n at infinitely many n, generating a non-real multiset), or
+  prove none exists (= (R′), RH-hard). Next concrete probe: DH-type combinations
+  `aL₁ + bL₂` scanned for POSITIVE-comb members (does any unitary combination of two
+  degree-1 L-functions have `−f'/f` with eventually-nonnegative log-coefficients AND
+  ζ's archimedean datum? conductor forces 5 ≠ 1 — likely excluded by (S3)'s W_∞;
+  make that exclusion a proof), and Kaczorowski–Perelli degree-1 (pin citation) for
+  the multiplicative sub-class.
 - **K2.** If Rung 3's infinitesimal rigidity provably fails (a legal first-order
   deformation exists using only the pinned constraints), the constraint set is too
   weak — the program needs a new constraint or dies.

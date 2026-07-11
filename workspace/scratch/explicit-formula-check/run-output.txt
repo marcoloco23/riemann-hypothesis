@@ -1,0 +1,18 @@
+--- T1: bump (1-(u/3)^2)^3 ---
+  pole   = 6.20752421392
+  primes = -3.03856738378
+  arch   = -3.16888694254
+  RHS    = 6.9887600026e-5
+  LHS (sum over 1000 zero pairs) = 6.98913043809e-5
+  LHS - RHS = 3.70435e-9   (zero-sum tail bound ~ 7.59e-10)
+  MATCH within tail: True
+--- T2: Gaussian exp(-u^2/2) ---
+  pole   = 5.68076390362
+  primes = -2.68196739383
+  arch   = -2.9987965098
+  RHS    = 5.37630893128e-17
+  LHS (sum over 1000 zero pairs) = 2.0709704137e-43
+  LHS - RHS = -5.37631e-17   (zero-sum tail bound ~ 1.043e-437502)
+  MATCH within tail: True
+
+OVERALL: PASS
