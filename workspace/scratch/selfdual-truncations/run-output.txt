@@ -1,0 +1,283 @@
+==============================================================================
+s00_pin.py  --  pin H(y); 2026-07-11 01:33:20
+mp.dps = 45
+
+(1) y*H(y) - H(1/y)  (series both sides, full H):
+  y = 1.3:  yH(y) = 1.0402055929670065909613609453373779
+            H(1/y) = 1.0402055929670065909613609453373779
+            |diff| = 3.5032e-46   rel = 3.3678e-46
+  y = 2.0:  yH(y) = 0.0077594268273634933235213114698034429
+            H(1/y) = 0.0077594268273634933235213114698034429
+            |diff| = 1.56e-46   rel = 2.0105e-44
+
+(2) Int_0^inf y^{s-1} H(y) dy  vs  2 xi(s):
+  s = 2.0:  integral = 1.0471975511965977461542144610932
+           2 xi(s)  = 1.0471975511965977461542144610932
+           rel diff = 0.0
+  s = 3.0:  integral = 1.1478797880935110267504594207226
+           2 xi(s)  = 1.1478797880935110267504594207226
+           rel diff = 0.0
+
+(3) Int_0^inf y^{s-1} h_n(y) dy  vs  s(s-1)(pi n^2)^{-s/2} Gamma(s/2):
+  s = 2.0, n = 1:  rel diff = 0.0
+  s = 2.0, n = 2:  rel diff = 0.0
+  s = 3.0, n = 1:  rel diff = 0.0
+  s = 3.0, n = 2:  rel diff = 0.0
+  s = (0.3+2j), n = 1:  rel diff = 9.2267e-47
+  s = (0.3+2j), n = 2:  rel diff = 1.1359e-46
+
+s00 done.
+==============================================================================
+s01_closedform.py -- 2026-07-11 01:34:03
+mp.dps = 45
+
+(0) closed form vs direct quadrature:
+  T_n: s=(0.3+2j), n=1: rel diff = 1.0524e-46
+  T_n: s=(0.3+2j), n=2: rel diff = 3.1466e-47
+  T_n: s=(0.3+2j), n=3: rel diff = 6.9792e-39
+  T_n: s=2.0, n=1: rel diff = 1.3331e-46
+  T_n: s=2.0, n=2: rel diff = 0.0
+  T_n: s=2.0, n=3: rel diff = 1.5177e-41
+  xi_N^sd: s=(0.3+2j), N=1: rel diff = 4.8296e-47
+  xi_N^sd: s=(0.3+2j), N=2: rel diff = 1.1717e-46
+  xi_N^sd: s=(0.3+2j), N=3: rel diff = 7.2417e-47
+
+(a) symmetry xi_N^sd(s) - xi_N^sd(1-s) at s = 0.3+2i:
+  N=1: xi=(0.45327791488216460082695273396031 - 0.0084365297790530012798713011759198j)  |sym diff|=4.3791e-47 (rel 9.6592e-47)
+  N=2: xi=(0.45344861876692120860216627172748 - 0.0084367380614605107803688398008883j)  |sym diff|=4.3791e-47 (rel 9.6556e-47)
+  N=3: xi=(0.45344861882575758067657178297662 - 0.0084367380614749766431927816000773j)  |sym diff|=4.3791e-47 (rel 9.6556e-47)
+  N=4: xi=(0.45344861882575758070614943018677 - 0.0084367380614749766431950998722978j)  |sym diff|=4.3791e-47 (rel 9.6556e-47)
+  N=5: xi=(0.45344861882575758070614943018679 - 0.0084367380614749766431950998722978j)  |sym diff|=4.3791e-47 (rel 9.6556e-47)
+  N=6: xi=(0.45344861882575758070614943018679 - 0.0084367380614749766431950998722978j)  |sym diff|=4.3791e-47 (rel 9.6556e-47)
+
+(b) Xi_N^sd(z) real and even on the real axis:
+  N=1, z=0.7: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=1, z=13.0: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=1, z=41.5: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=3, z=0.7: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=3, z=13.0: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=3, z=41.5: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=5, z=0.7: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=5, z=13.0: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+  N=5, z=41.5: |Im|=0.0  |Xi(z)-Xi(-z)|=0.0
+
+(c) convergence |Xi_N^sd(z) - Xi(z)|:
+  z \ N          N=1         N=2         N=3         N=4         N=5         N=6
+  z=5.0             0.000165    5.85e-11    2.95e-20    2.43e-32    5.25e-48    4.41e-47   |Xi(z)|=0.276
+  z=20.0            0.000102    5.24e-11    2.85e-20     2.4e-32    3.57e-47    1.57e-48   |Xi(z)|=3.67e-5
+  z=(0.0 + 0.02j)    0.000172    5.89e-11    2.96e-20    2.43e-32    8.76e-47    4.38e-47   |Xi(z)|=0.497
+  z=(2.0 + 0.4j)    0.000171    5.88e-11    2.96e-20    2.43e-32    1.13e-46    1.49e-46   |Xi(z)|=0.455
+  z=(20.0 + 6.0j)    0.000103    5.28e-11    2.86e-20     2.4e-32    3.87e-47    6.05e-48   |Xi(z)|=0.00116
+
+(d) positivity of H_N^sd:
+  analytic: h_n(y) = 4y^2 n^2 pi (2 pi n^2 y^2 - 3) e^{-pi n^2 y^2} > 0 for y>=1
+  since 2 pi n^2 y^2 >= 2 pi > 6 > 3; reflection H_N(1/y)/y preserves sign. Check grid:
+  N=1: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+  N=2: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+  N=3: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+  N=4: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+  N=5: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+  N=6: min over grid (0.005..8, step .005) = 2.2304e-54562 at y=0.005  (violations: 0)
+
+(e) IDENTITY  Xi_N^sd(z)  vs  collapsed  vs  one-sided theta-strip Xi_N(z):
+  N=1, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=9.7e-42  |sd-onesided|/|sd|=9.7e-42  |Xi|=1.62e-5
+  N=1, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=1.1e-46  |sd-onesided|/|sd|=1.1e-46  |Xi|=0.404
+  N=1, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=2.78e-40  |sd-onesided|/|sd|=2.78e-40  |Xi|=3.45e-6
+  N=1, z=12.5: |sd-collapsed|/|sd|=7.87e-46  |sd-onesided|/|sd|=7.87e-46  |Xi|=0.00522
+  N=1, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=1.43e-46  |sd-onesided|/|sd|=1.43e-46  |Xi|=0.611
+  N=2, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=7.29e-36  |sd-onesided|/|sd|=7.29e-36  |Xi|=2.32e-11
+  N=2, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=1.1e-46  |sd-onesided|/|sd|=1.1e-46  |Xi|=0.404
+  N=2, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=1.45e-34  |sd-onesided|/|sd|=1.45e-34  |Xi|=6.61e-12
+  N=2, z=12.5: |sd-collapsed|/|sd|=6.26e-45  |sd-onesided|/|sd|=6.26e-45  |Xi|=0.00536
+  N=2, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=0.0  |sd-onesided|/|sd|=0.0  |Xi|=0.611
+  N=3, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=1.9e-16  |sd-onesided|/|sd|=1.9e-16  |Xi|=9.93e-31
+  N=3, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=2.03e-47  |sd-onesided|/|sd|=2.03e-47  |Xi|=0.404
+  N=3, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=1.07e-25  |sd-onesided|/|sd|=1.07e-25  |Xi|=8.87e-21
+  N=3, z=12.5: |sd-collapsed|/|sd|=1.01e-44  |sd-onesided|/|sd|=1.01e-44  |Xi|=0.00536
+  N=3, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=0.0  |sd-onesided|/|sd|=0.0  |Xi|=0.611
+  N=4, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=8.28e-27  |sd-onesided|/|sd|=8.28e-27  |Xi|=2.02e-20
+  N=4, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=2.03e-47  |sd-onesided|/|sd|=2.03e-47  |Xi|=0.404
+  N=4, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=7.58e-14  |sd-onesided|/|sd|=7.58e-14  |Xi|=1.26e-32
+  N=4, z=12.5: |sd-collapsed|/|sd|=8.56e-45  |sd-onesided|/|sd|=8.56e-45  |Xi|=0.00536
+  N=4, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=1.43e-46  |sd-onesided|/|sd|=1.43e-46  |Xi|=0.611
+  N=5, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=9.03e-27  |sd-onesided|/|sd|=9.03e-27  |Xi|=2.02e-20
+  N=5, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=2.03e-47  |sd-onesided|/|sd|=2.03e-47  |Xi|=0.404
+  N=5, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=5.14e-6  |sd-onesided|/|sd|=5.14e-6  |Xi|=1.89e-40
+  N=5, z=12.5: |sd-collapsed|/|sd|=4.47e-45  |sd-onesided|/|sd|=4.47e-45  |Xi|=0.00536
+  N=5, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=1.43e-46  |sd-onesided|/|sd|=1.43e-46  |Xi|=0.611
+  N=6, z=(67.88019 + 0.47734384j): |sd-collapsed|/|sd|=8.29e-27  |sd-onesided|/|sd|=8.29e-27  |Xi|=2.02e-20
+  N=6, z=(3.0 + 0.25j): |sd-collapsed|/|sd|=1.1e-46  |sd-onesided|/|sd|=1.1e-46  |Xi|=0.404
+  N=6, z=(150.0 + 11.0j): |sd-collapsed|/|sd|=5.17e-6  |sd-onesided|/|sd|=5.17e-6  |Xi|=1.89e-40
+  N=6, z=12.5: |sd-collapsed|/|sd|=1.92e-45  |sd-onesided|/|sd|=1.92e-45  |Xi|=0.00536
+  N=6, z=(0.0 + 3.0j): |sd-collapsed|/|sd|=1.43e-46  |sd-onesided|/|sd|=1.43e-46  |Xi|=0.611
+  WORST relative deviation over all tests: 5.17e-6
+  => Xi_N^sd IS the one-sided theta-strip Xi_N, identically (algebra in sd_common.py docstring).
+
+s01 done.
+cancellation-artifact check at dps 100 (worst s01 case):
+  N=5: |Xi|=1.89e-40  |sd-onesided|/|Xi| = 1.81e-61
+  N=6: |Xi|=1.89e-40  |sd-onesided|/|Xi| = 1.73e-61
+=> deviation was roundoff; identity Xi_N^sd == Xi_N^one-sided holds.
+==============================================================================
+s02_corner.py -- 2026-07-11 01:35:18
+
+Phi even + Fourier normalization spot checks (dps 40):
+  N=3, u=0.37: |Phi(u)-Phi(-u)| = 0.0
+  N=3, u=1.1: |Phi(u)-Phi(-u)| = 4.276e-50
+  N=2: 2 Int_0^3 Phi cos(2u) du = 0.4530998582541004593559572
+       Xi_2^sd(2) closed form  = (0.4530998582541004593559572 + 0.0j)
+
+J_N table (dps 120):  [d_N = N^6 e^{-pi(N+1)^2},  model = 16 pi^3 (N+1)^6 e^{-pi(N+1)^2}]
+  N          J_N (A: finite sum)                J_N (B: tail)      B/A - 1          d_N    model/J_N
+  1      0.078997530535499869367      0.078997530535499869367   4.066e-120     3.487e-6        1.402
+  2     1.6530559155454678823e-7     1.6530559155454678823e-7   2.012e-114    3.364e-11         1.15
+  3    2.7834517272186103049e-16    2.7834517272186103049e-16   1.195e-105    1.078e-19         1.08
+  4    5.7394724118203199885e-28    5.7394724118203199885e-28    5.795e-94    3.184e-31         1.05
+  5    1.7074580272261990179e-42    1.7074580272261990179e-42    1.948e-79    1.192e-45        1.034
+  6    7.9623473501391937092e-60    7.9623473501391937092e-60    4.177e-62    6.523e-63        1.025
+  (B/A - 1 ~ 0 confirms both routes AND the theta identity sum_{n>=1} = 0;
+   J_N > 0 for every N: the gluing is C^0 but NOT C^1 -- no free lunch;
+   J_N ~ 16 pi^3 (N+1)^6 e^{-pi(N+1)^2}: same exponential order as the
+   one-sided defect d_N = N^6 e^{-pi(N+1)^2}, ratio J_N/d_N -> 16 pi^3 e^{stuff} poly.)
+
+(C) numeric one-sided derivative check, J_N = 2 Phi'(0+):
+  N=1: J numeric = 0.0789975305354998694   closed = 0.0789975305354998694   rel diff = 8.89e-29
+  N=2: J numeric = 1.65305591554546788e-7   closed = 1.65305591554546788e-7   rel diff = 7.87e-28
+  N=3: J numeric = 2.7834517272186103e-16   closed = 2.7834517272186103e-16   rel diff = 4.33e-27
+
+Tail asymptotics  x^2 Xi_N^sd(x) / (-J_N)  (should -> 1):
+  N=1, x=200: Xi = -1.9617850093e-6   x^2 Xi/(-J_N) = 0.993339916324
+  N=1, x=400: Xi = -4.92911525554e-7   x^2 Xi/(-J_N) = 0.998333030844
+  N=1, x=800: Xi = -1.23382186533e-7   x^2 Xi/(-J_N) = 0.999583136911
+  N=2, x=200: Xi = -3.8998960853e-12   x^2 Xi/(-J_N) = 0.943681589625
+  N=2, x=400: Xi = -1.01809033185e-12   x^2 Xi/(-J_N) = 0.985414053842
+  N=2, x=800: Xi = -2.57339678761e-13   x^2 Xi/(-J_N) = 0.996320770872
+  (sign: Xi_N^sd(x) < 0 for large x since J_N > 0.)
+
+s02 done.
+==============================================================================
+s03_laguerre.py -- 2026-07-11 01:39:07
+digits of cancellation floor J_N: {1: 2, 2: 7, 3: 16, 4: 28, 5: 42, 6: 60}
+
+N=1: 1 real sign changes on [0,86], R_N = 14.045439582318 (4(N+1)^2 = 16); tail check x^2 Xi/(-J_N) at 86 = 0.96423888
+  L1 scan [0, 94.04544] step 0.25: 3 sign switches
+  L1 < 0 interval: [18.7861134224, 23.2566659935]
+  L1 < 0 interval: [27.5701912977, >= 94.04544 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 18.7861134224;  R_N = 14.0454395823;  first_neg - R_N = 4.74067;  first_neg/4(N+1)^2 = 1.1741321
+  (1s)
+
+N=2: 7 real sign changes on [0,106], R_N = 39.532481078058 (4(N+1)^2 = 36); tail check x^2 Xi/(-J_N) at 106 = 0.82136027
+  L1 scan [0, 119.53248] step 0.25: 5 sign switches
+  L1 < 0 interval: [42.715697173, 45.6603444926]
+  L1 < 0 interval: [49.4153121375, 51.6979018487]
+  L1 < 0 interval: [55.6487691812, >= 119.53248 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 42.715697173;  R_N = 39.5324810781;  first_neg - R_N = 3.18322;  first_neg/4(N+1)^2 = 1.1865471
+  (4s)
+
+N=3: 15 real sign changes on [0,134], R_N = 65.032073769718 (4(N+1)^2 = 64); tail check x^2 Xi/(-J_N) at 134 = 0.66910358
+  L1 scan [0, 145.03207] step 0.25: 9 sign switches
+  L1 < 0 interval: [67.4332616888, 68.3366077952]
+  L1 < 0 interval: [71.3771057017, 73.9766060226]
+  L1 < 0 interval: [76.8636701666, 78.8368211947]
+  L1 < 0 interval: [81.5961814709, 83.3890509196]
+  L1 < 0 interval: [101.181083318, >= 145.03207 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 67.4332616888;  R_N = 65.0320737697;  first_neg - R_N = 2.40119;  first_neg/4(N+1)^2 = 1.0536447
+  (12s)
+
+N=4: 31 real sign changes on [0,170], R_N = 103.36798800901 (4(N+1)^2 = 100); tail check x^2 Xi/(-J_N) at 170 = 0.55802637
+  L1 scan [0, 183.36799] step 0.25: 9 sign switches
+  L1 < 0 interval: [105.164417911, 106.868255172]
+  L1 < 0 interval: [109.255027223, 111.89731263]
+  L1 < 0 interval: [113.634273712, 115.765376274]
+  L1 < 0 interval: [118.053754624, 119.890646007]
+  L1 < 0 interval: [157.673183527, >= 183.36799 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 105.164417911;  R_N = 103.367988009;  first_neg - R_N = 1.79643;  first_neg/4(N+1)^2 = 1.0516442
+  (29s)
+
+N=5: 53 real sign changes on [0,214], R_N = 149.00269949064 (4(N+1)^2 = 144); tail check x^2 Xi/(-J_N) at 214 = 0.48452766
+  L1 scan [0, 229.0027] step 0.25: 9 sign switches
+  L1 < 0 interval: [151.003065247, 152.621852543]
+  L1 < 0 interval: [154.82266752, 157.141206387]
+  L1 < 0 interval: [158.762679774, 160.527935032]
+  L1 < 0 interval: [162.65277854, 164.384195272]
+  L1 < 0 interval: [226.758686516, >= 229.0027 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 151.003065247;  R_N = 149.002699491;  first_neg - R_N = 2.00037;  first_neg/4(N+1)^2 = 1.0486324
+  (74s)
+
+N=6: 79 real sign changes on [0,266], R_N = 197.9575955756 (4(N+1)^2 = 196); tail check x^2 Xi/(-J_N) at 266 = 0.35051361
+  L1 scan [0, 277.9576] step 0.25: 12 sign switches
+  L1 < 0 interval: [200.932683233, 202.122615311]
+  L1 < 0 interval: [203.766086865, 205.35046928]
+  L1 < 0 interval: [207.144602936, 209.151075799]
+  L1 < 0 interval: [210.974492457, 212.817703631]
+  L1 < 0 interval: [214.437438253, 215.935903061]
+  L1 < 0 interval: [218.282511961, 219.159112152]
+  first L1<0 at x = 200.932683233;  R_N = 197.957595576;  first_neg - R_N = 2.97509;  first_neg/4(N+1)^2 = 1.0251668
+  (189s)
+
+s03 done.
+==============================================================================
+s04_coshsinh.py -- 2026-07-11 01:44:40
+mp.dps = 40
+
+  N=2, t=5.0, r=0.3:
+    Re: quad = 0.2754826320777147528730797
+        ref  = 0.2754826320777147528730797   |diff| = 5.74e-42
+    Im: quad = -0.01997830602906955046795017
+        ref  = -0.01997830602906955046795017   |diff| = 9.33e-42
+    Im via tanh-multiplier form: |diff| = 9.33e-42
+
+  N=3, t=30.0, r=0.45:
+    Re: quad = -8.244469718883459842901469e-9
+        ref  = -8.244469718883459842901469e-9   |diff| = 1.1e-44
+    Im: quad = 2.083363462969939244580066e-8
+        ref  = 2.083363462969939244580066e-8   |diff| = 2.52e-42
+    Im via tanh-multiplier form: |diff| = 2.52e-42
+
+  N=3, t=67.88018966, r=0.4773438418:
+    Re: quad = 6.844122707736041333934728e-31
+        ref  = 6.844122707735587463852112e-31   |diff| = 4.54e-44
+    Im: quad = 7.191020027992156192693839e-31
+        ref  = 7.191020027983922213148596e-31   |diff| = 8.23e-43
+    Im via tanh-multiplier form: |diff| = 8.23e-43
+
+  N=1, t=12.0, r=0.25:
+    Re: quad = 0.008526588259762066234226763
+        ref  = 0.008526588259762066234226763   |diff| = 3.59e-43
+    Im: quad = -0.002021701000621447819065158
+        ref  = -0.002021701000621447819065158   |diff| = 3.59e-43
+    Im via tanh-multiplier form: |diff| = 3.59e-43
+
+Validated: (E1),(E2),(E2') hold; w_N^sd(u;r) = 2 Phi_N^sd(u) cosh(ru) > 0, even,
+two-sided; tanh(ru)-multiplier structure survives with the symmetric weight.
+
+s04 done.
+==============================================================================
+s05_p2const.py -- 2026-07-11 01:44:51
+
+cross-checks:
+  K_2''''(0.5): symbolic = -79.279585862350565106, numeric diff = -79.279585862350565106, rel = 1.89e-39
+  N=1: 4 d_N / J_N - 1 = 3.73e-139
+  N=3: 4 d_N / J_N - 1 = 1.05e-124
+  N=6: 4 d_N / J_N - 1 = 3.69e-81
+  N=8: 4 d_N / J_N - 1 = 3.69e-38
+
+ N               d_N         K_N'''(0)  tailA/B-1              M4_N            T_N
+ 1    0.019749382634      5.2694926172  7.43e-139      156.83188388    90.59757836  (sign changes of K'''': 2)
+ 2   4.1326397889e-8   9.7602853277e-5  3.56e-133      161.89778165    62590.26691  (sign changes of K'''': 2)
+ 3   6.958629318e-17  5.9919056545e-13  2.11e-124      161.89788029   1525312151.0  (sign changes of K'''': 2)
+ 4   1.434868103e-28  3.2040697428e-24  1.02e-112      161.89788029 1.062220285e+15  (sign changes of K'''': 2)
+ 5  4.2686450681e-43  2.0397019649e-38   3.44e-98      161.89788029 1.947491445e+22  (sign changes of K'''': 2)
+ 6  1.9905868375e-60  1.7951468213e-55   7.39e-81      161.89788029 9.018410867e+30  (sign changes of K'''': 2)
+ 7  1.5268870386e-80  2.3771186695e-75   9.63e-61      161.89788029 1.029715208e+41  (sign changes of K'''': 2)
+ 8 1.9863013231e-103  4.9934836153e-98    7.4e-38      161.89788029 2.85494677e+52  (sign changes of K'''': 2)
+
+asymptotic check  Xi_N(x) x^2 / (-4 d_N):
+  N=1, x=400: 0.998333030844
+  N=1, x=800: 0.999583136911
+  N=2, x=400: 0.985414053842
+  N=2, x=800: 0.996320770872
+
+s05 done.
+N=6 L1 sign changes on [278,420] (step 2): [310]
+N=6 permanent tail L1<0 onset at x = 308.422694127  (L1(420) = -2.03e-135 )

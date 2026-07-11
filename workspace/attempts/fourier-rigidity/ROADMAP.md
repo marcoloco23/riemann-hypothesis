@@ -1,0 +1,211 @@
+# ROADMAP — the Fourier-rigidity (quasicrystal) program for RH
+
+> Program document, written 2026-07-11 (night session). This is a deliberate,
+> intuition-driven bet on a direction outside the mapped walls (docs/05 §1–8, and the
+> four other attempts in this repo). Time horizon: years-to-decades. Every claim below
+> is tagged; nothing here is a result yet. The repo's hard rules apply in full — in
+> particular, the litmus audit (§F) was run at frame level BEFORE adoption.
+
+## A. The reformulation (Rung 0 target — make this PROVED first)
+
+**Definitions.** A tempered measure `μ` on ℝ is *crystalline* if both `μ` and `μ̂` are
+atomic with locally finite support. A *crystalline pair* is `(supp μ, supp μ̂)` with
+the weights.
+
+**The unconditional statement (to be proved as Rung 0, candidate lemma L8).** Let
+`μ_ζ := Σ_ρ δ_{z(ρ)}` where `z(ρ) = γ + i(β−½)` runs over nontrivial zeros (a measure
+on ℂ, real-supported iff RH). The Weil explicit formula is EXACTLY the assertion that
+for every admissible test `g` (even, suitable decay, `ĝ = ∫g e^{−ixt}dt`):
+
+```
+Σ_ρ ĝ(z(ρ)) = 2ĝ(i/2)·(pole term) − Σ_{n≥2} (Λ(n)/√n)(g(log n) + g(−log n))
+              + ∫ g·(explicit archimedean density) dt.                       (EF)
+```
+
+I.e., **the "Fourier transform" of the zero measure is: a positive atomic comb on
+`±log(prime powers)` + a smooth explicit density + one pole atom.** TAG: standard
+(Weil; [BombieriLagarias1999] framework) — needs one careful in-repo write-up fixing
+test classes and convergence (this is Rung 0; no new mathematics, pure bookkeeping,
+and it defines the program's central object honestly WITHOUT assuming RH: for off-line
+zeros the left side evaluates `ĝ` at non-real points — `μ_ζ` is then an "almost-real
+quasicrystal" with complex defects).
+
+**RH, restated (the program's target):**
+
+> **Rigidity Conjecture (R).** Any "ζ-type crystalline system" — atoms `{z_k} ⊂
+> {|Im z| < ½}` closed under `z ↦ z̄` and `z ↦ −z̄`, with counting density
+> `(T/2π)log(T/2π) − T/2π + O(log T)`, satisfying (EF) with the FIXED right-hand side
+> (the actual prime comb with `Λ(n) ≥ 0`, the actual archimedean density) — has all
+> atoms real.
+
+(R) ⟺ RH (⟸ trivial since ζ's zeros satisfy the hypotheses; ⟹ because ζ's system is
+such a system). TAG: CONJECTURED, equivalence PROVED-modulo-Rung-0. ⚠️ Circularity
+tripwire: (R) is a docs/03-style equivalent — never assume it, never assume "crystalline
+⟹ nice" folklore.
+
+## B. Why this could work when everything else stalls (the intuition, stated honestly)
+
+1. **The missing thing everywhere is an OBJECT, not an argument** (session finding,
+   pick-kernel §5b: a dilation of `𝒜−𝒫` *is* the zero measure; no cheaper identity).
+   The only recent mathematics that *constructs* exact Fourier-magic objects — rather
+   than estimating toward them — is the modular interpolation school
+   (Radchenko–Viazovska bases; the sphere-packing proofs). Those constructions START
+   from theta/modular kernels — literally the objects in `lemmas/L5`.
+2. **The Lee–Yang bridge runs in our favor here.** We parked "approximate ξ by
+   ferromagnets" (triage §B: approximation destroys the structure). Kurasov–Sarnak
+   run the SAME bridge in the constructive direction: Lee–Yang varieties/stable
+   polynomials ⟹ genuine Fourier quasicrystals with real spectrum. The program's
+   dream engine: realize (EF)'s right side inside a Lee–Yang–type family so that
+   reality of the left support comes from stability theory, not from positivity
+   estimates.
+3. **Interpolation formulas with ζ-zero nodes already EXIST unconditionally**
+   (Bondarenko–Radchenko–Seip — to pin): the zeros already carry an exact
+   interpolation structure. Nobody has yet used such structures as *rigidity*
+   constraints on where the nodes can be. That is a concrete, new, attackable
+   question (Rung 3).
+4. **Our empirical base is already the right one.** The theta truncations are the
+   canonical finite approximants of the pair; the front-law data (strip zeros =
+   confined boundary defects, quasi-random phase) is the approximation theory of (R).
+   The endpoint-defect principle (theta-strip §2b(2)) is the finite-size scaling law
+   of this quasicrystal. We keep all of it.
+
+**Honest counterweight (write it down so we never fool ourselves):** (R) implies Weil
+positivity; it is exactly RH-hard. Known rigidity theorems (Lev–Olevskii) need
+*uniform discreteness* of support and spectrum — BOTH FAIL here (zero gaps → 0;
+`log(n+1) − log n → 0`). So the needed theorem is a genuinely NEW kind of rigidity for
+positive-density, non-uniformly-discrete pairs. The bet is that this frontier is
+young and moving (unlike docs/05 §1–8, which are old and stuck), and that the
+constructive engines transfer. It may take decades. That is acceptable; the roadmap is
+built for it.
+
+## C. Citations to pin (next session with web access — do NOT use before pinned)
+
+- Dyson, "Birds and frogs" (Notices AMS 2009) — the quasicrystal proposal. UNCONFIRMED details.
+- Lev–Olevskii — rigidity for uniformly discrete quasicrystals ("measures with
+  uniformly discrete support and spectrum"), ~2013–2017. UNCONFIRMED details.
+- Kurasov–Sarnak, "Stable polynomials and crystalline measures" (~2020, J. Math.
+  Phys.?) — Fourier quasicrystals from Lee–Yang polynomials. UNCONFIRMED details.
+- Olevskii–Ulanovskii, Meyer — crystalline measures surveys. UNCONFIRMED.
+- Radchenko–Viazovska, "Fourier interpolation on the real line" (Publ. IHÉS 2019). UNCONFIRMED details.
+- Bondarenko–Radchenko–Seip, Fourier interpolation with zeros of ζ (≈2021+); also
+  Cohn–Kumar–Miller–Radchenko–Viazovska universal optimality (Ann. of Math 2022) for
+  the ±1-eigenfunction machinery. UNCONFIRMED details.
+- Alon–Cohen–Vishne / Alon–Kurasov-adjacent work on higher-dim Fourier quasicrystals
+  from Lee–Yang varieties (~2023–2025). UNCONFIRMED.
+
+## D. The rungs (each with a decidable outcome; do not skip; update STATUS.md per rung)
+
+- **Rung 0 (bookkeeping, weeks).** Write (EF) as the crystalline-pair statement, exact
+  test classes, both directions of the (R) ⟺ RH equivalence, and the DH/Epstein
+  versions (what their "pairs" look like — needed for §F). Candidate lemma L8.
+- **Rung 1 (absorption, months).** Absorb the pinned literature (§C): reprove
+  Kurasov–Sarnak in-repo for one variable; reprove one Lev–Olevskii rigidity theorem;
+  extract exactly which hypothesis (uniform discreteness) blocks application to (R)
+  and what replaces it (density? positivity of the comb? multiplicativity?).
+- **Rung 2 (the finite model, months, uses existing scratch).** The truncation system:
+  formalize "Ξ_N-zero-set = finite quasicrystal approximant with defect boundary";
+  prove the finite-size scaling law (front at `4(N+1)²`, defect confinement) as a
+  THEOREM for the N=1,2 cases using the L5/P2 technology; relate `d_N` to the
+  approximant's "phason defect" strength. Deliverable: a paper-grade note "Finite
+  approximants of the Riemann crystalline pair," even if RH-free — it builds the
+  program's language and tests it.
+- **Rung 3 (first genuinely new theorem target, 1–3 years).** Interpolation-as-rigidity:
+  take an unconditional ζ-node interpolation structure (BRS-type) and prove a
+  *perturbation rigidity* statement: no node can be moved off ℝ (within the strip,
+  respecting symmetries) while preserving the interpolation identity with the SAME
+  prime-comb data. Even an infinitesimal version (no first-order deformations —
+  a "spectral gap" for the deformation complex) would be the first theorem of kind
+  "the prime comb pins the zeros to ℝ locally." NOTE: must use `Λ(n) ≥ 0` /
+  multiplicativity essentially (§F) — check where it enters or the statement is false
+  (DH gives a counterexample template: its nodes DID move off ℝ).
+- **Rung 4 (the engine, open-ended).** Lee–Yang realization: construct a family of
+  entire functions/varieties, built from the prime comb, whose Lee–Yang/stability
+  property is equivalent to (R) — i.e., find the "ferromagnet" whose partition
+  function is FORCED (not approximated) to be `Ξ`. The K–S converse direction
+  (which real-spectrum quasicrystals arise from stable data?) is the mathematical
+  question to push; if the classification says "all positive-density crystalline pairs
+  with positive comb spectrum arise from stable families," (R) follows.
+- **Rung 5 (endgame, decades).** Full rigidity (R). Only reachable if Rungs 3–4
+  produce genuinely new rigidity technology. Then docs/07 protocol end-to-end, Lean
+  formalization of the load-bearing rigidity theorem.
+
+## E. Kill criteria (record loudly if hit; this program must be falsifiable)
+
+- **K1.** If Rung 0 shows (EF) constraints on complex-defect systems are ALREADY
+  satisfied by an explicit non-real system with positive prime comb of the exact
+  ζ shape (a "fake zero set"), then (R) as stated is false-or-vacuous and the program
+  dies (or RH does — either way, decisive). Related: Bombieri–Lagarias show Li/Weil
+  positivity criteria apply to arbitrary multisets — understand exactly what
+  additional data pins ζ's multiset.
+
+  **K1 preliminary analysis (2026-07-11, night — run at adoption, as required):**
+  the naive (R) IS vacuous: (EF) as an exact identity over a Paley–Wiener-rich test
+  class determines the functional `g ↦ Σĝ(z_k)` completely, and hence (atoms in a
+  bounded horizontal strip, Fourier/analytic-continuation uniqueness) the multiset
+  itself — the hypothesis class collapses to {ζ's zeros} and (R) restates RH with no
+  room for rigidity tools to act. **The program's actual content is the choice of
+  RELAXATION.** Candidate (to be settled at Rung 0): the *positive-comb class* —
+  atoms with the ζ density + symmetries whose distributional FT is (smooth archimedean
+  part) + an atomic comb supported in `{±log n}` with **some** nonnegative weights
+  (not the exact `Λ(n)/√n`), plus polynomial-growth admissibility. This class
+  (i) contains ζ's system, (ii) excludes DH/Epstein (their combs are sign-indefinite —
+  LITMUS preserved), (iii) is expected to be essentially the Selberg-class systems in
+  Fourier clothing (docs/04 §I: the Euler-product axiom ≈ comb positivity +
+  multiplicativity), so the relaxed conjecture
+
+  > **(R′) every positive-comb crystalline system has real support**
+
+  has the truth-value profile of Grand RH — strictly stronger than RH, which is
+  acceptable for a program (prove less first: sub-classes with multiplicative combs,
+  or perturbative neighborhoods of ζ's comb — Rung 3's infinitesimal version is
+  exactly the ζ-local case). Rung 0 must make the class definition precise enough
+  that K1 becomes a theorem-or-counterexample question, then hunt the counterexample
+  seriously (a non-real positive-comb system would kill (R′) and refocus the program
+  on the ζ-local Rung-3 statement only).
+- **K2.** If Rung 3's infinitesimal rigidity provably fails (a legal first-order
+  deformation exists using only the pinned constraints), the constraint set is too
+  weak — the program needs a new constraint or dies.
+- **K3.** If the K–S-style classification (Rung 4) is shown to require uniform
+  discreteness in principle (no positive-density extension possible), the engine is
+  wrong — retreat to Rung 2's finite models and reassess.
+
+## F. Litmus audit (docs/06, at adoption — MANDATORY, run before investment)
+
+- **LITMUS-1 (Davenport–Heilbronn).** DH satisfies a functional equation ⟹ an
+  (EF)-analogue exists — but its "comb" has complex, non-multiplicative,
+  sign-indefinite weights (DH is a combination of two twisted L-functions; the
+  would-be `Λ_f(n)` are not ≥ 0). DH's zero system is a REAL example of a
+  complex-defect quasicrystal whose comb is not positive — and its zeros are indeed
+  off-line. Therefore: any rigidity proof must use positivity + multiplicativity of
+  the comb as a load-bearing hypothesis, and (R) must FAIL for DH-type combs. This is
+  a feature: DH is the program's standing counterexample-generator for calibrating
+  hypotheses (Rung 3 note). ✓ frame passes.
+- **LITMUS-2 (Epstein):** same as DH (class number > 1 ⟹ no Euler product ⟹ no
+  positive comb). ✓
+- **LITMUS-3 (σ>1):** the comb's positivity + convergence encode `ζ ≠ 0` on `σ > 1`
+  exactly as the Euler product does. ✓
+- **LITMUS-4 (Λ ≥ 0, no slack):** rigidity is exact (support forced ONTO ℝ, not into
+  a zero-free strip of positive width). ✓
+- **Circularity:** Rung 0's object is defined unconditionally (complex defects
+  allowed); (R) is never assumed; crystalline-measure folklore ("atomic ⟹ structured")
+  must be cited to actual theorems or proved. Tripwires noted at Rungs 0, 3.
+
+## G. Relation to the other attempts (nothing is thrown away)
+
+- `pick-kernel-positivity` §5b (moment form) = the measure-side restatement of (R);
+  any Rung-4 engine immediately feeds it.
+- `theta-strip` + front-law data = Rung 2's finite approximant theory (already built).
+- `laguerre-phase-space` WL/OP 4.7 = the "second-moment shadow" of (R); WL(N=1)
+  machinery (𝒢-balance asymptotics) is Rung 2 technology.
+- `li-positivity` = the sequence-side shadow (λ_n = moments of the same measure).
+
+## H. Immediate next actions (first work session of the program)
+
+1. Rung 0: write L8 (the (EF)-as-crystalline-pair lemma) — test classes, both
+   equivalence directions, DH analogue. No web needed.
+2. Pin §C citations (needs web access — next session where allowed).
+3. Rung 2 start: recast the front-law campaign results in program language
+   (defect-confinement note), since the data is fresh.
+4. K1 check early: study the Bombieri–Lagarias "arbitrary multiset" remark against
+   (R)'s hypothesis list — determine the minimal pinning data. THIS IS THE FIRST
+   GENUINE TEST OF THE PROGRAM'S SOUNDNESS. Do it before heavy investment.

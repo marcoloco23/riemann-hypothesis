@@ -1,0 +1,72 @@
+=== Stage 5: claim 3 (finite theta-strip conjecture), N = 1..4 ===
+base dps = 30; cancellation-aware precision raising enabled
+
+--- N = 2:  scan region Re in [-0.5, 104.0] ---
+  strip [-0.5,34.5]x[0.02,0.48]: quad count = -1.7799435e-24 (nearest 0, dist 1.8e-24, |Im| 6.4e-24); phase count = -1.5880254e-30 (nearest 0, dist 1.6e-30, 314 evals, min|Xi| 8.3e-11)
+  strip [34.5,69.5]x[0.02,0.48]: quad count = 2.4999794e-23 (nearest 0, dist 2.5e-23, |Im| 1.1e-23); phase count = 4.4727584e-31 (nearest 0, dist 4.5e-31, 297 evals, min|Xi| 8.2e-13)
+  strip [69.5,104.0]x[0.02,0.48]: quad count = 1.1144537e-22 (nearest 0, dist 1.1e-22, |Im| 4.6e-23); phase count = 3.3055254e-31 (nearest 0, dist 3.3e-31, 284 evals, min|Xi| 1.2e-11)
+  near-real boxes [x0,x1]x[-0.02,0.02] (count must equal # real zeros):
+    [-0.5,34.5]: count = 5.0 (nearest 5, dist 0.0e+00), real zeros = 5  [OK]
+    [34.5,69.5]: count = 2.0 (nearest 2, dist 5.9e-31), real zeros = 2  [OK]
+    [69.5,104.0]: count = 1.5326064e-35 (nearest 0, dist 1.5e-35), real zeros = 0  [OK]
+  reality check: max |Im| over 7 polished 'real' zeros (seeded x_k+0.01i) = 6.388e-56
+  upper box [-0.5,104.0]x[0.48,12.03]: phase count = 4.0 (nearest 4, dist 6.3e-30, 934 evals)
+  located 4 zeros in upper box vs count 4  [MATCH]
+    zero: (43.1389080680989 + 3.28097100306881j)
+    zero: (47.5227563037011 + 6.2525091117497j)
+    zero: (51.8283147335876 + 8.95857384762622j)
+    zero: (56.1120029199774 + 11.4796085175258j)
+  MIN Im among located complex zeros (N=2): 3.28097100307
+  strip total count N=2: 0   [claim 3 SUPPORTED in scanned region]   (144s)
+
+--- N = 3:  scan region Re in [-0.5, 146.0] ---
+  strip [-0.5,34.5]x[0.02,0.48]: quad count = 4.4742083e-24 (nearest 0, dist 4.5e-24, |Im| 1.8e-24); phase count = 4.798897e-31 (nearest 0, dist 4.8e-31, 315 evals, min|Xi| 8.2e-11)
+  strip [34.5,69.5]x[0.02,0.48]: quad count = 1.1611443 (nearest 1, dist 1.6e-01, |Im| 6.9e-01); phase count = 1.0 (nearest 1, dist 9.9e-31, 343 evals, min|Xi| 4.9e-23)  <-- NONZERO COUNT
+  strip [69.5,104.5]x[0.02,0.48]: quad count = 3.3118741e-22 (nearest 0, dist 3.3e-22, |Im| 3.3e-23); phase count = -2.3540834e-32 (nearest 0, dist 2.4e-32, 288 evals, min|Xi| 1.4e-20)
+  strip [104.5,139.5]x[0.02,0.48]: quad count = -2.403034e-23 (nearest 0, dist 2.4e-23, |Im| 3.0e-23); phase count = -1.8869449e-31 (nearest 0, dist 1.9e-31, 288 evals, min|Xi| 9.8e-21)
+  strip [139.5,146.0]x[0.02,0.48]: quad count = -1.3989652e-24 (nearest 0, dist 1.4e-24, |Im| 2.8e-24); phase count = 2.1272576e-31 (nearest 0, dist 2.1e-31, 60 evals, min|Xi| 9.2e-21)
+  near-real boxes [x0,x1]x[-0.02,0.02] (count must equal # real zeros):
+    [-0.5,34.5]: count = 5.0 (nearest 5, dist 0.0e+00), real zeros = 5  [OK]
+    [34.5,69.5]: count = 10.0 (nearest 10, dist 1.6e-30), real zeros = 10  [OK]
+    [69.5,104.5]: count = -4.9043403e-34 (nearest 0, dist 4.9e-34), real zeros = 0  [OK]
+    [104.5,139.5]: count = -7.6630318e-36 (nearest 0, dist 7.7e-36), real zeros = 0  [OK]
+    [139.5,146.0]: count = 7.6630318e-36 (nearest 0, dist 7.7e-36), real zeros = 0  [OK]
+  reality check: max |Im| over 15 polished 'real' zeros (seeded x_k+0.01i) = 2.403e-47
+  upper box [-0.5,146.0]x[0.48,12.03]: phase count = 5.0 (nearest 5, dist 4.7e-30, 1277 evals)
+  located 5 zeros in upper box vs count 5  [MATCH]
+    zero: (71.8935694926028 + 2.80376429008123j)
+    zero: (75.694357894713 + 5.10245291759288j)
+    zero: (79.4610160263582 + 7.22540113555397j)
+    zero: (83.2268710205539 + 9.28733740122048j)
+    zero: (86.9711968488529 + 11.2756700415769j)
+  MIN Im among located complex zeros (N=3): 2.80376429008
+  strip total count N=3: 1   [claim 3 VIOLATED in scanned region]   (552s)
+
+--- N = 4:  scan region Re in [-0.5, 200.0] ---
+  strip [-0.5,34.5]x[0.02,0.48]: quad count = 1.1317365e-23 (nearest 0, dist 1.1e-23, |Im| 1.0e-24); phase count = 9.7424721e-31 (nearest 0, dist 9.7e-31, 315 evals, min|Xi| 8.2e-11)
+  strip [34.5,69.5]x[0.02,0.48]: quad count = 8.0008091e-24 (nearest 0, dist 8.0e-24, |Im| 1.2e-24); phase count = 2.2618818e-30 (nearest 0, dist 2.3e-30, 342 evals, min|Xi| 4.1e-22)
+  strip [69.5,104.5]x[0.02,0.48]: quad count = 5.6483254e-24 (nearest 0, dist 5.6e-24, |Im| 7.0e-24); phase count = 3.5154311e-30 (nearest 0, dist 3.5e-30, 369 evals, min|Xi| 1.3e-33)
+  strip [104.5,139.5]x[0.02,0.48]: quad count = -3.3545391e-23 (nearest 0, dist 3.4e-23, |Im| 4.8e-24); phase count = 1.7832181e-30 (nearest 0, dist 1.8e-30, 288 evals, min|Xi| 1.3e-32)
+  strip [139.5,174.5]x[0.02,0.48]: quad count = 1.3338863e-22 (nearest 0, dist 1.3e-22, |Im| 2.2e-23); phase count = -1.0253137e-30 (nearest 0, dist 1.0e-30, 288 evals, min|Xi| 1.1e-32)
+  strip [174.5,200.0]x[0.02,0.48]: quad count = -6.358515e-23 (nearest 0, dist 6.4e-23, |Im| 7.6e-23); phase count = -2.6699229e-29 (nearest 0, dist 2.7e-29, 212 evals, min|Xi| 9.1e-33)
+  near-real boxes [x0,x1]x[-0.02,0.02] (count must equal # real zeros):
+    [-0.5,34.5]: count = 5.0 (nearest 5, dist 7.9e-31), real zeros = 5  [OK]
+    [34.5,69.5]: count = 11.0 (nearest 11, dist 4.7e-30), real zeros = 11  [OK]
+    [69.5,104.5]: count = 15.0 (nearest 15, dist 0.0e+00), real zeros = 15  [OK]
+    [104.5,139.5]: count = 0.0 (nearest 0, dist 0.0e+00), real zeros = 0  [OK]
+    [139.5,174.5]: count = -1.5326064e-35 (nearest 0, dist 1.5e-35), real zeros = 0  [OK]
+    [174.5,200.0]: count = 0.0 (nearest 0, dist 0.0e+00), real zeros = 0  [OK]
+  reality check: max |Im| over 31 polished 'real' zeros (seeded x_k+0.01i) = 2.513e-36
+  upper box [-0.5,200.0]x[0.48,12.03]: phase count = 7.0 (nearest 7, dist 2.7e-29, 1703 evals)
+  located 640 zeros in upper box vs count 7  [MISMATCH (grid may have missed zeros)]
+    zero: (105.845008972798 + 1.35708547002445j)
+    zero: (109.541420706795 + 3.09320375491293j)
+    zero: (112.922384738092 + 4.92306133796828j)
+    zero: (114.499990293057 + 0.981008752741574j)
+    zero: (114.500899613596 + 1.48234182275135j)
+    zero: (116.360172871108 + 6.65310068348705j)
+    zero: (117.553544205027 + 3.80562041244653j)
+    zero: (117.713579587192 + 3.05768544337086j)
+    ... (632 more)
+  MIN Im among located complex zeros (N=4): 0.73
+  strip total count N=4: 0   [claim 3 SUPPORTED in scanned region]   (1751s)

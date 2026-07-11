@@ -1,0 +1,19 @@
+=== Stage 5: claim 3 (finite theta-strip conjecture), N = 1..4 ===
+base dps = 30; cancellation-aware precision raising enabled
+
+--- N = 1:  scan region Re in [-0.5, 74.0] ---
+  strip [-0.5,34.5]x[0.02,0.48]: quad count = 4.432227e-26 (nearest 0, dist 4.4e-26, |Im| 1.8e-26); phase count = -1.6601192e-31 (nearest 0, dist 1.7e-31, 292 evals, min|Xi| 3.1e-05)
+  strip [34.5,69.5]x[0.02,0.48]: quad count = 6.0683369e-25 (nearest 0, dist 6.1e-25, |Im| 1.3e-25); phase count = 4.9043403e-33 (nearest 0, dist 4.9e-33, 288 evals, min|Xi| 1.5e-05)
+  strip [69.5,74.0]x[0.02,0.48]: quad count = 1.3862099e-25 (nearest 0, dist 1.4e-25, |Im| 1.7e-25); phase count = -1.1120592e-30 (nearest 0, dist 1.1e-30, 44 evals, min|Xi| 1.4e-05)
+  near-real boxes [x0,x1]x[-0.02,0.02] (count must equal # real zeros):
+    [-0.5,34.5]: count = 1.0 (nearest 1, dist 5.9e-31), real zeros = 1  [OK]
+    [34.5,69.5]: count = -3.0652127e-35 (nearest 0, dist 3.1e-35), real zeros = 0  [OK]
+    [69.5,74.0]: count = 3.0652127e-35 (nearest 0, dist 3.1e-35), real zeros = 0  [OK]
+  reality check: max |Im| over 1 polished 'real' zeros (seeded x_k+0.01i) = 4.308e-66
+  upper box [-0.5,74.0]x[0.48,12.03]: phase count = 3.0 (nearest 3, dist 3.9e-31, 694 evals)
+  located 3 zeros in upper box vs count 3  [MATCH]
+    zero: (20.6253460059217 + 2.69715184233952j)
+    zero: (26.0561669335783 + 7.12535970761269j)
+    zero: (31.5014313782498 + 10.729150371055j)
+  MIN Im among located complex zeros (N=1): 2.69715184234
+  strip total count N=1: 0   [claim 3 SUPPORTED in scanned region]   (26s)

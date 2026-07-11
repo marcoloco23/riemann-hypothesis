@@ -1,0 +1,84 @@
+
+==============================================================================
+### N = 7: rectangle [0, 484] x (0, ~12]   (cap dps 132, polish dps 157)
+### started 2026-07-11 01:44:58
+[N=7] real zeros: 113 in (0,484];  R_7 = 258.530483663195;  4(N+1)^2 = 256;  R_N/4(N+1)^2 = 1.0098847
+[N=7] reality check: max |Im| after polish from x+0.01i = 6.24e-70  (113 zeros, 4910 axis evals, 954s)
+[N=7] columns: 48 (edges shifted off real zeros)
+  col [    -0.50,    10.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [4s, 160 evals total]
+  col [    10.00,    20.00]: nr=  1  C_sym=  1 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [3s, 286 evals total]
+  col [    20.00,    30.00]: nr=  2  C_sym=  2 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [4s, 412 evals total]
+  col [    30.00,    40.00]: nr=  3  C_sym=  3 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 538 evals total]
+  col [    40.00,    50.26]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 669 evals total]
+  col [    50.26,    60.00]: nr=  3  C_sym=  3 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 816 evals total]
+  col [    60.00,    70.00]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 942 evals total]
+  col [    70.00,    80.00]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 1068 evals total]
+  col [    80.00,    90.00]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 1194 evals total]
+  col [    90.00,   100.00]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 1320 evals total]
+  col [   100.00,   110.00]: nr=  4  C_sym=  4 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 1446 evals total]
+  col [   110.00,   120.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [5s, 1572 evals total]
+  col [   120.00,   130.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 1698 evals total]
+  col [   130.00,   140.26]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 1829 evals total]
+  col [   140.26,   150.52]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 1960 evals total]
+  col [   150.52,   160.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [6s, 2092 evals total]
+  col [   160.00,   170.39]: nr=  6  C_sym=  6 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [7s, 2244 evals total]
+  col [   170.39,   180.39]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 2390 evals total]
+  col [   180.39,   190.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [9s, 2563 evals total]
+  col [   190.00,   200.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [7s, 2709 evals total]
+  col [   200.00,   210.00]: nr=  6  C_sym=  6 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [7s, 2855 evals total]
+  col [   210.00,   220.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [7s, 3001 evals total]
+  col [   220.00,   230.00]: nr=  6  C_sym=  6 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 3147 evals total]
+  col [   230.00,   240.00]: nr=  6  C_sym=  6 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 3293 evals total]
+  col [   240.00,   250.00]: nr=  6  C_sym=  6 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [9s, 3439 evals total]
+  col [   250.00,   260.00]: nr=  5  C_sym=  5 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [9s, 3590 evals total]
+    LOUD: column [260.0,270.0] has C_sym=2 vs 0 real zeros -> 2 nonreal zero(s) with |Im|<0.5
+    near-real box [0.011]: count 0 == nr 0; no zeros with 0 < Im <= 0.011
+  col [   260.00,   270.00]: nr=  0  C_sym=  2 (ys=0.500)  C_high=  3 (top=12.001)  located=4  [62s, 3988 evals total]  <== NONREAL BELOW 0.5
+  col [   270.00,   280.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  3 (top=12.001)  located=3  [60s, 4299 evals total]  (3 upper zeros)
+  col [   280.00,   290.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  4 (top=12.001)  located=4  [31s, 4582 evals total]  (4 upper zeros)
+  col [   290.00,   300.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 4708 evals total]
+  col [   300.00,   310.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 4834 evals total]
+  col [   310.00,   320.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 4960 evals total]
+  col [   320.00,   330.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5086 evals total]
+  col [   330.00,   340.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5212 evals total]
+  col [   340.00,   350.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5338 evals total]
+  col [   350.00,   360.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5464 evals total]
+  col [   360.00,   370.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5590 evals total]
+  col [   370.00,   380.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5716 evals total]
+  col [   380.00,   390.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5842 evals total]
+  col [   390.00,   400.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 5968 evals total]
+  col [   400.00,   410.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6094 evals total]
+  col [   410.00,   420.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6220 evals total]
+  col [   420.00,   430.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6346 evals total]
+  col [   430.00,   440.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6472 evals total]
+  col [   440.00,   450.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6598 evals total]
+  col [   450.00,   460.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6724 evals total]
+  col [   460.00,   470.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [8s, 6850 evals total]
+  col [   470.00,   484.00]: nr=  0  C_sym=  0 (ys=0.500)  C_high=  0 (top=12.001)  located=0  [10s, 7016 evals total]
+[N=7] complex zeros (Im>0) located: 11; argument-principle total: 11  [MATCH]
+    zero: 260.28809851744054596 + 0.34710096275775763766 i   (res 9.12e-150, ok=True) <== STRIP ZERO (0<Im<0.5)
+    zero: 263.76471628768913426 + 1.218619707435621338 i   (res 4.75e-150, ok=True)
+    zero: 266.46481967924012207 + 2.5516560332183711668 i   (res 4.56e-150, ok=True)
+    zero: 269.30562980038425505 + 3.6546626027520045946 i   (res 1.12e-150, ok=True)
+    zero: 272.19530687047447116 + 4.820247079018870515 i   (res 8.96e-150, ok=True)
+    zero: 275.0509402061278202 + 5.9954004961569026048 i   (res 8.48e-150, ok=True)
+    zero: 277.89910547276915827 + 7.1452029182845265665 i   (res 1.0e-149, ok=True)
+    zero: 280.75216796084906944 + 8.2896063889803876645 i   (res 9.81e-150, ok=True)
+    zero: 283.5989685996411068 + 9.4297422017719343186 i   (res 1.03e-150, ok=True)
+    zero: 286.44133282023470891 + 10.561155535395311383 i   (res 9.89e-150, ok=True)
+    zero: 289.2807702104994459 + 11.685498826927077553 i   (res 9.18e-150, ok=True)
+[N=7] front fine scan [R_N-10, R_N+40] x [0.011, 0.5], 5-wide boxes:
+    front box [  248.53,  253.53]: near-real 3 (nr=3); strip count = 0
+    front box [  253.53,  258.81]: near-real 3 (nr=3); strip count = 0
+    front box [  258.81,  263.81]: near-real 0 (nr=0); strip count = 1  <== STRIP ZERO(S)
+    front box [  263.81,  268.81]: near-real 0 (nr=0); strip count = 0
+    front box [  268.81,  273.81]: near-real 0 (nr=0); strip count = 0
+    front box [  273.81,  278.81]: near-real 0 (nr=0); strip count = 0
+    front box [  278.81,  283.81]: near-real 0 (nr=0); strip count = 0
+    front box [  283.81,  288.81]: near-real 0 (nr=0); strip count = 0
+    front box [  288.81,  293.81]: near-real 0 (nr=0); strip count = 0
+    front box [  293.81,  298.53]: near-real 0 (nr=0); strip count = 0
+[N=7] front fine scan strip zeros: (260.288098517441 + 0.347100962757758j)
+    !! polish verification FAILED at (419.661961616229 - 10.5420212171419j): res=1.83e-85 local=1.83e-85
+[N=7] tracked zero from seed (271.36 + 0.4j): converged to (419.661961616228523 - 10.5420212171418678j) (ok=False)
+[N=7] DONE in 1481s; wrote zeros_N7.json

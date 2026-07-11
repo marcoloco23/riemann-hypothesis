@@ -1,0 +1,14 @@
+=== Stage 7: claim 5, load-bearing identity ===
+(A)+(B): identity residuals at strip points (target < 1e-20 relative):
+  N=1 z=(3+0.1j):  |I_quad-I_gamma|/|I| = 1.225e-47,  |4*Fourier - (C_N+(s(s-1)/2)I_N)|/|Xi| = 3.395e-48
+  N=2 z=(10+0.4j):  |I_quad-I_gamma|/|I| = 9.277e-48,  |4*Fourier - (C_N+(s(s-1)/2)I_N)|/|Xi| = 1.474e-46
+  N=3 z=(25+0.25j):  |I_quad-I_gamma|/|I| = 2.474e-46,  |4*Fourier - (C_N+(s(s-1)/2)I_N)|/|Xi| = 6.382e-41
+  N=4 z=(40+0.45j):  |I_quad-I_gamma|/|I| = 6.081e-46,  |4*Fourier - (C_N+(s(s-1)/2)I_N)|/|Xi| = 3.712e-36
+
+(C): solve for constants k1, k2 in Xi_N = k1*C_N + k2*(s(s-1)/2) I_N:
+  N=1: k1 = (1.0 - 7.485834087292438984729601e-48j)
+        k2 = (1.0 - 8.102314541540051607001451e-47j)
+        |k1-1| = 7.486e-48, |k2-1| = 8.102e-47, rel resid@z3 = 1.003e-42
+  N=3: k1 = (1.0 - 5.282052894648517580291817e-48j)
+        k2 = (1.0 - 7.822997196282478052169562e-47j)
+        |k1-1| = 5.282e-48, |k2-1| = 1.918e-46, rel resid@z3 = 2.320e-41

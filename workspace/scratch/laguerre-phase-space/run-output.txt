@@ -1,0 +1,211 @@
+run_all.sh -- python 3.13.11, mpmath 1.3.0, sympy 1.14.0
+========================================================================
+CLAIM 1 -- |f(x+iy)|^2 = sum_n L_n[f](x) y^{2n}
+========================================================================
+
+[A] Symbolic (sympy), generic real-entire f, orders y^0..y^6
+  coeff of y^0 vs L_0[f]: MATCH
+  coeff of y^1: 0 as required
+  coeff of y^2 vs L_1[f]: MATCH
+  coeff of y^3: 0 as required
+  coeff of y^4 vs L_2[f]: MATCH
+  coeff of y^5: 0 as required
+  coeff of y^6 vs L_3[f]: MATCH
+  [A] symbolic result: PASS
+  (sanity) L_1 = -f0*f2 + f1**2   [expect f1**2 - f0*f2]
+
+[B] Numeric for f = Xi, partial sums n <= 6, dps = 40
+  (x,y)=(2,0.3):
+    |Xi(x+iy)|^2          = 0.2061719997389211519067404
+    sum_(n<=6) L_n y^(2n) = 0.2061719997389211519062527
+    |difference|          = 4.8769e-22
+    |first omitted term|  = 4.8748e-22   (n=7)
+    rel. agreement        = 2.3655e-21
+    deriv x-check (order 12, radius 1.5 vs 2.0), rel diff = 2.66e-30
+    -> PASS
+  (x,y)=(14,0.2):
+    |Xi(x+iy)|^2          = 0.0000001301601269085354943074447
+    sum_(n<=6) L_n y^(2n) = 0.0000001301601269085354942963296
+    |difference|          = 1.1115e-26
+    |first omitted term|  = 1.1112e-26   (n=7)
+    rel. agreement        = 8.5395e-20
+    deriv x-check (order 12, radius 1.5 vs 2.0), rel diff = 2.58e-32
+    -> PASS
+
+========================================================================
+CLAIM 2 -- L_1[Xi] >= 0 and L_2[Xi] >= 0 on grid (dps = 40)
+========================================================================
+           x                    L_1[Xi](x)                    L_2[Xi](x)
+         0.0            0.0114198308344437          0.000254668682988604
+         1.0            0.0109566912509858           0.00024526710131254
+         2.0           0.00967490347910105          0.000219073425321049
+         3.0           0.00785749329248317          0.000181428795525513
+         4.0           0.00586308312532036          0.000139250101458629
+         5.0           0.00401343683462231           9.89931347235244e-5
+         6.0           0.00251542110455524            6.5139934855812e-5
+         7.0           0.00144010685882587           3.96497688736443e-5
+         8.0          0.000751175524917615           2.23139840132677e-5
+         9.0          0.000356084295830424           1.16099523351101e-5
+        10.0           0.00015313781776713           5.58883595018725e-6
+        11.0           5.97885273509563e-5           2.49431907793639e-6
+        12.0           2.13202452698239e-5           1.03632022007141e-6
+        13.0           7.05734838670252e-6           4.03496797751603e-7
+        14.0           2.23506615896503e-6           1.48592258198934e-7
+        15.0           7.03390470956904e-7           5.22976688923187e-8
+        16.0           2.24568728682339e-7           1.77421045057284e-8
+        17.0           7.13481860819395e-8           5.82055890153774e-9
+        18.0           2.15192830165014e-8           1.84089650872167e-9
+        19.0           5.90132395712214e-9          5.57916330731029e-10
+        20.0           1.44686731414804e-9          1.61581766709142e-10
+        21.0           3.2571581115877e-10          4.50199379410073e-11
+        22.0          7.33796036734245e-11          1.22911332365109e-11
+        23.0           1.8437297901329e-11          3.36899482597242e-12
+        24.0          5.28603544249828e-12          9.42073478249632e-13
+        25.0          1.62123423495021e-12          2.67699731975137e-13
+        26.0          4.97768892680632e-13          7.56897136043122e-14
+        27.0          1.43989884809286e-13          2.07389153426661e-14
+        28.0          3.66552043806093e-14           5.3863004399811e-15
+        29.0          7.71458280248328e-15          1.31197293098968e-15
+        30.0          1.30303834809803e-15          3.03099827826556e-16
+   14.134725           1.91191239382459e-6           1.29403421010531e-7
+    21.02204          3.15054383484219e-10          4.37558375816676e-11
+
+At the first two zeros (L_1 should reduce to Xi'^2 > 0):
+  x=14.134725: Xi = 1.95979e-10,  Xi'^2 = 1.91191270796619e-6,  L_1 = 1.91191239382459e-6,  L_1 - Xi'^2 = -3.141e-13
+  x=21.02204: Xi = 6.41172e-12,  Xi'^2 = 3.15054211637276e-10,  L_1 = 3.15054383484219e-10,  L_1 - Xi'^2 = 1.718e-16
+
+No violations: L_1[Xi] >= 0 and L_2[Xi] >= 0 at all grid points. PASS
+
+========================================================================
+CLAIM 3 -- phase-space hierarchy for H_t
+========================================================================
+
+[a] u^2+v^2 - [ (u+v)^2/2 + (u-v)^2/2 ] = 0   PASS
+
+[b] Claim A kernel: sum_j (-1)^(j+n) C(2n,j) (iu)^j (iv)^(2n-j) == (u-v)^(2n)
+    n=0: difference = 0   PASS
+    n=1: difference = 0   PASS
+    n=2: difference = 0   PASS
+    n=3: difference = 0   PASS
+    n=4: difference = 0   PASS
+    (differentiation under the integral is justified by rapid decrease of phi,
+     for t below the Gaussian threshold; noted as hypothesis, not checked here)
+
+[c] 1/(2(2n)!) - (n+1)(2n+1)/(2n+2)! = 0   PASS
+
+[d] d/dt G_n + (1/2) d^2/dx^2 G_n - (n+1)(2n+1) G_{n+1} == 0
+    n=0: residual = 0   PASS
+    n=1: residual = 0   PASS
+    n=2: residual = 0   PASS
+    n=3: residual = 0   PASS
+    (i.e. d/dt L_n = -(1/2) d^2/dx^2 L_n + (n+1)(2n+1) L_{n+1} at integrand level)
+
+[e] Numeric Claim A at t=0, x=3, phi(u)=exp(-u^2-u^4), dps=30
+    n=0:  double integral = 0.17077561085927318243
+           L_n[f](3)       = 0.17077561085927318243
+           rel. difference = 1.444e-31   PASS
+    n=1:  double integral = 0.097515309423097063415
+           L_n[f](3)       = 0.097515309423097063415
+           rel. difference = 2.528e-31   PASS
+
+========================================================================
+CLAIM 4 -- C_f and the Wigner-type representation
+========================================================================
+
+[i] Symbolic: C_f(x+iy) vs (1/2) d^2/dy^2 |f(x+iy)|^2, through y^6
+    y^0: C_f == (1/2)|f|^2_yy coeff? True;  == 1*(2*1-1)*L_1? True   PASS
+    y^1: both coefficients zero? PASS
+    y^2: C_f == (1/2)|f|^2_yy coeff? True;  == 2*(2*2-1)*L_2? True   PASS
+    y^3: both coefficients zero? PASS
+    y^4: C_f == (1/2)|f|^2_yy coeff? True;  == 3*(2*3-1)*L_3? True   PASS
+    y^5: both coefficients zero? PASS
+    y^6: C_f == (1/2)|f|^2_yy coeff? True;  == 4*(2*4-1)*L_4? True   PASS
+    n=1 term of C_f (coeff of y^0) = -f0*f2 + f1**2   [expect L_1 = f1**2 - f0*f2]
+  [i] result: PASS -- C_f = (1/2) d_y^2 |f|^2 = sum_(n>=1) n(2n-1) L_n y^(2n-2)
+
+[ii] Gaussian test psi(u) = e^{-u^2}, f(z) = sqrt(pi) e^{-z^2/4}, dps = 30
+    (x,y)=(0.5,0.3):
+      C_f direct                          = 1.580530265058213689554
+      (1/2) int_0^inf p^2 cosh(py) W dp   = 1.580530265058213689554   rel.diff 0.0
+      (1/4) int_R     p^2 e^(-py)  W dp   = 1.580530265058213689554   rel.diff 0.0
+      PASS (both)
+    (x,y)=(2.0,1.0):
+      C_f direct                          = 0.7009840719166211998155
+      (1/2) int_0^inf p^2 cosh(py) W dp   = 0.7009840719166211998155   rel.diff 1.41e-31
+      (1/4) int_R     p^2 e^(-py)  W dp   = 0.7009840719166211998155   rel.diff 1.41e-31
+      PASS (both)
+    (x,y)=(3.0,0.2):
+      C_f direct                          = 0.01851458310353652181604
+      (1/2) int_0^inf p^2 cosh(py) W dp   = 0.01851458310353652181604   rel.diff 1.66e-31
+      (1/4) int_R     p^2 e^(-py)  W dp   = 0.01851458310353652181604   rel.diff 1.66e-31
+      PASS (both)
+
+[ii] analysis (proved by hand, confirmed above): substituting f(z)=int psi e^{izu}du,
+  C_f(x,y) = (1/2) iint (u+v)^2 psi(u)psi(v) cos(x(u-v)) e^{-y(u+v)} du dv.
+  With p=u+v, q=u-v (du dv = dp dq / 2) this is exactly
+  (B):  C_f = (1/4) int_R p^2 e^{-py} W(p,x) dp.
+  Since psi is even, W(-p,x) = W(p,x), so folding p -> -p gives exactly
+  (A):  C_f = (1/2) int_0^inf p^2 cosh(py) W(p,x) dp.
+  Both forms are correct and equal; equivalence NEEDS psi even (W even in p).
+
+========================================================================
+CLAIM 5 -- C_Xi(x,y) on grid + Lehmer-pair point
+========================================================================
+
+Grid (dps = 40, trapezoid Cauchy derivatives, radius 0.5, N-doubling checked):
+         x      y                     C_Xi(x,y)  sign
+         0    0.1            0.0114351164517394  >=0 OK
+         0    0.5             0.011805285210275  >=0 OK
+         0      1            0.0130038827803929  >=0 OK
+         0      2            0.0184835410177293  >=0 OK
+         5    0.1           0.00401937873479464  >=0 OK
+         5    0.5           0.00416337883728993  >=0 OK
+         5      1           0.00463099969133064  >=0 OK
+         5      2           0.00679169981801485  >=0 OK
+   14.1347    0.1           1.91973798843993e-6  >=0 OK
+   14.1347    0.5           2.10971889364132e-6  >=0 OK
+   14.1347      1           2.74815984540973e-6  >=0 OK
+   14.1347      2           6.07710840832217e-6  >=0 OK
+     21.02    0.1          3.18662128471373e-10  >=0 OK
+     21.02    0.5          3.84036771153238e-10  >=0 OK
+     21.02      1          6.15976454329295e-10  >=0 OK
+     21.02      2           2.06179976607795e-9  >=0 OK
+        25    0.1          1.63732264002907e-12  >=0 OK
+        25    0.5          2.03956583176202e-12  >=0 OK
+        25      1          3.50988427155196e-12  >=0 OK
+        25      2          1.35909445580486e-11  >=0 OK
+
+Lehmer-pair point x = 7005.063, y = 0.05 (dps = 45, central differences):
+  C_Xi (central diff, h = 1e-8) = 1.2333332430375411396e-4765
+  C_Xi (central diff, h = 5e-9) = 1.2333332430375414886e-4765
+  C_Xi (trapezoid Cauchy r=.05) = 1.2333332430375416049e-4765
+  step-halving rel. consistency = 2.83e-16
+  cross-method rel. consistency = 3.77e-16
+  |Xi(z)| = 8.52496e-2385  (scale check; values are ~1e-3050 range)
+  sign: >= 0 OK   [4.9 s]
+
+All C_Xi values >= 0 (strictly positive). Consistent with RH-necessity. PASS
+
+========================================================================
+CROSS-CHECKS
+========================================================================
+
+[1] C_Xi direct vs series sum_(n>=1) n(2n-1) L_n y^(2n-2):
+    (x,y)=(5,0.1): direct = 0.0040193787347946437657
+                    series = 0.0040193787347946437657   rel.diff = 8.48e-27   PASS
+    (x,y)=(14.1347,0.5): direct = 2.1097188936413192557e-6
+                    series = 2.1097188936413164867e-6   rel.diff = 1.31e-15   PASS
+    (x,y)=(25,0.1): direct = 1.6373226400290729784e-12
+                    series = 1.6373226400290729784e-12   rel.diff = 1.92e-23   PASS
+
+[2] Lehmer point x=7005.063, y=0.05: method comparison
+    central diff h=1e-8:            1.2333332430375411396e-4765
+    trapezoid Cauchy r=0.02, N=64:  1.2333332430375416049e-4765   rel.diff vs central = 3.77e-16
+    trapezoid Cauchy r=0.05, N=64:  1.2333332430375416049e-4765   rel.diff vs central = 3.77e-16
+
+    pitfall demo -- mpmath diff(method='quad') at the same point:
+      radius=0.005: C = 1.21589431949144e-4765   rel.err vs true = 0.0141
+      radius=0.02: C = 1.23224221031396e-4765   rel.err vs true = 0.000885
+      radius=0.05: C = 1.23314633371853e-4765   rel.err vs true = 0.000152
+    -> radius-dependent, dps-independent bias: do NOT use diff(method='quad')
+       for functions of tiny absolute magnitude. (Trapezoid rule instead.)

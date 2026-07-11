@@ -1,0 +1,7 @@
+=== Stage 6: claim 4, symmetry spot checks ===
+  N=1: max rel |Xi(-conj z)-conj Xi(z)| = 0.000e+00, max rel |Xi(-z)-Xi(z)| = 0.000e+00, max rel |Im Xi(x real)| = 0.000e+00
+  N=2: max rel |Xi(-conj z)-conj Xi(z)| = 0.000e+00, max rel |Xi(-z)-Xi(z)| = 0.000e+00, max rel |Im Xi(x real)| = 0.000e+00
+  N=3: max rel |Xi(-conj z)-conj Xi(z)| = 0.000e+00, max rel |Xi(-z)-Xi(z)| = 0.000e+00, max rel |Im Xi(x real)| = 0.000e+00
+  N=4: max rel |Xi(-conj z)-conj Xi(z)| = 0.000e+00, max rel |Xi(-z)-Xi(z)| = 0.000e+00, max rel |Im Xi(x real)| = 0.000e+00
+  [direct integral] N=1 z=(11+1.4j): rel conj-sym = 0.000e+00, rel even-sym = 0.000e+00
+  [direct integral] N=3 z=(11+1.4j): rel conj-sym = 0.000e+00, rel even-sym = 0.000e+00

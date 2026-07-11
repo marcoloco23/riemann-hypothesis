@@ -1,0 +1,293 @@
+################################################################################
+### claim1_quartet_algebra.py
+################################################################################
+==============================================================================
+CLAIM 1: quartet contribution and derivative identities (exact sympy)
+==============================================================================
+  [PASS] (1a) Q_alpha = 4xA/(A^2+B^2) from d/dx log of quartet factors: simplify(lhs - rhs) = 0
+  [PASS] (1a') Re(alpha^2) = a^2 - b^2, Im(alpha^2) = 2ab: simplify(lhs - rhs) = 0
+  [PASS] (1b) Q - xQ' = 8x^3 (A^2-B^2)/(A^2+B^2)^2: simplify(lhs - rhs) = 0
+  [PASS] (1c) Q + xQ' = 8x (-u(A^2-B^2)+2AB^2)/(A^2+B^2)^2: simplify(lhs - rhs) = 0
+  [PASS] (1d) A - B = x^2 + (a-b)^2 - 2a^2  (with A,B in terms of a,b): simplify(lhs - rhs) = 0
+  [PASS] (1d) A + B = x^2 + (a+b)^2 - 2a^2: simplify(lhs - rhs) = 0
+
+  Positivity conclusion (logic, using the verified identities):
+    Under |a| < 1/2, |b| >= 14, x > 0:
+      (a-b)^2 and (a+b)^2 >= (14 - 1/2)^2 = 182.25, while 2a^2 <= 1/2,
+      so A - B > 0 and A + B > 0  =>  A > |B|  =>  A^2 - B^2 > 0;  A > 0.
+      u = a^2 - b^2 <= 1/4 - 196 < 0  =>  -u > 0.
+    Hence RHS of (1b) = 8x^3(A^2-B^2)/(A^2+B^2)^2 > 0
+      and RHS of (1c) = 8x(-u(A^2-B^2) + 2AB^2)/(A^2+B^2)^2 > 0 (both terms >= 0, first > 0).
+    NOTE: this needs only x > 0, not x > 1/2, and does NOT need a = 0:
+    it holds for EVERY zero allowed by known facts (0 < Re(rho) < 1, |Im rho| > 14),
+    on or off the critical line.
+  grid check of positivity (100 points): violations = none
+  [PASS] (1e) pair contribution: d/dx log(1 - x^2/(ib)^2) = 2x/(x^2+b^2): simplify(lhs - rhs) = 0
+  [PASS] (1e) q - xq' = 4x^3/(x^2+b^2)^2: simplify(lhs - rhs) = 0
+  [PASS] (1e) q + xq' = 4x b^2/(x^2+b^2)^2: simplify(lhs - rhs) = 0
+
+CLAIM 1 overall: ALL IDENTITIES PASS
+
+Conclusion target (-Q <= xQ' <= Q for x > 1/2):
+  Each pair/quartet term t satisfies t - x t' > 0 and t + x t' > 0 (verified above),
+  so IF Q(x) = sum of these terms and xQ'(x) = sum of x t'(x) termwise, then
+  -Q(x) < xQ'(x) < Q(x) follows.  Analytic justification (standard, not re-proved here):
+  xi(s) = xi(0) prod_rho (1 - s/rho) with zeros paired (rho, 1-rho) makes the product
+  absolutely convergent when grouped; centering at 1/2 and grouping {alpha,-alpha,
+  conj(alpha),-conj(alpha)} gives xi(1/2+x)/xi(1/2) = prod (1 - x^2/alpha^2)... ;
+  on any compact subset of the real ray x > 1/2 (where xi(1/2+x) != 0, since
+  zeta(s) != 0 for real s > 1 by the Euler product), sum_rho 1/|rho|^2 < infinity
+  gives locally uniform convergence of the term series and of its derivative series,
+  so termwise differentiation is valid.
+  *** IMPORTANT CAVEAT: the inequality is therefore UNCONDITIONAL - it holds whether
+  or not RH is true, because the quartet terms are positive for off-line zeros too
+  (only |a| < 1/2 and |b| >= 14 were used, both known facts).  So -Q <= xQ' <= Q
+  carries NO RH content: it can never serve as an RH criterion. ***
+
+
+################################################################################
+### claim2_2x2.py
+################################################################################
+==============================================================================
+CLAIM 2: 2x2 determinant <=> two-sided ratio bound (exact sympy)
+==============================================================================
+  [PASS] diagonal consistency K(x,x) = Q(x)/x: 0
+  [PASS] det * xy(x+y)^2 = (Qy x - Qx y)(Qx x - Qy y): 0
+  [PASS] sum of factors = (Qx+Qy)(x-y): 0
+
+  Logic (using the two verified identities, with x > y > 1/2, Qx, Qy > 0):
+    (=>)  y/x <= Qx/Qy <= x/y  <=>  Qx*x - Qy*y >= 0  and  Qy*x - Qx*y >= 0
+          => product >= 0 => det >= 0  (xy(x+y)^2 > 0).
+    (<=)  det >= 0 => (Qy x - Qx y)(Qx x - Qy y) >= 0.  If both factors were < 0,
+          their sum (Qx+Qy)(x-y) would be < 0, contradicting x > y, Q > 0.  So both
+          are >= 0, giving y/x <= Qx/Qy <= x/y.
+  EQUIVALENCE VERIFIED (it is a pure algebra fact about positive numbers; the only
+  inputs used are Q(x), Q(y) > 0 and x > y > 0 - the value 1/2 is irrelevant).
+
+  exact-rational boolean check, 2000 random samples: mismatches = 0
+
+CLAIM 2 overall: VERIFIED
+
+################################################################################
+### claim3_det3.py
+################################################################################
+==============================================================================
+CLAIM 3: single-quartet 3x3 Pick determinant (exact sympy)
+==============================================================================
+  [PASS] (3a) K_alpha(x,y) = (Q_alpha(x)+Q_alpha(y))/(x+y): cancel -> 0
+  [PASS] (3a') Q_alpha(x) = 4xA/(A^2+v^2): cancel -> 0
+  [PASS] (3b) real form of K_alpha: cancel -> 0
+  [PASS] (3c) det identity, FULLY SYMBOLIC: det(N) == 64 v^2 Vdm^2 * (-Re(cbar prod(c-x_j^2))): expanded difference = 0
+  [PASS] (3c') det identity at 8 exact rational sample points: mismatches = 0
+
+  (3d) Phase argument for Re(cbar * prod_j(c - x_j^2)) with u < 0 (take v > 0 wlog;
+       v -> -v conjugates the product, leaving Re unchanged):
+    c - x_j^2 = -(A_j - iv), A_j = x_j^2 - u > |u| > 0, so
+    cbar * prod_{j=1..3}(c - x_j^2) = -(u - iv)*(-1)^3 prod(A_j - iv)
+                                    = (|u| + iv) * prod_j (A_j - iv).
+    arg(|u|+iv) = +arctan(v/|u|); arg(A_j - iv) = -arctan(v/A_j), and
+    0 < arctan(v/A_j) < arctan(v/|u|) since A_j > |u|.  The signs OPPOSE, so
+    total arg T = arctan(v/|u|) - sum_j arctan(v/A_j) lies in (-2*arctan(v/|u|), arctan(v/|u|)),
+    hence |T| < 2*arctan(|v/u|) < pi/2 whenever |v/u| < tan(pi/4) = 1.
+    => Re = |...|*cos(T) > 0 STRICTLY for ALL |v/u| < 1 (and can genuinely fail
+    only for |v/u| > 1).  The claimed 0.072 window is therefore correct but very
+    conservative; 0.072 is what zeta-zero constraints give:
+    |v/u| = 2|a||b|/(b^2-a^2) < 1/|b| <= 1/14 = 0.0714 for |a| < 1/2, |b| >= 14.
+
+  [PASS] (3d) Re(cbar prod(c-x_j^2)) > 0 on grid |v/u| <= 0.072, u<0 (240 cases): violations = none
+  (3d) threshold exploration, u = -1e6, x_j ~ 0.5 (worst case A_j ~ |u|):
+        |v/u| =    0.30: Re(cbar prod(c - x_j^2)) = +9.9190e+23  (>0)
+        |v/u| =  0.4142: Re(cbar prod(c - x_j^2)) = +9.7057e+23  (>0)
+        |v/u| =     0.9: Re(cbar prod(c - x_j^2)) = +3.4390e+23  (>0)
+        |v/u| =   0.999: Re(cbar prod(c - x_j^2)) = +3.9962e+21  (>0)
+        |v/u| =     1.0: Re(cbar prod(c - x_j^2)) = +2.2202e+18  (>0)
+        |v/u| =    1.01: Re(cbar prod(c - x_j^2)) = -4.0602e+22  (<0  <-- fails only past |v/u| = 1)
+        |v/u| =     1.5: Re(cbar prod(c - x_j^2)) = -4.0625e+24  (<0  <-- fails only past |v/u| = 1)
+
+CLAIM 3 overall: IDENTITY + SIGN CLAIM VERIFIED
+  Consequence (as claimed): for ANY 3 distinct points x_j > 1/2 and any c = u+iv
+  with u < 0, 0 < |v/u| < 0.072, the single-quartet 3x3 Pick matrix has det < 0,
+  i.e. an odd number of negative eigenvalues (in fact signature (2,1): the kernel has
+  rank 4 with at most 1 negative square among {Re g, Im g, Re h, Im h} coordinates...
+  -- signature checked numerically in claim 5's script).  NOTE this concerns the
+  SINGLE-QUARTET kernel alone; it does NOT by itself make the FULL Pick matrix
+  (quartet + on-line background) indefinite.  That gap is probed in claim 5.
+
+################################################################################
+### claim6_prime_rep.py
+################################################################################
+==============================================================================
+CLAIM 6: Q(x) sanity + prime representation  (mpmath dps = 60)
+==============================================================================
+
+(6a) Q_formula vs two independent xi'/xi computations:
+     x |   |Q_formula - Q_mp.diff| |    |Q_formula - Q_cauchy| | Q(x)
+   1.5 |                  9.72e-63 |                  2.53e-61 | 0.0690662315300006762251659192625
+   2.5 |                  4.86e-62 |                   3.6e-61 | 0.114390695239644266354638096358
+   5.0 |                  1.94e-62 |                  3.89e-62 | 0.222565444138974267202190576499
+  10.0 |                  3.89e-62 |                  1.94e-61 | 0.407635187890695661336090185029
+
+(6b) prime sum  -zeta'/zeta(1/2+x) = sum Lambda(n) n^(-1/2-x), truncated at N = 1e+06
+     prime powers <= N: 78734
+    x |  sigma |  |LHS - truncated sum| |  rigorous tail bound | verdict
+  1.5 |    2.0 |                 1.0e-6 |              1.48e-5 | PASS (~4 digits certified)
+  2.5 |    3.0 |                5.0e-13 |             7.16e-12 | PASS (~11 digits certified)
+  5.0 |    5.5 |               2.23e-28 |             3.12e-27 | PASS (~26 digits certified)
+     NOTE: at x = 1.5 (sigma = 2) direct truncation certifies only ~4-5 digits;
+     20+ digits would need N ~ 10^21 terms.  The representation is nevertheless a
+     classical theorem for Re(s) > 1; the numerics above confirm it to the digits
+     the rigorous tail bound allows, and the structural identity (6a) is confirmed
+     to ~40+ digits independently of the prime sum.
+
+(6c) Q(x) > 0 scan on (1/2, 50]:
+     grid points: 390; Q <= 0 at: none
+     minimum on grid: Q(0.51) = 0.02355724094963589244221198  (left edge of grid)
+     Q strictly increasing along the grid: True
+     boundary value Q(1/2+) = xi'(1)/xi(1) = 0.02309570896612103381431025
+       closed form 1 + gamma/2 - log(4 pi)/2 = 0.02309570896612103381431025   |diff| = 2.58e-61
+     => inf of Q on (1/2, 50] is the boundary value ~0.0231 > 0.
+     Q > 0 on the scanned range: YES   [NUMERICAL]
+
+################################################################################
+### claim4_zeta_pick.py
+################################################################################
+==============================================================================
+CLAIM 4: zeta Pick matrices, N = 2..8, points in (1/2,10)  (dps = 60)
+==============================================================================
+
+  point family: equispaced [1,9]
+    N=2:  lambda_min =    0.0017633327   lambda_max =    0.0859455   OK (>=0)
+    N=3:  lambda_min =    1.8026975e-5   lambda_max =     0.130432   OK (>=0)
+    N=4:  lambda_min =    7.9676435e-8   lambda_max =     0.174584   OK (>=0)
+    N=5:  lambda_min =   2.6490056e-10   lambda_max =     0.218652   OK (>=0)
+    N=6:  lambda_min =   5.5900861e-13   lambda_max =     0.262688   OK (>=0)
+    N=7:  lambda_min =   1.0196357e-15   lambda_max =     0.306707   OK (>=0)
+    N=8:  lambda_min =   1.4543755e-18   lambda_max =     0.350716   OK (>=0)
+
+  point family: geometric cluster at 1/2+ (1/2 + 2^-j)
+    N=2:  lambda_min =    2.3064543e-6   lambda_max =    0.0923019   OK (>=0)
+    N=3:  lambda_min =   1.0489966e-10   lambda_max =      0.13848   OK (>=0)
+    N=4:  lambda_min =   1.1172287e-15   lambda_max =     0.184663   OK (>=0)
+    N=5:  lambda_min =   3.4596339e-21   lambda_max =      0.23085   OK (>=0)
+    N=6:  lambda_min =   2.1013904e-27   lambda_max =     0.277038   OK (>=0)
+    N=7:  lambda_min =   3.1839704e-34   lambda_max =     0.323228   OK (>=0)
+    N=8:  lambda_min =   1.0215286e-41   lambda_max =     0.369417   OK (>=0)
+
+  point family: geometric wide [0.6, 9.5]
+    N=2:  lambda_min =    0.0021333941   lambda_max =    0.0852192   OK (>=0)
+    N=3:  lambda_min =    1.1875994e-5   lambda_max =     0.130813   OK (>=0)
+    N=4:  lambda_min =    2.7977743e-8   lambda_max =     0.176049   OK (>=0)
+    N=5:  lambda_min =   4.7844765e-11   lambda_max =     0.221092   OK (>=0)
+    N=6:  lambda_min =   5.0886901e-14   lambda_max =     0.266047   OK (>=0)
+    N=7:  lambda_min =   4.6505701e-17   lambda_max =     0.310958   OK (>=0)
+    N=8:  lambda_min =   3.3138808e-20   lambda_max =     0.355843   OK (>=0)
+
+  point family: cluster at 9.5- (9.5 - 2^-j)
+    N=2:  lambda_min =    1.2572733e-6   lambda_max =    0.0829431   OK (>=0)
+    N=3:  lambda_min =   3.4916546e-11   lambda_max =     0.124212   OK (>=0)
+    N=4:  lambda_min =    2.926148e-16   lambda_max =      0.16543   OK (>=0)
+    N=5:  lambda_min =   7.4248487e-22   lambda_max =     0.206624   OK (>=0)
+    N=6:  lambda_min =    4.001762e-28   lambda_max =     0.247805   OK (>=0)
+    N=7:  lambda_min =   5.3078909e-35   lambda_max =     0.288979   OK (>=0)
+    N=8:  lambda_min =   1.4954148e-42   lambda_max =     0.330151   OK (>=0)
+
+  max |Q_formula - Q_diff| over all 52 points used: 1.62e-59
+
+  No negative eigenvalues at any size/point family.
+  (Smallest ones decay roughly geometrically with N for clustered points --
+   the expected Cauchy/Pick-matrix conditioning -- but all remain positive,
+   comfortably above the ~1e-55 noise floor of the dps-60 Q values.)
+
+CLAIM 4 verdict: expected-PSD behavior CONFIRMED [NUMERICAL]
+
+################################################################################
+### claim5_dh_litmus.py
+################################################################################
+==============================================================================
+CLAIM 5: Davenport-Heilbronn litmus for the Pick criterion  (dps = 60)
+==============================================================================
+
+(5a) functional equation xi_f(s) - xi_f(1-s), relative:
+     s =     (0.3 + 2.7j):  4.53e-61
+     s =     (1.9 - 4.1j):  7.77e-61
+     s =   (0.71 + 33.3j):  4.55e-60
+     s =    (2.5 + 85.7j):  1.05e-59
+
+(5b) zero scan of f on real s in (1, 10.5]  <=>  xi_f(1/2+x), x in (1/2, 10]:
+     191 samples: min f = 0.9229437943, sign changes = 0, max |Im f| (spot) = 0.0
+     => no real zeros; Q_f has NO poles on x in (1/2, 10].  [f -> 1 as s -> inf]
+
+(5c) Q_f route validation (mp.diff vs Cauchy integral), and Im-part check:
+     x =    0.6:  Q_f =    0.1169372979507790445638694   |diff routes| =   4.44e-61   |Im| = 0.0
+     x =    1.5:  Q_f =    0.2832426176901259423351593   |diff routes| =    1.9e-61   |Im| = 0.0
+     x =    9.5:  Q_f =      1.03771492137074329738565   |diff routes| =   4.86e-61   |Im| = 0.0
+     x =   60.0:  Q_f =      1.93712486829439093169547   |diff routes| =    8.4e-60   |Im| = 0.0
+     x =  120.0:  Q_f =      2.28161103831256905744044   |diff routes| =   1.93e-59   |Im| = 0.0
+
+(5d) off-line zero (refined from [Spira1968] seed):
+     rho_f = (0.808517182456637385553351960607 + 85.6993484853775921719292677089j)   |f(rho_f)| = 2.79e-60
+     alpha = rho_f - 1/2 = (0.308517182456637385553352 + 85.69934848537759217192927j)
+     c = alpha^2 = u + iv,  u = -7344.2831479663196194,  v = 52.879443066156378758
+     |v/u| = 0.007200082295  (< 0.072: claim 3 => EVERY quartet 3x3 det < 0)
+     |c| = 7344.473514,  sqrt|c| = 85.69990381  (resonance scale for x)
+
+(5e) Pick matrices for DH; K_q = single-quartet kernel of rho_f, K_bg = K_f - K_q.
+     ('ratio bg/|q|' = how strongly the on-line background swamps the quartet's
+      most negative direction; violation would need ratio < 1 somewhere.)
+
+  geometric cluster 1/2 + 2^-j                 N=12  lambda_min(K_f) =  -6.0123585e-62   lambda_min(K_q) = -2.32132e-18   w'K_q w = -2.321e-18   w'K_bg w =   4.927e-7   ratio bg/|q| =  2.122e+11
+  equispaced [1, 9]                            N= 9  lambda_min(K_f) =   6.1029501e-16   lambda_min(K_q) = -1.57383e-13   w'K_q w = -1.574e-13   w'K_bg w =   0.004763   ratio bg/|q| =  3.026e+10
+  equispaced [50, 120]                         N= 8  lambda_min(K_f) =   8.8417205e-16   lambda_min(K_q) = -3.09729e-11   w'K_q w = -3.097e-11   w'K_bg w =  0.0001146   ratio bg/|q| =   3.701e+6
+  equispaced [50, 120], N=20                   N=20  lambda_min(K_f) =   3.4698289e-42   lambda_min(K_q) = -5.99392e-11   w'K_q w = -5.994e-11   w'K_bg w =  0.0002196   ratio bg/|q| =   3.663e+6
+  cluster at 85.7, spacing 0.5                 N= 7  lambda_min(K_f) =   4.8645198e-30   lambda_min(K_q) =  -8.5888e-17   w'K_q w = -8.589e-17   w'K_bg w =  3.006e-10   ratio bg/|q| =     3.5e+6
+  cluster at 85.7, spacing 2                   N= 7  lambda_min(K_f) =   8.1387187e-23   lambda_min(K_q) = -2.20425e-14   w'K_q w = -2.204e-14   w'K_bg w =   7.719e-8   ratio bg/|q| =   3.502e+6
+  cluster at 85.7, spacing 8                   N= 7  lambda_min(K_f) =   1.3061937e-15   lambda_min(K_q) = -5.85655e-12   w'K_q w = -5.857e-12   w'K_bg w =   2.085e-5   ratio bg/|q| =   3.559e+6
+  cluster at 85.7, spacing 30 (kept > 1/2)     N= 7  lambda_min(K_f) =   1.6068111e-10   lambda_min(K_q) = -3.79717e-10   w'K_q w = -3.797e-10   w'K_bg w =   0.002273   ratio bg/|q| =   5.986e+6
+  tight cluster at 85.7, N=20, spacing 0.5     N=20  lambda_min(K_f) =  -2.5549345e-63   lambda_min(K_q) = -1.77204e-14   w'K_q w = -1.772e-14   w'K_bg w =   6.224e-8   ratio bg/|q| =   3.513e+6
+  geometric [0.6, 120], N=20                   N=20  lambda_min(K_f) =   1.3454462e-25   lambda_min(K_q) =  -1.29713e-9   w'K_q w =  -1.297e-9   w'K_bg w =     0.1056   ratio bg/|q| =   8.138e+7
+  geometric [20, 150], N=14                    N=14  lambda_min(K_f) =   5.6944972e-19   lambda_min(K_q) = -5.80454e-10   w'K_q w = -5.805e-10   w'K_bg w =    0.00404   ratio bg/|q| =   6.959e+6
+
+     min Q_f over all 113 evaluated points (all > 1/2): 0.09768340071  (> 0)
+
+     2x2 check on DH: y/x <= Q_f(x)/Q_f(y) <= x/y over all pairs of evaluated points
+     pairs checked: 11026, violations: 0   (claim 1's unconditional inequality predicts 0 even for DH)
+
+     claim-3 formula spot check with DH quartet at [70.0, 85.7, 100.0]:
+       det(K_q 3x3) direct  = -1.96414171394e-21
+       det from formula     = -1.96414171394e-21   rel diff = 1.06e-53
+       det < 0 as predicted: True
+
+(5f) exhaustive 3-point search on a 26-point master grid (0.6 .. 150):
+     triples examined: 2600
+     min lambda_min(K_f) over all triples: 1.698433766e-11   at points ['85.7', '86.7', '87.7']
+     best 'deficit' ratio w'K_bg w / |w'K_q w| = 3241284.9   at points ['65.0', '75.0', '77.7']
+       there: w'K_q w = -1.42351e-14,  w'K_bg w = 4.61401e-8
+
+  RECHECK of negative candidates at dps = 100:
+    geometric cluster 1/2 + 2^-j: lambda_min(dps=100) = 1.537261189e-69
+    tight cluster at 85.7, N=20, spacing 0.5: lambda_min(dps=100) = 3.877865679e-75
+
+(5g) size estimate of the buried negativity:
+     at the resonance x* = sqrt|c| = 85.6999:
+       quartet diagonal   K_q(x*,x*) = 4A/D  ~ 0.0002723
+       full diagonal      K_f(x*,x*) = Q_f/x ~ 0.02467
+       => the quartet is only ~0.011 of the kernel POINTWISE, and its
+     most-negative direction is far smaller still: it lives in the Im-components
+     (suppressed by ~(v/A)^2 = (52.88/14688.8)^2 ~ 1.3e-5 relative to the diagonal),
+     giving lambda_min(K_q) ~ -1e-9 at best over the patterns tried (see 5e/5f),
+     while the on-line background quadratic form on that same direction never
+     dropped below ~3e6 times |w' K_q w| (best deficit ratio 3.241e+6).
+
+LITMUS VERDICT [NUMERICAL]: no DH Pick matrix with a negative eigenvalue was found
+(points x_j > 1/2, sizes up to N = 20, x up to ~205, dps = 60, eigenvalues resolved
+to ~1e-55; the one -6e-62 candidate re-checked positive at dps = 100).  The
+single-quartet part K_q IS indefinite exactly as claim 3 predicts (every 3x3 det < 0),
+but at every direction probed the on-line background exceeds the quartet negativity
+by a factor >~ 3e6, roughly scale-independent for x in [30, 200].  So the negativity
+of the known off-line quartet is buried ~6-7 orders below the background -- NOT below
+achievable precision; the obstruction is structural (no probed direction suppresses
+the on-line kernel enough), not a precision limit at these matrix sizes.  Whether
+some larger/other configuration exposes it, or whether the full DH Pick kernel is
+actually PSD on (1/2,infinity) (which would REFUTE 'K PSD => RH' as a criterion),
+is NOT decided by these numerics.
+

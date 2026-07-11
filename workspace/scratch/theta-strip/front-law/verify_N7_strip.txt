@@ -1,0 +1,5 @@
+closed form |Xi_7(z0)| = 2.02226e-103
+local scale |Xi_7(z0+0.011+0.007i)| = 8.41924e-87
+direct quadrature |Xi_7(z0)| = 2.02226e-103
+ratio direct/local = 2.40195e-17
+elapsed 177s

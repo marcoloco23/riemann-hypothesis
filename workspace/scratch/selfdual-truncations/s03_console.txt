@@ -1,0 +1,61 @@
+==============================================================================
+s03_laguerre.py -- 2026-07-11 01:39:07
+digits of cancellation floor J_N: {1: 2, 2: 7, 3: 16, 4: 28, 5: 42, 6: 60}
+
+N=1: 1 real sign changes on [0,86], R_N = 14.045439582318 (4(N+1)^2 = 16); tail check x^2 Xi/(-J_N) at 86 = 0.96423888
+  L1 scan [0, 94.04544] step 0.25: 3 sign switches
+  L1 < 0 interval: [18.7861134224, 23.2566659935]
+  L1 < 0 interval: [27.5701912977, >= 94.04544 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 18.7861134224;  R_N = 14.0454395823;  first_neg - R_N = 4.74067;  first_neg/4(N+1)^2 = 1.1741321
+  (1s)
+
+N=2: 7 real sign changes on [0,106], R_N = 39.532481078058 (4(N+1)^2 = 36); tail check x^2 Xi/(-J_N) at 106 = 0.82136027
+  L1 scan [0, 119.53248] step 0.25: 5 sign switches
+  L1 < 0 interval: [42.715697173, 45.6603444926]
+  L1 < 0 interval: [49.4153121375, 51.6979018487]
+  L1 < 0 interval: [55.6487691812, >= 119.53248 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 42.715697173;  R_N = 39.5324810781;  first_neg - R_N = 3.18322;  first_neg/4(N+1)^2 = 1.1865471
+  (4s)
+
+N=3: 15 real sign changes on [0,134], R_N = 65.032073769718 (4(N+1)^2 = 64); tail check x^2 Xi/(-J_N) at 134 = 0.66910358
+  L1 scan [0, 145.03207] step 0.25: 9 sign switches
+  L1 < 0 interval: [67.4332616888, 68.3366077952]
+  L1 < 0 interval: [71.3771057017, 73.9766060226]
+  L1 < 0 interval: [76.8636701666, 78.8368211947]
+  L1 < 0 interval: [81.5961814709, 83.3890509196]
+  L1 < 0 interval: [101.181083318, >= 145.03207 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 67.4332616888;  R_N = 65.0320737697;  first_neg - R_N = 2.40119;  first_neg/4(N+1)^2 = 1.0536447
+  (12s)
+
+N=4: 31 real sign changes on [0,170], R_N = 103.36798800901 (4(N+1)^2 = 100); tail check x^2 Xi/(-J_N) at 170 = 0.55802637
+  L1 scan [0, 183.36799] step 0.25: 9 sign switches
+  L1 < 0 interval: [105.164417911, 106.868255172]
+  L1 < 0 interval: [109.255027223, 111.89731263]
+  L1 < 0 interval: [113.634273712, 115.765376274]
+  L1 < 0 interval: [118.053754624, 119.890646007]
+  L1 < 0 interval: [157.673183527, >= 183.36799 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 105.164417911;  R_N = 103.367988009;  first_neg - R_N = 1.79643;  first_neg/4(N+1)^2 = 1.0516442
+  (29s)
+
+N=5: 53 real sign changes on [0,214], R_N = 149.00269949064 (4(N+1)^2 = 144); tail check x^2 Xi/(-J_N) at 214 = 0.48452766
+  L1 scan [0, 229.0027] step 0.25: 9 sign switches
+  L1 < 0 interval: [151.003065247, 152.621852543]
+  L1 < 0 interval: [154.82266752, 157.141206387]
+  L1 < 0 interval: [158.762679774, 160.527935032]
+  L1 < 0 interval: [162.65277854, 164.384195272]
+  L1 < 0 interval: [226.758686516, >= 229.0027 (scan end; far tail L1<0 persists)]
+  first L1<0 at x = 151.003065247;  R_N = 149.002699491;  first_neg - R_N = 2.00037;  first_neg/4(N+1)^2 = 1.0486324
+  (74s)
+
+N=6: 79 real sign changes on [0,266], R_N = 197.9575955756 (4(N+1)^2 = 196); tail check x^2 Xi/(-J_N) at 266 = 0.35051361
+  L1 scan [0, 277.9576] step 0.25: 12 sign switches
+  L1 < 0 interval: [200.932683233, 202.122615311]
+  L1 < 0 interval: [203.766086865, 205.35046928]
+  L1 < 0 interval: [207.144602936, 209.151075799]
+  L1 < 0 interval: [210.974492457, 212.817703631]
+  L1 < 0 interval: [214.437438253, 215.935903061]
+  L1 < 0 interval: [218.282511961, 219.159112152]
+  first L1<0 at x = 200.932683233;  R_N = 197.957595576;  first_neg - R_N = 2.97509;  first_neg/4(N+1)^2 = 1.0251668
+  (189s)
+
+s03 done.
