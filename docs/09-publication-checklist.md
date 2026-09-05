@@ -19,8 +19,8 @@ This checklist separates local readiness from account-level publication actions.
 ## Account-level publication
 
 - [x] Use the maintainer's existing public GitHub identity in citation and notice files.
-- [ ] Commit the complete release candidate on `main`.
-- [ ] Remove the third-party PDF from public Git history or publish a clean squashed
+- [x] Commit the complete release candidate on `main`.
+- [x] Remove the third-party PDF from public Git history or publish a clean squashed
   history; retaining it in reachable history defeats its removal from the release tree.
 - [ ] Push the cleaned history to GitHub.
 - [ ] Make the repository public and apply the description, topics, labels, Discussions,

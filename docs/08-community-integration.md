@@ -92,9 +92,9 @@ account-level or external:
 1. A public GitHub lookup for `marcoloco23/riemann-hypothesis` returned `404` on
    2026-09-05. Outsiders therefore cannot currently rely on the configured origin as
    a public home; it may be private or absent at that address.
-2. The release candidate must be committed and pushed after its third-party PDF is
-   removed from reachable public history. The paper remains available through its
-   authoritative arXiv link.
+2. The release candidate is committed in a rewritten history from which the third-party
+   PDF and personal email address have been removed. It still needs to be pushed. The
+   paper remains available through its authoritative arXiv link.
 3. The GitHub repository still needs its public description, topics, labels,
    Discussions, merge settings, initial passing workflow, tag, and release.
 4. The Lean project is not initialized. The prose and computations can be published
@@ -130,19 +130,17 @@ The release candidate now provides:
 
 ## Execution sequence
 
-1. Create a clean public history without the bundled third-party PDF and commit the
-   internally consistent release candidate using the maintainer's public GitHub identity.
-2. Push it, make the GitHub repository public, apply the prepared settings, and wait for
+1. Push the clean release history, make the GitHub repository public, apply the prepared settings, and wait for
    the verification workflow to pass.
-3. Publish the `v0.1.0` tagged release and archive it with a DOI. This gives outside discussions
+2. Publish the `v0.1.0` tagged release and archive it with a DOI. This gives outside discussions
    stable references even while `main` continues to change.
-4. Post the short IEANTN scope proposal below on the `#PrimeNumberTheorem+` Zulip
+3. Post the short IEANTN scope proposal below on the `#PrimeNumberTheorem+` Zulip
    channel. Incorporate maintainer feedback before writing a node.
-5. Compare L8a and L10 line by line with Zeta Lab's explicit-formula and
+4. Compare L8a and L10 line by line with Zeta Lab's explicit-formula and
    Davenport-Heilbronn surfaces, then submit one small IEANTN pull request for L8a,
    disclosing machine assistance and linking the exact repository release. Treat L10
    and the rigidity results as later, separate proposals.
-6. Initialize Lean around the smallest reusable prerequisite selected with IEANTN.
+5. Initialize Lean around the smallest reusable prerequisite selected with IEANTN.
    Reuse mathlib and PNT+ definitions instead of creating a parallel zeta foundation.
 
 ## Draft IEANTN scope proposal
