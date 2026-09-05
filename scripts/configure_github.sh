@@ -12,9 +12,9 @@ gh repo edit "$repo_slug" \
   --enable-projects=true \
   --enable-wiki=false \
   --delete-branch-on-merge=true \
-  --allow-squash-merge=true \
-  --allow-rebase-merge=true \
-  --allow-merge-commit=false
+  --enable-squash-merge=true \
+  --enable-rebase-merge=true \
+  --enable-merge-commit=false
 
 for topic in \
   riemann-hypothesis \
