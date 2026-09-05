@@ -1,0 +1,41 @@
+name: Verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_explicit_formula_suite:
+        description: Run the slower explicit-formula numerical regressions
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  quick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install --requirement requirements-ci.txt
+      - run: python scripts/audit_repo.py --current-only
+      - run: python scripts/verify.py --quick
+
+  explicit-formula:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_explicit_formula_suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install --requirement requirements-ci.txt
+      - run: python scripts/verify.py --explicit-formula

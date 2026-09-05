@@ -1,0 +1,79 @@
+2026-09-05 research-cycle numerical record
+Python 3.14.6; mpmath 1.3.0; deterministic.
+Selected stdout values transcribed from completed runs, not a full raw log.
+No interval certification or certified infinite tails.
+
+check_ef.py (25 dps; 1000 zero pairs)
+  T1 polynomial cutoff:
+    RHS = 6.9887600026e-5
+    LHS = 6.98913043809e-5
+    residual = 3.70435e-9
+    heuristic zero-tail estimate = 7.59e-10
+    passed with the script's additional 1e-8 numerical allowance
+  T2 Gaussian:
+    RHS = 5.37630893128e-17
+    LHS = 2.0709704137e-43
+    residual = -5.37631e-17
+  OVERALL: PASS (numerical)
+
+hostile_review_check.py (30 dps)
+  a=1, b=14: residual = -1.6566e-29
+  a=4, b=0: residual = -2.7619e-6
+    LIMITATION: prime table ends at 200000; omitted wide-Gaussian prime tail.
+  a=0.2, b=0: residual = -2.5724e-32
+  Direct archimedean minus (W):
+    a=1,b=0: 3.9443e-31
+    a=4,b=0: 0.0
+    a=1,b=14: 9.8608e-32
+  Historical factor-two diagnostic:
+    direct arch = -0.47525329886693568566
+    via W       = -0.47525329886693568566
+    corrected density on [0.5,4], doubled for evenness = -0.47525329722280827018
+
+check_smooth_and_dh.py
+  DH root-number identity error = 1.12847e-36
+  DH functional-equation relative errors:
+    s=0.3+2.7i:  2.65968e-36
+    s=1.9-4.1i:  2.44092e-36
+    s=0.71+33.3i: 1.57078e-35
+  b(3) = -0.312092728516163622
+  b(6) = 1.93635607662103879
+  Resolvent arch errors, a=0.75,1.5,4: 0.0, 1.50463e-36, 1.50463e-36
+
+  smooth: dps=35, quadrature multiplier=1
+    pole = -0.0075391708350738574
+    comb = 2.76391254053562567
+    arch = 0.80081927769412448
+    40 pairs: lhs=3.5571926471328472, residual=-2.618291e-10
+    80 pairs: lhs=3.55719264740435702, residual=9.6807251e-12
+    last 40 terms absolute sum = 1.4672341e-8
+  smooth: dps=50, quadrature multiplier=2
+    pole = -0.00753917083507387292
+    comb = 2.76391254053562567
+    arch = 0.80081927769412448
+    40 pairs: lhs=3.55719264713284717, residual=-2.6182911e-10
+    80 pairs: lhs=3.55719264740435699, residual=9.6807134e-12
+    last 40 terms absolute sum = 1.4672341e-8
+  quadrature/precision stability = 2.7189649e-17
+  PASS (numerical calibration only; no certified infinite tails)
+
+Following these runs, the old scripts' labels/comments were corrected to
+distinguish heuristic tails and finite-cutoff limitations. Their mathematical
+computations were unchanged. See README.md for reproduction commands.
+
+Follow-up run: check_smooth_and_dh.py --calibration-only
+  New finite toy-divisor cases (35 dps; not members of S1-S3):
+    m0=1, a=0.75: integral/product error = 7.36064e-48
+    m0=1, a=1.5:  integral/product error = 6.01853e-36
+    m0=1: completion parity error = 1.50463e-36
+    m0=2, a=0.75: integral/product error = 6.02e-36
+    m0=2, a=1.5:  integral/product error = 1.20409e-35
+    m0=2: completion parity error = 7.7547e-37
+  All earlier DH/resolvent checks passed unchanged.
+  PASS (numerical calibration only; no certified infinite tails)
+
+Repository checks:
+  Python syntax compilation: passed for all three scripts.
+  Local Markdown target existence: 34 links checked, none missing.
+  Archived roadmap body: matches the original tracked body verbatim.
+  git diff --check: passed.

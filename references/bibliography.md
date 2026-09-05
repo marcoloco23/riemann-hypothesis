@@ -267,6 +267,35 @@ use matches the source. (Page/edition details to be filled in as sources are con
   (Sequel: Gonçalves–Vedana, arXiv:2504.02741, *A complete classification of Fourier
   summation formulas on the real line*, 2025.)
 
+## Converse-theorem audit (2026-09-05)
+
+- **[KMP2010]** J. Kaczorowski, G. Molteni, A. Perelli, *A converse theorem
+  for Dirichlet L-functions*, Comment. Math. Helv. 85 (2010), 463–483,
+  DOI [10.4171/CMH/202](https://doi.org/10.4171/CMH/202).
+  [Publisher PDF](https://ems.press/content/serial-article-files/43234).
+  The introduction, p. 463, states the two-function Hamburger theorem:
+  ordinary Dirichlet series absolutely convergent for Re s>1, finite-order
+  entireness after multiplication by s−1, and the paired ζ functional equation
+  imply both functions are the same constant multiple of ζ. This exact version
+  is used in L9; the paper's numbered Theorem 1 is a different result.
+  Page 464 supplies the primitive-character conductor, parity and Gauss-sum
+  root-number convention used in L10.
+- **[Booker2015]** A. R. Booker, *L-functions as distributions*, Math. Ann.
+  363 (2015), 423–454, DOI [10.1007/s00208-015-1178-z](https://doi.org/10.1007/s00208-015-1178-z),
+  [arXiv:1308.3067v2](https://arxiv.org/pdf/1308.3067).
+  Definition 1.3 (A1) imposes logarithmic coefficient decay and a subpower
+  mean-square bound. “Positive” concerns negative divisor multiplicities,
+  not comb signs. Theorem 1.7 classifies positive L-data of degree <5/3.
+  Audited as a candidate framework, **not applied** to S1–S3 without checking A1;
+  L9 instead uses Hamburger.
+- **[DLMF25.15]** NIST DLMF, [§25.15](https://dlmf.nist.gov/25.15), equations
+  1, 3, 5, 6 and 8: Dirichlet-series and Hurwitz representations, functional
+  equation, Gauss sum and odd trivial zeros. Used in L10.
+- **[DLMF5.8]** NIST DLMF, [5.8.2](https://dlmf.nist.gov/5.8.E2): reciprocal
+  gamma product, used for the entire finite-order factor in L9.
+- **[DLMF5.9]** NIST DLMF, [5.9.16](https://dlmf.nist.gov/5.9.E16): digamma
+  integral for Re z>0, used in the L8–L10 regularized gamma terms.
+
 ## Numerical verification
 
 - **[Gourdon2004]** X. Gourdon, *The 10^13 first zeros of the Riemann zeta function …*,

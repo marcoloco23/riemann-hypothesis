@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >-
+  If you use a result, script, or dataset from this repository, cite the specific
+  tagged release and the individual file or claim identifier.
+title: Riemann Hypothesis Research Repository
+type: software
+authors:
+  - name: marcoloco
+  - name: Riemann Hypothesis Research Community
+repository-code: https://github.com/marcoloco23/riemann-hypothesis
+url: https://github.com/marcoloco23/riemann-hypothesis
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-09-05
+abstract: >-
+  An open, reproducible research workspace for rigorous work on the Riemann
+  hypothesis, including mathematical claims, verification status, computations,
+  counterexamples, failed approaches, and plans for formal verification.
+keywords:
+  - Riemann hypothesis
+  - analytic number theory
+  - Riemann zeta function
+  - explicit formula
+  - reproducible research
+  - Lean 4

@@ -7,9 +7,55 @@
 
 ## Current status
 
-**Phase:** Five attempts open; fourier-rigidity Rung 0 delivered. **RH is NOT solved;
-no claim of solution exists in this repository.**
-**Headline (2026-07-12):** (1) The **[DimitrovXu2019] erratum is now CONFIRMED** by a
+**Agreed plan completed (2026-09-05):** all foundation-audit, reconstruction,
+DH-calibration and direction-decision deliverables are recorded in
+[the completion checklist](attempts/fourier-rigidity/COMPLETION.md).
+The final pass additionally proved the direct comb PNT
+`Σ_{n≤X}w_n~2√X`, `Σ_{n≤X}w_n√n~X` from S1–S3, independently of
+Hamburger. Independent external review and formalization remain separate
+future work, accurately distinguished from this completed research cycle.
+
+**Phase (2026-09-05):** Fourier-rigidity foundation cycle completed; the
+fixed-background search is retired, pending independent review of its new
+singleton proof. The other four attempts remain open but were parked during
+this cycle. **RH is NOT solved; no claim of solution exists here.**
+
+**Headline:** [L9](lemmas/L9-positive-comb-singleton.md) gives a full written
+proof that the unchanged S1–S3 positive-comb class is exactly
+`{(Z_ζ,Λ(n)/√n)}`. The chain is positive-weight estimate `Σ_{n≤X}w_n=O(√X)`
+→ justified exponential test → canonical product → normalized Dirichlet series
+→ Hamburger's converse theorem. Therefore `(R′) ⇔ RH`, with no distinct
+members to search for. This is characterization progress, not zero-reality
+progress. L9 has same-agent adversarial review only, not independent review
+or Lean verification.
+
+[L10](lemmas/L10-davenport-heilbronn-explicit-formula.md) completes the DH
+functional equation and explicit formula, gives `b(3)=-κlog3<0`, and proves
+that its background cannot be repaired by any integer-log comb reweighting.
+L8's faulty nonreal-member corollary, weighted-space wording and sign/measure
+terminology are corrected. Its repaired Step C was rechecked and a second
+resolvent proof supplied by the same agent.
+
+Numerics: old anchors reproduced; new C_c^∞ test has residual `9.68e-12`
+with 80 zero pairs and stability `2.72e-17` under doubled quadrature and
+35→50-digit precision. No infinite tail is certified. The historical wide
+Gaussian check has a `2.76e-6` prime-cutoff residual, now explicitly recorded.
+Follow-up adversarial checks include nonreal toy quartets, repeated atoms
+and odd/even central multiplicities; direct integral/product identities and
+completion parity passed. These toys are not members of S1–S3. No gap was
+found in the same-agent proof review; independent verification remains pending.
+
+**Resume here:** independently review L9 §§2–4 using
+[the audit](attempts/fourier-rigidity/AUDIT-2026-09-05.md) and
+[revised roadmap](attempts/fourier-rigidity/ROADMAP.md). Do not restart K1
+or fixed-data ζ-local deformation. No author contact or Lean setup occurred.
+
+### Historical headline (2026-07-12; research priorities superseded above)
+
+The following is the earlier session's record, including literature-status
+claims that were not refreshed during the 2026-09-05 cycle.
+
+(1) The **[DimitrovXu2019] erratum is now CONFIRMED** by a
 blind second reader (agent given only the PDF, tasked as hostile referee, no access to
 our record): identical fatal error (Lemma 3.3 dropped `i`), identical corrected kernel
 (`cosh((t−2s)y)` inside), 50-digit refutation of the paper's own Cor. 4.3(b), plus
@@ -45,12 +91,11 @@ Lean (`formal/`). Anything less is **progress, not a solution**, and is recorded
 | [`attempts/pick-kernel-positivity/`](attempts/pick-kernel-positivity/STATUS.md) | §3 Weil positivity (Herglotz/Pick form, [Lagarias1999]) | OPEN | Prime-shift inequality (★) `𝒜[B] ≥ 2ΣΛ(n)n^{−½}⟨B,S_{log n}B⟩` unproved; everything verified so far is RH-empty (DH passes it), so the Euler product has not yet entered. |
 | [`attempts/theta-strip/`](attempts/theta-strip/STATUS.md) | Haglund theta approximants / LP-class | OPEN (reframed) | Original per-N strip conjecture **REFUTED** (`Ξ_3` zero at `67.8802+0.4773i`); the moving-window replacement needs a windowed Pólya separation theorem that degrades at the front scale `t ≍ 4N²`. |
 | [`attempts/laguerre-phase-space/`](attempts/laguerre-phase-space/STATUS.md) | dBN / Laguerre–Pólya / Dimitrov–Xu correlation | OPEN | No non-circular positivity mechanism for `L₁[Ξ] ≥ 0` [Csordas2015, OP 4.7] or its RH-equivalent off-axis form `𝒞(x+iy) > 0` (corrected DX/Jensen; see §8.9-resolution) via the positive kernel `K̃_{2,y}`. |
-
-| [`attempts/fourier-rigidity/`](attempts/fourier-rigidity/STATUS.md) | none of docs/05 §1–8 — designated left-field program (Dyson quasicrystal + Viazovska-school interpolation + Kurasov–Sarnak Lee–Yang bridge) | OPEN — Rung 0 DELIVERED 2026-07-12 (L8; K1 settled for the naive class: vacuous-but-true via pinning; class 𝒫 + (R′) precisely defined) | The K1 counterexample hunt for (R′) is well-posed but unstarted (find `w ≥ 0` ≠ ζ's comb at ∞-many n with non-real multiset, or prove none exists); DH analogue L8 §7 needs FE constants pinned; L8b's repaired Step C wants one more independent re-read. |
+| [`attempts/fourier-rigidity/`](attempts/fourier-rigidity/STATUS.md) | Explicit-formula rigidity / converse theorems | FIXED-BACKGROUND SEARCH RETIRED (2026-09-05) | L9 identifies the unchanged relaxed class with ζ; independent review of reconstruction remains pending before investing in a successor class. |
 
 **Parked (do not reopen without new input):** Lee–Yang/ferromagnetic route —
-`scratch/notes-triage.md` §B (note: its constructive converse is now Rung 4 of
-`attempts/fourier-rigidity/`).
+`scratch/notes-triage.md` §B. The related Fourier-rigidity Rung 4 is also parked
+under the revised roadmap; the original roadmap is archived.
 
 ## Proved lemmas (in `lemmas/`)
 
@@ -62,7 +107,9 @@ Lean (`formal/`). Anything less is **progress, not a solution**, and is recorded
 | [L4](lemmas/L4-logderiv-two-sided-bound.md) | `−Q ≤ xQ' ≤ Q` for `Q=ξ'/ξ(½+x)`, `x>½` — unconditional, **RH-empty by design** (DH satisfies it too) | PROVED (symbolic verification; hostile re-read wanted) |
 | [L5](lemmas/L5-theta-representation-effective-convergence.md) | `Ξ = 4∫₀^∞Σφ_n cos(zu)du` (full derivation) + `|Ξ−Ξ_N| ≤ 8.01π(N+1)²e^{−π(N+1)²}` on the strip | PROVED (hostile re-read wanted) |
 | [L6](lemmas/L6-pick-kernel-criterion.md) | RH ⟺ Pick kernel `(Q(x)+Q(y))/(x+y)` PSD on `(X,∞)` — full equivalence proof | PROVED (one textbook citation to pin; hostile re-read wanted) |
-| [L8](lemmas/L8-explicit-formula-crystalline-pair.md) | (a) Riemann–Weil explicit formula, crystalline normalization, exact `C_c^∞`-even test class; (b) pinning: the exact (EF) determines the zero multiset — naive rigidity class = {Z_ζ}; (c) finite-defect rigidity: no finite zero-set modification survives ANY comb re-weighting | (a) PROVED, hostile re-read PASSED + numerics; (b) PROVED, review gap in Step C repaired same-day — repaired subsection wants one more re-read; (c) PROVED, re-read PASSED |
+| [L8](lemmas/L8-explicit-formula-crystalline-pair.md) | Explicit formula; fixed-data uniqueness; no distinct finite modification under comb reweighting | PROVED; 2026-09-05 same-agent recheck plus second derivation of (b); corollary corrected |
+| [L9](lemmas/L9-positive-comb-singleton.md) | S1–S3 force exactly ζ's divisor and weights, via reconstruction and Hamburger | PROVED (written proof, same-agent audit; independent review and formalization pending) |
+| [L10](lemmas/L10-davenport-heilbronn-explicit-formula.md) | Exact DH completion, signed-comb formula and fixed-background exclusion | PROVED (written derivation, same-agent audit; independent review and formalization pending) |
 
 Candidate lemmas queued: L7 (Laguerre generating identity), phase-space identity,
 `Ξ ∈ 𝔖(½)` write-up, WL ⟹ OP 4.7 (proof written in laguerre-phase-space §8.10 —
@@ -202,7 +249,20 @@ pointwise `Re𝓛 ≥ 0` on interior lines (false even under RH near close pairs
   and DH; scoped sub-target Q1. **No progress at the actual wall.**
 - **(setup)** Repository scaffolded.
 
-## Next-session priorities (in order)
+## Next-session priorities (2026-09-05)
+
+1. Independent review of L9's exponential-test extension, finite-order
+   reconstruction and application of Hamburger's two-function theorem.
+2. If a gap is found, isolate and repair it with the exact S1–S3 retained;
+   downgrade the affected claim until repaired. If the proof survives, retain
+   the singleton conclusion and do not restart the retired searches.
+3. Before any successor Fourier-rigidity program, construct a distinct member
+   of an explicitly altered class and identify the new zero-reality mechanism.
+   No successor has been adopted in this cycle.
+4. The other attempts, formalization and author correspondence stay parked.
+   Author correspondence still requires the user's explicit instruction.
+
+### Historical next-session priorities (2026-07-12; superseded)
 
 1. **USER DECISION pending: contact Dimitrov/Xu about the erratum?** The finding is
    now double-checked (blind re-derivation + literature scan); prerequisite met.

@@ -1,4 +1,10 @@
-# CLAUDE.md — Operating Manual for the Solving Agent
+# CLAUDE.md — Compatibility instructions
+
+The tool-independent contributor rules in [`AGENTS.md`](AGENTS.md) are canonical and
+apply to every session. The more detailed historical operating manual below remains
+useful where it does not conflict with `AGENTS.md`, `CONTRIBUTING.md`, or `GOVERNANCE.md`.
+
+## Historical operating manual
 
 You are working in a repository whose single goal is to **resolve the Riemann Hypothesis**:
 prove that every non‑trivial zero of `ζ(s)` has `Re(s) = 1/2`, or disprove it. This file is

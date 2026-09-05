@@ -1,15 +1,37 @@
 # The Riemann Hypothesis — Research Repository
 
-> **Mission.** Produce a complete, rigorous, and ideally machine‑verifiable resolution
-> of the Riemann Hypothesis (RH): a *proof* that every non‑trivial zero of the Riemann
-> zeta function lies on the critical line `Re(s) = 1/2`, **or** a *disproof* exhibiting a
-> non‑trivial zero with `Re(s) ≠ 1/2`.
+> **Current status:** RH remains open. This repository contains no claimed proof or
+> disproof. See the public [`CLAIMS.md`](CLAIMS.md) ledger for the exact evidence state
+> of every highlighted result.
 
-This repository is a structured workspace prepared for an autonomous agent to attempt
-RH. It contains the precise problem statement, the acceptance criteria a solution must
-meet, the mathematical background, a survey of known results and failed approaches, a
-catalogue of pitfalls, and a verification protocol. **No attempt at a solution is made
-in these docs** — they exist so that the solving agent starts fully oriented.
+This is an open, community-oriented research workspace for rigorous and reproducible
+work around the Riemann hypothesis. It preserves written arguments, computations,
+counterexamples, failed approaches, audits, and formalization plans so other researchers
+can verify, correct, reuse, or continue them.
+
+The long-term mission is a complete, rigorous, and preferably machine-verifiable proof
+or disproof. Until that bar is met, the repository reports narrower results with explicit
+evidence labels and review gaps. Substantial machine assistance is disclosed; it never
+counts as independent human review.
+
+## Current research snapshot
+
+- L8 records a carefully normalized Riemann-Weil explicit formula and two uniqueness
+  results.
+- L9 gives a written proof that the fixed-background positive-comb class considered by
+  the Fourier-rigidity attempt is a singleton. This characterizes the class; it does not
+  establish zero reality.
+- L10 derives a Davenport-Heilbronn completion and signed-comb explicit formula as a
+  structure-matched negative control.
+- The Dimitrov-Xu record identifies and reproduces an apparent error in a published
+  theorem and derives a corrected kernel. Author and journal correspondence remains
+  pending.
+- Several tempting strategies are retained with explicit numerical or mathematical
+  counterexamples.
+
+L8–L10 are `PROVED-WRITTEN`: full arguments are present, but independent human review
+and Lean verification remain open. The detailed status is in
+[`workspace/PROGRESS.md`](workspace/PROGRESS.md).
 
 ---
 
@@ -28,8 +50,19 @@ work begins.
 | 05 | [docs/05-approaches-and-deadends.md](docs/05-approaches-and-deadends.md) | Major strategies tried and where they stall. |
 | 06 | [docs/06-pitfalls-and-litmus-tests.md](docs/06-pitfalls-and-litmus-tests.md) | Why most "proofs" are wrong. Mandatory sanity checks. |
 | 07 | [docs/07-verification-protocol.md](docs/07-verification-protocol.md) | How a claimed result must be checked before it is announced. |
+| 08 | [docs/08-community-integration.md](docs/08-community-integration.md) | How to publish this work openly and connect modular claims to Tao's IEANTN project. |
+| 09 | [docs/09-publication-checklist.md](docs/09-publication-checklist.md) | Release readiness and remaining GitHub account actions. |
 
 Reference material: [references/bibliography.md](references/bibliography.md).
+
+Community and verification material:
+
+- [Claim index](CLAIMS.md)
+- [Contributing guide](CONTRIBUTING.md)
+- [Governance](GOVERNANCE.md)
+- [Reproducibility](REPRODUCIBILITY.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Community integration and IEANTN path](docs/08-community-integration.md)
 
 ## Where work happens
 
@@ -46,6 +79,18 @@ formal/           <- Lean 4 / mathlib formalization of definitions, lemmas, and 
 See [workspace/README.md](workspace/README.md) and [formal/README.md](formal/README.md)
 for the conventions in each.
 
+## Reproduce the maintained checks
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install --requirement requirements-ci.txt
+python scripts/verify.py --quick
+```
+
+The slower explicit-formula suite is `python scripts/verify.py --explicit-formula`.
+Numerical agreement is regression evidence; it is not a proof of an infinite claim.
+
 ## The one-paragraph rules of engagement
 
 1. A solution is a **proof**, not evidence. Numerics, heuristics, and "all approaches
@@ -57,3 +102,21 @@ for the conventions in each.
    tell ζ apart from Davenport–Heilbronn is wrong.
 4. Keep [workspace/PROGRESS.md](workspace/PROGRESS.md) current so progress survives
    context compaction.
+
+## Participate
+
+Corrections and hostile reviews are especially valuable. Open the matching issue form
+for a mathematical review, computational reproduction, correction, or scoped research
+proposal. Pull requests must state their evidence level, disclose substantial AI use,
+and preserve contradictory evidence and failed attempts.
+
+The project is connecting modular explicit-analytic-number-theory claims to Terence
+Tao's [Integrated Explicit Analytic Number Theory Network](https://github.com/teorth/IEANTN).
+The first proposed bridge is L8's Riemann-Weil explicit formula; the prepared scope
+message is in [`outreach/IEANTN-PROPOSAL.md`](outreach/IEANTN-PROPOSAL.md).
+
+## License and citation
+
+The repository is available under the [Apache License 2.0](LICENSE). Cite the exact
+tagged release and claim file you use; machine-readable metadata is in
+[`CITATION.cff`](CITATION.cff).

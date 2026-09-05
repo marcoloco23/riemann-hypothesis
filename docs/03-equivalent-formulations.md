@@ -6,7 +6,7 @@ hazard** — assuming any of them (or anything that implies one) inside an argum
 assuming the conclusion (doc 01 item B3). Know them so you can avoid accidentally using
 them as hypotheses.
 
-References are in [references/bibliography.md](references/bibliography.md).
+References are in [references/bibliography.md](../references/bibliography.md).
 
 ## Analytic / prime‑counting
 

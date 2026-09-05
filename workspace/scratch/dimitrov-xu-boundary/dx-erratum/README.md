@@ -58,7 +58,9 @@ the exponent `n(n+1)/2` vs `n(n−1)/2` typo (coincide for even n).
 
 ## Files
 
-- `dx1606.pdf` — arXiv v1 (17 pp.).
+- [arXiv:1606.05011v1](https://arxiv.org/abs/1606.05011v1) — authoritative source
+  page for the reviewed 17-page version. The PDF is linked rather than redistributed
+  from this repository because its arXiv license grants distribution rights to arXiv.
 - `check_dx.py` — sin-counterexample numerics (`ℱ[cosh ν₂] = 2Re𝓛`, sign change;
   `ℱ[K̃] = 2𝒞`).
 - `check_riemann.py` — Riemann Ξ values at the γ₃₄/γ₃₅ window.

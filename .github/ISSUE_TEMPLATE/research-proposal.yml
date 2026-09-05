@@ -1,0 +1,44 @@
+name: Research proposal
+description: Propose a sharply scoped new investigation.
+title: "[Proposal]: "
+labels: [proposal]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: Exact target
+      description: State one falsifiable claim or one bounded formalization task.
+    validations:
+      required: true
+  - type: textarea
+    id: prior
+    attributes:
+      label: Prior work
+      description: Give primary references and explain how the proposal differs.
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: New input
+      description: What makes this attempt different from the recorded dead ends?
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Failure modes and litmus tests
+      description: Include Davenport-Heilbronn or another structure-matched negative control where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: First reviewable deliverable
+    validations:
+      required: true
+  - type: textarea
+    id: automation
+    attributes:
+      label: Planned machine assistance
+      description: Identify expected AI, computer algebra, numerical, or proof-assistant use.

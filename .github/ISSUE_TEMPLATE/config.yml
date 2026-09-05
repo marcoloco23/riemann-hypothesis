@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/marcoloco23/riemann-hypothesis/security/advisories/new
+    about: Privately report credentials, personal data, or software vulnerabilities.
+  - name: IEANTN discussion
+    url: https://leanprover.zulipchat.com/#narrow/channel/423402-PrimeNumberTheorem.2B
+    about: Discuss proposed integrations with the explicit analytic number theory network.

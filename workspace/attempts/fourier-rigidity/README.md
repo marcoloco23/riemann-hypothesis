@@ -1,41 +1,29 @@
-# Attempt: fourier-rigidity (the quasicrystal program)
+# Attempt: Fourier rigidity
 
-**Approach family (docs/05):** none of §1–8. This is a deliberate left-field program:
-RH as a **rigidity/classification theorem for crystalline measure pairs** (Dyson's
-2009 "quasicrystal" proposal, made concrete with the modular-interpolation technology
-of the Viazovska school and the Lee–Yang/quasicrystal bridge of Kurasov–Sarnak).
+The program asks whether explicit-formula constraints can force ζ's zero
+atoms onto the real axis. Its first proposed relaxation kept ζ's pole and
+archimedean data fixed while allowing any nonnegative comb weights on
+`±log n`. **L9 now gives a written proof that this class contains only ζ.**
+The proof is audited by the same agent; independent review is pending.
 
-**The idea (one paragraph).** Under RH, the explicit formula says the zero measure
-`μ = Σ_γ δ_γ` is a *crystalline measure*: a tempered atomic measure whose Fourier
-transform is again atomic, supported on `±log(prime powers)` with weights
-`Λ(n)/√n ≥ 0` plus an explicit archimedean density. Unconditionally, the same formula
-holds but with `μ` replaced by a complex-atom object (atoms at `γ + i(β−½)`), i.e. a
-"quasicrystal with possibly non-real support." RH is then EXACTLY the statement:
+The object is an explicit-formula functional: a **negative** comb with
+nonnegative weights, plus a pole background and an archimedean distribution
+singular at zero. Unconditionally, its spectral atoms may be nonreal and
+act on entire transforms. It is not a standard Fourier quasicrystal.
 
-> the summation-formula constraints (spectrum in the log-prime set, positive
-> multiplicative weights, ξ-symmetries, density `~(T/2π)log T`) **force the support
-> onto the real line**.
+This is characterization progress, not a proof of RH. The counterexample
+hunt in the fixed-background class and the fixed-data deformation target
+are retired. Any successor program must first exhibit genuine freedom
+in a precisely defined admissible class.
 
-That is a *Fourier-rigidity statement* — a genre in which real theorems exist and are
-improving yearly (Lev–Olevskii rigidity for uniformly discrete pairs; Kurasov–Sarnak
-Fourier quasicrystals from Lee–Yang varieties; Radchenko–Viazovska interpolation;
-Bondarenko–Radchenko–Seip interpolation with ζ-zero nodes — citations to pin, see
-ROADMAP §C). **The bet is about toolkit, not about a weaker statement:** the rigidity
-target implies Weil positivity and is RH-hard; but rigidity theorems in harmonic
-analysis are proved by uniqueness-pair and interpolation-basis arguments whose engines
-(modular magic functions, stable/Lee–Yang polynomials) are NOT positivity arguments —
-they construct the object instead of estimating it. That is precisely the missing move
-everywhere else.
+- [L8](../../lemmas/L8-explicit-formula-crystalline-pair.md): explicit formula,
+  fixed-data uniqueness and finite-defect rigidity.
+- [L9](../../lemmas/L9-positive-comb-singleton.md): positive-comb singleton theorem.
+- [L10](../../lemmas/L10-davenport-heilbronn-explicit-formula.md): DH calibration.
+- [Audit](AUDIT-2026-09-05.md): corrected claims, hypothesis table and review record.
+- [Roadmap](ROADMAP.md): current decisions and the next review gate.
+- [Completion record](COMPLETION.md): all items of the selected cycle delivered.
+- [Archived roadmap](ROADMAP-2026-07-12.md): original program and historical rationale.
 
-**Why this fits everything we verified in-repo:** the moment reformulation
-(pick-kernel §5b) says the wall = "produce the measure"; the Lee–Yang route (triage §B)
-reappears here as the *construction mechanism* (Kurasov–Sarnak build quasicrystals from
-Lee–Yang objects — the converse traffic of what we tried); the theta truncations are
-finite approximants of the crystalline pair, and the front-law campaign measured their
-**defect confinement** (strip zeros = boundary defects of a growing quasicrystal,
-confined to `[R_N, 1.07·4(N+1)²]` — the approximation theory of the program's central
-object, gathered before we had its name).
-
-**Origin:** night session 2026-07-11, direction chosen by explicit intuition bet after
-the systematic mapping of all conventional walls. See `ROADMAP.md` for the program,
-rungs, kill criteria, and litmus audit.
+The other attempts and theta front-law experiments remain recorded; they
+are not premises of the singleton theorem.

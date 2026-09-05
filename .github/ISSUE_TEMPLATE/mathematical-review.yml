@@ -1,0 +1,57 @@
+name: Independent mathematical review
+description: Audit a specific written claim, proof, or cited theorem.
+title: "[Review]: "
+labels: [review]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Review the claim independently. Finding a gap is a successful review outcome.
+        Do not mark your own work as independently reviewed.
+  - type: input
+    id: claim
+    attributes:
+      label: Claim and version
+      description: Link the exact file, section, commit, or release being reviewed.
+    validations:
+      required: true
+  - type: textarea
+    id: statement
+    attributes:
+      label: Statement reviewed
+      description: Restate the claim and all hypotheses in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks performed
+      description: List proof steps, convergence conditions, citations, and litmus tests checked.
+    validations:
+      required: true
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict
+      options:
+        - Review in progress
+        - Passed within stated scope
+        - Gap or error found
+        - Unable to verify
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations and unresolved points
+    validations:
+      required: true
+  - type: checkboxes
+    id: independence
+    attributes:
+      label: Independence
+      options:
+        - label: I am not an author of the reviewed argument.
+          required: true
+        - label: I have disclosed relevant conflicts of interest.
+          required: true

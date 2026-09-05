@@ -1,7 +1,7 @@
 # 04 — Known Results (cite, do not re‑derive)
 
 These are established theorems. Use them freely **with citation**; do not spend effort
-re‑proving them. Full references: [references/bibliography.md](references/bibliography.md).
+re‑proving them. Full references: [references/bibliography.md](../references/bibliography.md).
 This is also the boundary line of doc 01 item B2: anything here is "established"; anything
 not here (and not standard textbook material from doc 02) must be proved in‑repo.
 

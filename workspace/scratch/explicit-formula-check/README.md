@@ -22,7 +22,7 @@ why such checks are mandatory before enshrining an identity), not part of any pr
   - **T2** `g = e^{−u²/2}` (zero sum ≈ 0; checks the pole/prime/archimedean balance
     as an exact cancellation).
 - `run-output.txt` — results:
-  - T1: LHS `6.98913e−5` vs RHS `6.98876e−5` (residual `3.7e−9`; the analytic
+  - T1: LHS `6.98913e−5` vs RHS `6.98876e−5` (residual `3.7e−9`; the heuristic
     zero-tail envelope gives `7.6e−10`, the rest is arch-integral truncation at
     t = 2000, consistent with `∫_{2000}^∞ t^{−4}log t`-size).
   - T2: RHS cancels to `5.4e−17` against LHS ≈ 0 — seventeen-digit confirmation of
@@ -31,7 +31,52 @@ why such checks are mandatory before enshrining an identity), not part of any pr
 
 ## Caveats
 
+- T1's polynomial cutoff is C², not C_c^∞. It is a numerical normalization
+  check in a wider test class, not a smooth test as previously described in
+  some summary text. The new script below supplies a genuinely smooth test.
+
 - Zero heights from `mp.zetazero` (first 1000), treated as real — numerically
   verified territory ([PlattTrudgian2021] far beyond), fine for a motivational check.
 - T1's tail envelope uses the asymptotic `|J_{7/2}(x)| ≲ √(2/πx)`, not a certified
   bound.
+
+## 2026-09-05 audit checks
+
+`check_smooth_and_dh.py` adds the even C_c^∞ test
+`g(u)=exp(1-1/(1-(u/3)²))cos(14u)` for `|u|<3`, zero elsewhere. Its
+transform is evaluated with composite Gauss–Legendre quadrature; all four
+explicit-formula terms are active. The archimedean term uses regularized (W),
+whose Fourier-side normalization is checked separately by the older script.
+
+The smooth test compares 40/80 zero pairs and doubles quadrature panels while
+raising precision from 35 to 50 digits. The reference zero ordinates retain
+their original 35-digit precision. Residual with 80 pairs: `9.6807134e-12`;
+quadrature/precision stability: `2.7189649e-17`. The last 40 retained terms
+have absolute sum `1.4672341e-8`; that is **not** a bound for the omitted tail.
+
+The same script checks L9's exponential-test gamma evaluation and L10's
+DH Gauss-sum identity, functional equation and exact coefficients b(3), b(6).
+It also checks direct Fourier integration against polynomial logarithmic
+derivatives for finite toy divisors containing a nonreal quartet, repeated
+real atoms, and odd/even central multiplicity. These are tests of the
+reconstruction identities, not examples satisfying S1–S3.
+It prints to stdout and does not overwrite stored data. Commands from the
+repository root:
+
+```sh
+python3 workspace/scratch/explicit-formula-check/check_ef.py
+python3 workspace/scratch/explicit-formula-check/hostile_review_check.py
+python3 workspace/scratch/explicit-formula-check/check_smooth_and_dh.py
+```
+
+For just the fast DH/resolvent calibration, pass `--calibration-only` to
+the last script. Tested with Python 3.14.6, mpmath 1.3.0; deterministic.
+The new script asserts numerical agreement, not a rigorous tail certificate.
+Selected output is recorded in `audit-output-2026-09-05.txt`.
+
+**Existing-script limitation reproduced:** `hostile_review_check.py` with
+Gaussian a=4 has residual `-2.7619e-6`; its prime table ends at 200000 before
+the Gaussian tail is negligible. The direct archimedean-vs-(W) comparisons
+still agree to approximately 30 digits. Its final factor-two comparison is
+a historical error diagnostic using a Gaussian concentrated near ±2,
+not literally supported away from 0. Neither diagnostic is a certificate.

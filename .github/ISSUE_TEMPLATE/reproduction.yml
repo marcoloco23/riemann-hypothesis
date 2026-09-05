@@ -1,0 +1,51 @@
+name: Computational reproduction
+description: Reproduce a numerical or symbolic result and record the environment.
+title: "[Reproduction]: "
+labels: [reproduction]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: Target result
+      description: Link the script, output, claim, and exact commit or release.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, architecture, Python or Lean version, and dependencies.
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result and discrepancy
+      description: Include expected and observed values, precision, and stability checks.
+    validations:
+      required: true
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Reproduction verdict
+      options:
+        - Reproduced
+        - Reproduced with differences
+        - Not reproduced
+        - Inconclusive
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Evidence scope
+      options:
+        - label: I understand that ordinary floating-point agreement is not a proof of an infinite mathematical claim.
+          required: true

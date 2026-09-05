@@ -84,7 +84,7 @@ clearly as conditional. It does not satisfy these criteria.
 ## E. Process requirements (so a result is trustworthy and reproducible)
 
 9. **Provenance.** Every external fact used carries a citation. Maintain
-   [references/bibliography.md](references/bibliography.md).
+   [references/bibliography.md](../references/bibliography.md).
 10. **Reproducible numerics.** Any computation is scripted, seeded, and re‑runnable from
     the repo; state the tool and version. Numerics never appear in the proof's logical
     chain (item 1) — only in motivation or in certified‑interval disproof arguments.

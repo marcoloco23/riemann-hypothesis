@@ -1,55 +1,44 @@
-# STATUS — fourier-rigidity (quasicrystal program)
+# STATUS — Fourier rigidity
 
-**State:** OPEN — Rung 0 DELIVERED 2026-07-12 (`lemmas/L8`): (EF) as crystalline-pair
-statement PROVED with exact test class (L8a, + numeric anchor in
-`scratch/explicit-formula-check/`); pinning lemma PROVED (L8b — naive class is the
-singleton {Z_ζ}: K1's "fake zero set with exact ζ comb" cannot exist, naive (R) ⟺ RH
-but vacuous, exactly as the adoption-night analysis predicted); finite-defect rigidity
-PROVED (L8c — any (R′)-counterexample must move infinitely many atoms); positive-comb
-class 𝒫 and (R′) precisely defined (L8 §6). §C citations ALL PINNED
-(bibliography "Fourier quasicrystals" section).
+**Agreed research-cycle plan: COMPLETE.** See the item-by-item
+[completion record](COMPLETION.md). Independent review and formalization
+are later evidence levels, not uncompleted items of that bounded plan.
 
-**Precise current blocker (one sentence):** the K1 counterexample hunt for (R′) is now
-well-posed (find admissible `w ≥ 0` ≠ ζ's comb at infinitely many n whose unique
-multiset is non-real, or prove none exists) but unstarted, and the DH analogue (L8 §7)
-plus the Kaczorowski–Perelli degree-1 citation remain to be pinned before the hunt's
-exclusion arguments are rigorous.
+**State (2026-09-05):** FIXED-BACKGROUND SEARCH RETIRED — L9 supplies a written
+proof that the exact positive-comb class of L8 §6 is the singleton
+`{(Z_ζ,Λ(n)/√n)}`. Hence `(R′) ⇔ RH`; there is no distinct system to seek.
+RH remains open. The broader program is parked pending review and a new
+nontrivial class.
 
-**Time horizon:** years-to-decades by design; rungs and kill criteria in ROADMAP §D–E.
+**Verification limit:** L9 and L10 have same-agent adversarial review,
+not a blind second reviewer or Lean verification. The next task is
+independent review of L9 §§2–4, especially the resolvent-test extension
+and the hypotheses of Hamburger's converse theorem.
 
-**Literature reshaping (2026-07-12 pinning pass — details ROADMAP §C):** the 1-D
-unit-mass FQ classification is COMPLETE in the literature ([OlevskiiUlanovskii2020] +
-[AlonCohenVinzant2024]: all ℕ-valued FQs on ℝ come from Lee–Yang data) — Rung 4's
-converse question is answered for finite-frequency systems; but ζ's pair is provably
-OUTSIDE that class ([KurasovSarnak2020]: Guinand's measure is not an FQ even under
-RH). Rung 4's real target is now sharp: extend the Lee–Yang classification to
-infinite frequency sets with an explicit smooth background ("FQ modulo smooth
-background"). Rung 1 absorption list: [KurasovSarnak2020] (reprove 1-variable),
-[OlevskiiUlanovskii2020]+[AlonCohenVinzant2024] (the classification pair),
-[Goncalves2026] (de Branges framing — likely the right language for the background),
-[LevOlevskii2015] Thm 1 (reprove; extract exactly why u.d. is load-bearing).
+## Delivered this cycle
 
-**Depends on:** L5 (theta representation); L8 (NEW — the program's foundation);
-pick-kernel §5b (moment form of the wall); front-law campaign data (Rung 2 raw
-material).
+- L8b's repaired Gaussian localization rechecked; second resolvent derivation
+  recorded. Weighted cutoff space corrected to its little-o subspace.
+- L8c's incorrect “every non-real member” corollary corrected to “every
+  distinct member.” Signs and Fourier terminology synchronized.
+- L9: translated-bump weight estimate, canonical-product/Dirichlet-series
+  reconstruction, finite order, functional equation, and singleton conclusion.
+- L9 §1 also derives `Σ_{n≤X}w_n~2√X` and `Σ_{n≤X}w_n√n~X` directly
+  from S1–S3, without Hamburger, as an independent normalization check.
+- L10: exact DH root number and completion, absolute convergence for Re s≥2,
+  `b(3)=-κlog3<0`, non-prime-power coefficient b(6), and separate background exclusion.
+- Existing explicit-formula checks reproduced. New C_c^∞ test agrees to
+  about 1e-11 with 80 zero pairs and stabilizes to about 3e-17 under
+  quadrature/precision doubling. These are numerical diagnostics, not certificates.
 
-**Honest assessment:** unchanged — (R′) is Grand-RH-hard; the bet is on the toolkit
-trajectory. Rung 0 cost one session and produced two unconditional theorems (L8b,
-L8c) that make the program falsifiable in a concrete direction. The cheap kill test
-(K1 hunt) is next; if a positive-comb non-real system exists, the program refocuses
-on ζ-local Rung 3 immediately.
+**Dependencies:** S1–S3 and L8's normalization; classical canonical products,
+reciprocal gamma and Hamburger's two-function theorem [KMP2010, p. 463].
+The L9 proof does not depend on L8b, L8c, RH or Booker's coefficient axioms.
 
-**Next actions:**
-1. K1 hunt, first probes (ROADMAP §E-K1 resolution block): (a) prove the
-   conductor/W_∞ exclusion of DH-type combinations from 𝒫; (b) pin
-   Kaczorowski–Perelli degree-1 classification; (c) attempt a constructive w ≥ 0
-   perturbation at infinitely many n (what does the unique-multiset machinery say —
-   does ANY w ≠ ζ's give a legal system at all? plausibly (S2)'s density already
-   forces `Σw_n`-asymptotics = PNT-shape; make that a lemma — it would say members of
-   𝒫 satisfy a PNT).
-2. L8 hostile re-read (L8b Step C especially) — docs/07 Stage 4.
-3. DH analogue L8 §7: pin FE constants from [DavenportHeilbronn1936]/[Spira1968]/
-   [BombieriHejhal1995], upgrade SHAPE → PROVED.
-4. Rung 2 start: defect-confinement note recasting the front-law campaign in
-   program language.
-5. Rung 1 absorption (reading list above), starting with [Goncalves2026].
+**Next actions:** Follow the focused review gate in [ROADMAP.md](ROADMAP.md).
+Do not restart K1 or fixed-data “ζ-local rigidity.” A successor class needs
+an explicit distinct example and a new hypothesis-to-reality mechanism
+before further investment.
+
+See [AUDIT-2026-09-05.md](AUDIT-2026-09-05.md) and the
+[archived roadmap](ROADMAP-2026-07-12.md) for provenance.

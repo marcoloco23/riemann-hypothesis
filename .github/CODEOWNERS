@@ -1,0 +1,4 @@
+* @marcoloco23
+
+# Mathematical status changes should also receive an independent review recorded in
+# the pull request; CODEOWNERS approval alone does not satisfy that requirement.

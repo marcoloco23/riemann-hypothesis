@@ -1,0 +1,26 @@
+{
+  "title": "Riemann Hypothesis Research Repository",
+  "description": "An open, reproducible research workspace for rigorous work around the Riemann hypothesis, with explicit evidence states, computations, counterexamples, failed approaches, and formal-verification plans.",
+  "upload_type": "software",
+  "license": "Apache-2.0",
+  "creators": [
+    {
+      "name": "marcoloco"
+    }
+  ],
+  "keywords": [
+    "Riemann hypothesis",
+    "analytic number theory",
+    "Riemann zeta function",
+    "explicit formula",
+    "reproducible research",
+    "Lean 4"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/marcoloco23/riemann-hypothesis",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

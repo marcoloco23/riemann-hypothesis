@@ -1,4 +1,12 @@
-# L8 — The Weil explicit formula as an unconditional crystalline-pair statement
+# L8 — The Weil explicit formula and uniqueness of its strip-atom functional
+
+**2026-09-05 update:** [L9](L9-positive-comb-singleton.md) proves that the
+unchanged relaxed class in §6 is also a singleton (written proof, same-agent
+audit; independent review pending). Thus `(R′) ⇔ RH`, with no distinct system
+to search for. [L10](L10-davenport-heilbronn-explicit-formula.md) supplies the
+DH constants and exclusions. The [audit](../attempts/fourier-rigidity/AUDIT-2026-09-05.md)
+records a recheck of Step C and a second, resolvent-based derivation of L8b.
+The review history below refers to the earlier 2026-07-12 session.
 
 **Tag:** L8a PROVED — hostile re-read PASSED 2026-07-12 (independent agent: every
 sign/constant re-derived, its own numerics to 1e−29; plus the repo numeric anchor,
@@ -10,7 +18,8 @@ typo fixed). §3's density remark: factor-2 error found by review, FIXED. §6
 definitions + conjecture (R′) are NOT results. Numerical cross-check (motivational
 only, docs/01 B1): `scratch/explicit-formula-check/`.
 
-This is Rung 0 of `attempts/fourier-rigidity/` (ROADMAP §A, §D). Everything here is
+This was Rung 0 of `attempts/fourier-rigidity/` (archived
+`ROADMAP-2026-07-12.md` §A, §D). Everything here is
 unconditional: **RH is never assumed**, no docs/03 equivalent is assumed, and the zero
 multiset is allowed complex atoms throughout.
 
@@ -167,11 +176,12 @@ Collecting (i)–(v) yields L8a. ∎
 four terms active) for a compactly supported bump and a Gaussian against the first
 1000 zero pairs; see `run-output.txt` there.
 
-**Remark (wider test classes).** L8a extends by standard approximation to the Weil
-class (g even, continuous, of bounded variation with `g(u)e^{(½+ε)|u|} ∈ L¹`), and to
-even Schwartz g with `ĝ` sub-cubic-decaying on `|Im z| ≤ ½` — the proof is identical
-except (PW) is replaced by the assumed decay. We fix `𝒯` because it is closed under
-the modulations used in L8b and large enough for uniqueness.
+**Remark (wider test classes).** Compact smooth tests remain the default.
+Decay of g alone does not justify every contour shift or a convergent zero sum;
+in particular an arbitrary Schwartz function need not have a transform defined
+at nonreal points. The Gaussian extension used by L8b is proved below, and
+the nonsmooth exponential extension is proved in L9 §2. Other extensions require
+their own checked hypotheses.
 
 ## 3. The crystalline-pair reading (unconditional)
 
@@ -203,19 +213,21 @@ the two pieces of (W) diverge separately and only the combination is defined
 the archimedean term of L8a by inserting `ψ₀(z) = −γ_E + ∫_0^1 (1−x^{z−1})/(1−x)dx`
 (`Re z > 0`; [Titchmarsh §4.42-standard], [Remmert1991]) at `z = ¼+it/2`, using
 `(1/2π)∫ĝ(t)x^{it/2}dt = g(−(log x)/2)` (Fourier inversion), substituting
-`x = e^{−2v}`, and checking the `v→0` cancellation (`integrand → (3/2−¼·…)`-finite;
+`x = e^{−2v}`, and checking the `v→0` cancellation (`integrand → −(3/2)g(0)`;
 detail: `[g(0)−e^{3v/2}g(v)] = −(3/2)g(0)v + O(v²)` and `2e^{−2v}/(1−e^{−2v}) = 1/v +
-O(1)`). Fubini is justified by the same absolute bounds as in L8a(v).
+O(1)`). For the interchange, first cut the v integral off at ε>0. Near 0,
+`|1-e^{3v/2}e^{itv}|≤C v(1+|t|)`, and ĝ is Schwartz on R;
+this gives an integrable majorant after division by v. At infinity use
+`e^{-2v}+e^{-v/2}` times `|ĝ(t)|`. Dominated convergence removes ε.
 
-**Reading.** `(supp μ_ζ, supp μ̂_ζ)` is the program's crystalline pair: the "Fourier
-transform" of the zero measure is a **nonnegative atomic comb on ±log(prime powers)
-plus one positive smooth background plus one explicit archimedean distribution** —
-unconditionally. If RH is false, `μ_ζ` has non-real atoms (complex defects) but the
-right-hand side is unchanged: `μ_ζ` is an "almost-real quasicrystal with complex
-defects" whose diffraction data is exactly the prime comb. This object is NOT a
-Fourier quasicrystal in the technical sense of the literature (its FT has a continuous
-part; cf. Kurasov–Sarnak's remark on Guinand's measure) — the program's language must
-therefore be "crystalline pair modulo explicit smooth background".
+**Reading.** The explicit-formula functional is **minus** an atomic comb with
+nonnegative weights, plus the pole background and the archimedean distribution.
+The last distribution is singular at 0, not globally a smooth background.
+Off-axis atoms act by evaluation on entire transforms; this is not an ordinary
+Fourier transform of a measure on R. Even under RH the computed right-hand side
+is not purely atomic, so the standard Fourier-quasicrystal classification cannot
+be applied to it as stated. “Crystalline pair” is historical program terminology,
+not a claim that this object meets that classification's hypotheses.
 
 **Equivalent divisor form.** With `D(s) := π^{−s/2}Γ(s/2)ζ(s)` (zeros = nontrivial
 zeros, simple poles at `s = 0,1`), the divisor measure `μ̃ := μ_ζ − δ_{i/2} − δ_{−i/2}`
@@ -235,15 +247,16 @@ zeros, simple poles at `s = 0,1`), the divisor measure `μ̃ := μ_ζ − δ_{i/
 > then `Z = Z′` as multisets.
 
 **Corollary (K1, naive class — settled).** The class of "ζ-type crystalline systems"
-of ROADMAP §A (atoms in `S`, symmetries, ζ-density, satisfying L8a's identity with the
+of the archived roadmap §A (atoms in `S`, symmetries, ζ-density, satisfying L8a's identity with the
 exact right-hand side) is the singleton `{Z_ζ}`. Hence the naive Rigidity Conjecture
 (R) is **equivalent to RH but vacuous as a rigidity target** (no room for any tool to
 act: the hypotheses already pin the object). The kill-criterion K1's "fake zero set
 with the exact ζ comb" **cannot exist**. The program's content is therefore entirely
-in the choice of relaxation (§6), as anticipated in ROADMAP §E-K1.
+in the choice of relaxation (§6), as anticipated in the archived roadmap §E-K1.
 
-**Corollary ((R) ⟺ RH, both directions, unconditional).** (⟸ was trivial;) (⟹): if
-RH holds, then by L8b the only system in the naive class is `Z_ζ ⊂ ℝ`, so (R) holds.
+**Corollary ((R) ⟺ RH, both directions, unconditional).** If (R) holds, apply
+it to `Z_ζ` using L8a to obtain RH. Conversely, if RH holds, L8b identifies
+every system in the naive class with `Z_ζ ⊂ ℝ`, so (R) holds.
 
 ### Proof of L8b
 
@@ -265,33 +278,21 @@ distribution `S ∈ 𝒟′(ℝ)` (continuity: `|⟨S,ψ⟩| ≤ C_3(ψ)e^{A/2}�
 and `C_3` is a finite sum of seminorms on any fixed support interval). We claim
 `S = 0`.
 
-For even `φ ∈ C_c^∞` and `x₀ ∈ ℝ`, the function `g(u) := φ(u)cos(x₀u)` is in `𝒯`
-(complexify: it suffices to treat real φ; general φ by linearity) and
-`ĝ(z) = ½[φ̂(z−x₀) + φ̂(z+x₀)]`. Define `G(x₀) := Σ_j c_j φ̂(z_j−x₀)`
-(absolutely convergent by (PW)). By the `z↦−z` symmetry of ν and evenness of `φ̂`,
-`Σ_j c_j φ̂(z_j+x₀) = Σ_j c_j φ̂(−z_j+x₀)·…` — explicitly, replacing `z_j` by `−z_j`
-reindexes ν onto itself and `φ̂(−z_j+x₀) = φ̂(z_j−x₀)` — so both halves are equal and
-(H0) gives `G(x₀) = 0` for all `x₀ ∈ ℝ` and all even φ.
+Split ψ into its even and odd parts. The odd transform is odd, so its
+absolutely convergent sum over the symmetric multiset cancels pairwise
+(and is zero at the possible atom 0). The real and imaginary parts of the
+even part belong to 𝒯; (H0) annihilates both. Thus `S=0` in `𝒟′(ℝ)`.
 
-Now let `ψ ∈ C_c^∞` be arbitrary and pick even `φ ∈ C_c^∞` with `φ ≡ 1` on
-`supp ψ ∪ (−supp ψ)`. Then `ψ = φψ` and, by Fourier synthesis
-`ψ(u) = (1/2π)∫ψ̂₀(x₀)e^{ix₀u}dx₀` (`ψ̂₀` = FT of ψ on ℝ, Schwartz):
-
-```
-⟨S, ψ⟩ = Σ_j c_j (φψ)^(z_j) = (1/2π)∫ ψ̂₀(x₀) Σ_j c_j φ̂(z_j−x₀) dx₀
-       = (1/2π)∫ ψ̂₀(x₀) G(x₀) dx₀ = 0,
-```
-
-the interchange justified by
-`Σ_j |c_j| ∫|ψ̂₀(x₀)||φ̂(z_j−x₀)|dx₀ ≤ C Σ_j |c_j|(1+|x_j|)^{−3} < ∞`
-(convolving the cubic decay of `φ̂` on the strip with the Schwartz decay of `ψ̂₀`).
-So `S = 0` in `𝒟′(ℝ)`.
-
-**Step B (extension to Gaussian tests).** Let `W` be the space of `ψ ∈ C^∞(ℝ)` with
+**Step B (extension to Gaussian tests).** Let `W` be the little-o space of
+`ψ ∈ C^∞(ℝ)` with
 
 ```
 ‖ψ‖_W := max_{m≤3} sup_u (1+|u|)² |ψ^{(m)}(u)| e^{|u|/2} < ∞ .
 ```
+
+Require additionally that the weighted expression tends to 0 as `|u|→∞`
+for each `m≤3`. This condition, satisfied by all Gaussian tests below,
+is needed for cutoff convergence in this norm.
 
 For `ψ ∈ W` the transform `ψ̂(z) = ∫ψ(u)e^{−izu}du` is defined on the closed strip
 `|Im z| ≤ ½` (the weight dominates `e^{yu}`), and three integrations by parts —
@@ -301,11 +302,9 @@ every `ψ ∈ W`, with `|⟨S,ψ⟩| ≤ C′‖ψ‖_W` (density `O(T log T)`; 
 used, valid on the closure of the strip). Now `S = 0` extends from `C_c^∞` to `W`
 by cutoff: with `χ_R` smooth, `= 1` on `[−R,R]`, supported in `[−2R,2R]`, derivatives
 bounded uniformly in R, we have `ψχ_R ∈ C_c^∞` and `‖ψ − ψχ_R‖_W → 0` as `R → ∞`
-(the `(1+|u|)²`-weight of the norm ‖ψ‖ with one extra order of decay beats the
-uniformly bounded cutoff derivatives — concretely `‖ψ(1−χ_R)‖_W ≤ C sup_{|u|≥R}
-(1+|u|)²max_m|ψ^{(m)}|e^{|u|/2} → 0` for ψ Gaussian-type; for general ψ ∈ W replace
-the norm by the corresponding "little-o" subspace, which contains all functions used
-below). Hence `⟨S,ψ⟩ = lim_R ⟨S, ψχ_R⟩ = 0` for all such ψ.
+(by the product rule, `‖ψ(1−χ_R)‖_W ≤ C sup_{|u|≥R}
+(1+|u|)²max_{m≤3}|ψ^{(m)}(u)|e^{|u|/2} → 0` by the little-o condition).
+Hence `⟨S,ψ⟩ = lim_R ⟨S, ψχ_R⟩ = 0` for all such ψ.
 
 Apply this to the family `ψ_{τ,a}(u) := e^{−u²/(2τ)} e^{iau}` (`τ > 0`, `a ∈ ℝ`;
 real and imaginary parts lie in the little-o subspace of `W`), whose transform is
@@ -409,14 +408,13 @@ distribution, hence identically. A finite sum `Σ c_j e^{−iz_j u} ≡ 0` with 
 m ⟹ Vandermonde; equivalently apply `∏_{k≠j}(i·d/du − z_k)` and evaluate at 0).
 So ν = 0 and `d_n ≡ 0`. ∎
 
-**Corollary (shape of any (R′)-counterexample).** Any non-real system in the relaxed
-positive-comb class (§6) must differ from `Z_ζ` in **infinitely many atoms**. In
-particular there is no "move one zero off the line and re-tune the comb" counterexample:
-K1's hunt (and Rung 3's deformation theory) is intrinsically infinite-dimensional.
-Consistent with LITMUS-1: Davenport–Heilbronn's zero set differs from any
-L-function zero set in infinitely many atoms.
+**Corollary (distinct members).** Any admissible system in §6 **distinct from
+`Z_ζ`** must differ from it in infinitely many atoms. This does not exclude
+`Z_ζ` itself being nonreal if RH is false. The original “any non-real system”
+wording was incorrect. L9 now excludes distinct members altogether using
+the unchanged S1–S3 assumptions; L8c alone establishes only the finite-defect claim.
 
-## 6. The relaxed class and (R′) — definitions only (NOT results)
+## 6. The relaxed class and (R′) — definition unchanged, class now identified by L9
 
 > **Definition (positive-comb crystalline system).** A pair `(Z, w)`:
 > `Z ⊂ S = {|Im z| < ½}` a multiset, `w = (w_n)_{n≥2}`, `w_n ≥ 0`, such that
@@ -431,49 +429,37 @@ L-function zero set in infinitely many atoms.
 >
 > **(R′)** Every positive-comb crystalline system has `Z ⊂ ℝ`.
 
-Facts already in hand: `(Z_ζ, (Λ(n)/√n))` is in the class (L8a); for FIXED w the
-multiset is unique if it exists (L8b applies verbatim — fixed combs cancel in the
-difference), so the class injects into `{w ≥ 0 admissible}`; any non-real member is
-an infinite defect (L8c). **K1 is now a theorem-or-counterexample question:** exhibit
-an admissible `w ≥ 0` whose (unique) multiset is non-real — killing (R′) and refocusing
-on ζ-local rigidity (Rung 3) — or prove no such w exists, which IS (R′) ⟹ RH-hard.
-Litmus: DH is excluded by `w_n ≥ 0` (its log-derivative coefficients are complex /
-sign-indefinite, and its archimedean datum differs — conductor 5, odd gamma factor);
-Epstein likewise. Where multiplicativity enters: nothing in (S1)–(S3) forces w to be
-supported on prime powers — the class is deliberately larger than "Selberg-like", and
-the degree-1 Selberg classification (Kaczorowski–Perelli — pin citation before use;
-UNCONFIRMED here) suggests the multiplicative sub-class is just ζ and shifts of
-Dirichlet L. The K1 hunt lives exactly in the non-multiplicative freedom of w.
+**Current result (2026-09-05):** L9 identifies this exact class with
+`{(Z_ζ,(Λ(n)/√n))}`. Positivity first gives `Σ_{n≤X}w_n=O(√X)`;
+the explicit formula reconstructs a Dirichlet series with ζ's completion;
+Hamburger's theorem identifies it with ζ. Prime-power support is consequently
+a derived property, although it was not an axiom. Thus `(R′) ⇔ RH`, not an
+established Grand-RH-strength generalization. L10 proves the DH exclusions
+with real signed coefficients and exact background data.
 
-## 7. DH analogue (statement shape; constants UNCONFIRMED pending source pass)
+## 7. DH analogue — constants supplied by L10
 
-For the Davenport–Heilbronn function `f` (docs/06 LITMUS-1; [DavenportHeilbronn1936],
-[BombieriHejhal1995]): f is entire, order 1, satisfies an exact functional equation
-with the odd mod-5 gamma factor, is nonzero in some half-plane `Re s > σ₀` (leading
-Dirichlet coefficient 1), and `−f'/f = Σ b_f(n)n^{−s}` converges there with complex,
-sign-indefinite `b_f(n)` supported on ALL integers (no Euler product ⟹ no
-prime-power support, no positivity, no multiplicativity). Running the L8a contour
-argument with lines `Re s = σ₀+δ` and `1−σ₀−δ` produces an (EF) of the same shape:
-zero measure on one side; a comb with weights `b_f(n)`-derived (complex,
-sign-indefinite) plus f's own archimedean density on the other. DH's zero system is
-thus a genuine crystalline-pair-with-complex-defects whose comb FAILS positivity —
-and its zeros are indeed off-line in abundance. This is the standing
-counterexample-generator for calibrating (R′)-type hypotheses (ROADMAP §F). The
-precise DH functional-equation constants and the exact strip `|Im z| < σ₀−½` must be
-pinned from the sources before this section is upgraded from SHAPE to PROVED.
+L10 gives the full derivation for
+`H(s)=(5/π)^((s+1)/2)Γ((s+1)/2)f(s)=H(1-s)`.
+Its zero set lies in `|Im z|<3/2` by a direct zero-free bound for `Re s≥2`.
+Its explicit formula has no pole background, a negative signed comb
+`-2Σ b(n)n^{-1/2}g(log n)`, and gamma integrand
+`Re ψ₀(3/4+it/2)+log(5/π)`. The log-derivative series converges absolutely
+for `Re s≥2`. Its coefficients are real, with `b(3)=-κlog3<0` and
+`b(6)=(1+κ²)log6>0`. Thus “supported on ALL integers” is replaced by the
+precise statement that support is not restricted to prime powers.
 
 ## 8. Litmus & circularity audit (docs/06, mandatory)
 
 - Nothing above assumes RH or any docs/03 equivalent; L8a–L8c are unconditional and
   the zero atoms are allowed complex throughout. (R′) is CONJECTURED and clearly
   labeled; it is never used.
-- LITMUS-1/2: the DH/Epstein systems satisfy (EF)-analogues but violate (S3)'s comb
-  positivity (and archimedean datum) — any future rigidity proof must use `w ≥ 0`
-  as a load-bearing hypothesis (§7). L8b/L8c are litmus-safe because they make no
-  reality claim: they are Fourier-uniqueness statements, valid for DH-type systems
-  too (uniqueness/finite-rigidity of DH's own pair — true and harmless).
-- LITMUS-3: `w_n ≥ 0` + (S3) encodes nonvanishing analogues on `σ>1` exactly as the
-  Euler product does for ζ — recorded, not yet used.
+- LITMUS-1: L10 proves the DH signed-comb and background exclusions separately.
+  L8b/L8c make no reality claim, so their uniqueness mechanisms also work
+  harmlessly for appropriate DH analogues. No blanket claim about every Epstein
+  function's coefficient signs is needed for these results.
+- LITMUS-3: the nonvanishing reconstruction on `Re s>1` is now justified in
+  L9 using positivity, strip containment and the exact background, not positivity alone.
 - LITMUS-4: (R′) demands `Z ⊂ ℝ` exactly (no zero-free strip of positive width) —
   consistent with `Λ_dBN ≥ 0`.
 

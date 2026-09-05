@@ -1,0 +1,32 @@
+name: Correction or problem report
+description: Report a mathematical, citation, documentation, or code error.
+title: "[Correction]: "
+labels: [correction]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Exact location
+      description: Link the file, lines, commit, or release.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Identify the smallest incorrect statement or behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Give a counterexample, derivation, source, or reproducible command.
+    validations:
+      required: true
+  - type: textarea
+    id: disposition
+    attributes:
+      label: Proposed correction or status change
+    validations:
+      required: true

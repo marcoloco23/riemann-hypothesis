@@ -28,7 +28,7 @@ the goal of this phase is to **break** the argument, not to confirm it.
 - [ ] Build the lemma dependency graph (what uses what). Confirm it is a DAG with no path
       that assumes RH, a doc‑03 equivalent, Lindelöf, or any open conjecture.
 - [ ] Every external citation resolved to a specific theorem in
-      [references/bibliography.md](references/bibliography.md), with statement matching use.
+      [references/bibliography.md](../references/bibliography.md), with statement matching use.
 - [ ] Every in‑repo lemma proved to acceptance‑criteria standard (doc 01 B2–B4).
 
 ## Stage 3 — Step‑level rigour pass

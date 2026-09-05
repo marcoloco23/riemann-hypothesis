@@ -8,7 +8,11 @@ Conventions from the file:
   (W):  <W_inf, g> = -(gamma_E + log pi) g(0)
         + int_0^inf [g(0) - e^{3v/2} g(v)] * 2 e^{-2v}/(1-e^{-2v}) dv
         and W_inf should equal  (1/2pi) int ghat(t)[Re psi0(1/4+it/2) - log pi] dt.
-  Density claim: away from 0, W_inf = -2 e^{-|u|/2}/(1-e^{-2|u|}) du.
+  Historical density error tested below: the old factor -2 was wrong.
+  The corrected density is -e^{-|u|/2}/(1-e^{-2|u|}) du.
+
+The wide Gaussian a=4 exceeds this script's useful prime-table range;
+its residual includes an omitted prime tail and is not a high-precision match.
 """
 import mpmath as mp
 
@@ -47,7 +51,7 @@ def gaussian_pair(a, b):
     return g, ghat
 
 def comb_term(g, a, b):
-    # -2 sum Lambda(n) n^{-1/2} g(log n); truncate when envelope < 1e-30
+    # Finite prime table; the optional envelope cutoff does not bound its omitted tail.
     s = mp.mpf(0)
     for n, lam in LAM:
         ln = mp.log(n)
@@ -82,12 +86,14 @@ def check_L8a(a, b, K, pts):
     print(f"    archimedean    = {mp.nstr(A, 20)}")
     print(f"    RHS total      = {mp.nstr(P + C + A, 20)}")
     print(f"    LHS - RHS      = {mp.nstr(Z - (P + C + A), 5)}")
+    if mp.mpf(a) == 4:
+        print("    CAVEAT: wide Gaussian prime tail beyond n=200000 is omitted; no small-tail claim.")
     print()
 
 print("=== L8a full explicit-formula check ===")
 # test 1: modulated gaussian, zero sum O(1), all four terms active
 check_L8a(1, 14, 40, [0, 8, 12, 14, 16, 20, 30, 60])
-# test 2: wide unmodulated gaussian, zero term ~0, tests pole/comb/arch balance
+# test 2: wide unmodulated gaussian; diagnostic of the finite-prime cutoff limitation
 check_L8a(4, 0, 40, [0, 3, 8, 20, 60])
 # test 3: narrow-ish, everything moderate
 check_L8a(0.2, 0, 60, [0, 5, 15, 40, 100])
@@ -108,7 +114,7 @@ for (a, b, pts) in [(1, 0, [0, 3, 10, 40]), (4, 0, [0, 3, 8, 20, 60]), (1, 14, [
     print(f"  a={a}, b={b}: direct={mp.nstr(direct,20)}  viaW={mp.nstr(viaW,20)}  diff={mp.nstr(direct-viaW,5)}")
 
 print()
-print("=== density claim check (g supported away from 0) ===")
+print("=== historical factor-two diagnostic (Gaussian concentrated away from 0) ===")
 # g2(u) = e^{-8(u-2)^2} + e^{-8(u+2)^2}; ghat2(t) = 2 cos(2t) sqrt(pi/8) e^{-t^2/32}
 def g2(u):
     return mp.e**(-8 * (u - 2) ** 2) + mp.e**(-8 * (u + 2) ** 2)

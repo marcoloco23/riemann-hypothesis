@@ -70,9 +70,9 @@ def run_check(name, g, ghat, support, envelope=None):
     print(f"  arch   = {mp.nstr(arch, 12)}")
     print(f"  RHS    = {mp.nstr(rhs, 12)}")
     print(f"  LHS (sum over {NZEROS} zero pairs) = {mp.nstr(zs, 12)}")
-    print(f"  LHS - RHS = {mp.nstr(zs - rhs, 6)}   (zero-sum tail bound ~ {mp.nstr(tail, 4)})")
+    print(f"  LHS - RHS = {mp.nstr(zs - rhs, 6)}   (heuristic zero-tail estimate ~ {mp.nstr(tail, 4)})")
     ok = abs(zs - rhs) <= tail + mp.mpf('1e-8')
-    print(f"  MATCH within tail: {ok}")
+    print(f"  MATCH within heuristic tail + 1e-8 allowance (not certified): {ok}")
     return ok
 
 # T1: compact bump, support [-3,3]
