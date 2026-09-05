@@ -22,11 +22,11 @@ This checklist separates local readiness from account-level publication actions.
 - [x] Commit the complete release candidate on `main`.
 - [x] Remove the third-party PDF from public Git history or publish a clean squashed
   history; retaining it in reachable history defeats its removal from the release tree.
-- [ ] Push the cleaned history to GitHub.
-- [ ] Make the repository public and apply the description, topics, labels, Discussions,
+- [x] Push the cleaned history to GitHub.
+- [x] Make the repository public and apply the description, topics, labels, Discussions,
   and merge settings in `scripts/configure_github.sh`.
-- [ ] Wait for the `Verify` workflow to pass on GitHub.
-- [ ] Create signed or annotated tag `v0.1.0` and the GitHub release from
+- [x] Wait for the `Verify` workflow to pass on GitHub.
+- [x] Create annotated tag `v0.1.0` and the GitHub release from
   `docs/releases/v0.1.0.md`.
 - [ ] Connect the repository to Zenodo and archive the release for a DOI.
 - [ ] Post `outreach/IEANTN-PROPOSAL.md` after checking the public links.
@@ -36,6 +36,6 @@ This checklist separates local readiness from account-level publication actions.
 
 - [ ] Add at least one independent human reviewer for L9 §§2–4.
 - [ ] Move ownership to a neutral organization after a second active maintainer joins.
-- [ ] Protect `main` with required pull-request and passing-CI rules once the initial
-  workflow has completed.
+- [x] Protect `main` with required pull-request and passing-CI rules after the initial
+  workflow completed.
 - [ ] Initialize the Lean project around the smallest claim selected with IEANTN.

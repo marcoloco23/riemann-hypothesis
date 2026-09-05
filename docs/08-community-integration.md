@@ -89,15 +89,15 @@ Apache-2.0 license, citation metadata, governance, issue forms, reproducibility 
 machine-assistance disclosure, and prepared outreach. The remaining issues are
 account-level or external:
 
-1. A public GitHub lookup for `marcoloco23/riemann-hypothesis` returned `404` on
-   2026-09-05. Outsiders therefore cannot currently rely on the configured origin as
-   a public home; it may be private or absent at that address.
-2. The release candidate is committed in a rewritten history from which the third-party
-   PDF and personal email address have been removed. It still needs to be pushed. The
-   paper remains available through its authoritative arXiv link.
-3. The GitHub repository still needs its public description, topics, labels,
-   Discussions, merge settings, initial passing workflow, tag, and release.
-4. The Lean project is not initialized. The prose and computations can be published
+1. The repository is now public at
+   [`marcoloco23/riemann-hypothesis`](https://github.com/marcoloco23/riemann-hypothesis),
+   with Discussions, issue forms, topics, labels, security checks, and managed merge
+   settings.
+2. The published history excludes the previously bundled third-party PDF and personal
+   email address. The paper remains available through its authoritative arXiv link.
+3. The GitHub `Verify` workflow passes on `main`, and the annotated `v0.1.0` tag has a
+   public [GitHub release](https://github.com/marcoloco23/riemann-hypothesis/releases/tag/v0.1.0).
+4. The Lean project is not initialized. The prose and computations are public,
    now, but evidence levels must distinguish written proof, same-author audit,
    independent review, numerical check, and machine-checked proof.
 
@@ -130,17 +130,14 @@ The release candidate now provides:
 
 ## Execution sequence
 
-1. Push the clean release history, make the GitHub repository public, apply the prepared settings, and wait for
-   the verification workflow to pass.
-2. Publish the `v0.1.0` tagged release and archive it with a DOI. This gives outside discussions
-   stable references even while `main` continues to change.
-3. Post the short IEANTN scope proposal below on the `#PrimeNumberTheorem+` Zulip
+1. Archive the `v0.1.0` release with Zenodo to obtain a DOI.
+2. Post the short IEANTN scope proposal below on the `#PrimeNumberTheorem+` Zulip
    channel. Incorporate maintainer feedback before writing a node.
-4. Compare L8a and L10 line by line with Zeta Lab's explicit-formula and
+3. Compare L8a and L10 line by line with Zeta Lab's explicit-formula and
    Davenport-Heilbronn surfaces, then submit one small IEANTN pull request for L8a,
    disclosing machine assistance and linking the exact repository release. Treat L10
    and the rigidity results as later, separate proposals.
-5. Initialize Lean around the smallest reusable prerequisite selected with IEANTN.
+4. Initialize Lean around the smallest reusable prerequisite selected with IEANTN.
    Reuse mathlib and PNT+ definitions instead of creating a parallel zeta foundation.
 
 ## Draft IEANTN scope proposal

@@ -11,6 +11,10 @@ gh repo edit "$repo_slug" \
   --enable-discussions=true \
   --enable-projects=true \
   --enable-wiki=false \
+  --enable-auto-merge=true \
+  --allow-update-branch=true \
+  --enable-secret-scanning=true \
+  --enable-secret-scanning-push-protection=true \
   --delete-branch-on-merge=true \
   --enable-squash-merge=true \
   --enable-rebase-merge=true \
@@ -47,6 +51,7 @@ status: machine-checked|006B75|Pinned proof-assistant verification
 status: refuted|B60205|Claim refuted with recorded evidence
 help wanted|008672|Contribution is welcome
 good first issue|7057FF|Suitable first contribution
+dependencies|0366D6|Dependency updates
 LABELS
 
 printf 'Configured https://github.com/%s\n' "$repo_slug"
