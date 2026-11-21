@@ -1,8 +1,11 @@
 # The Riemann Hypothesis — Research Repository
 
-> **Current status:** RH remains open. This repository contains no claimed proof or
-> disproof. See the public [`CLAIMS.md`](CLAIMS.md) ledger for the exact evidence state
-> of every highlighted result.
+> **Current status (2026-11-21):** a machine-checked proof of RH, and of GRH for Dirichlet
+> L-functions, was announced outside this project on 2026-11-20 and is under community
+> verification; see the dated record in
+> [`docs/10`](docs/10-external-claim-2026-11.md). This repository contains no proof or
+> disproof of its own. See the public [`CLAIMS.md`](CLAIMS.md) ledger for the exact
+> evidence state of every highlighted result.
 
 This is an open, community-oriented research workspace for rigorous and reproducible
 work around the Riemann hypothesis. It preserves written arguments, computations,
@@ -52,6 +55,7 @@ work begins.
 | 07 | [docs/07-verification-protocol.md](docs/07-verification-protocol.md) | How a claimed result must be checked before it is announced. |
 | 08 | [docs/08-community-integration.md](docs/08-community-integration.md) | How to publish this work openly and connect modular claims to Tao's IEANTN project. |
 | 09 | [docs/09-publication-checklist.md](docs/09-publication-checklist.md) | Release readiness and remaining GitHub account actions. |
+| 10 | [docs/10-external-claim-2026-11.md](docs/10-external-claim-2026-11.md) | Dated record of the November 2026 announcement of a Lean proof, its verification status, and what it means here. |
 
 Reference material: [references/bibliography.md](references/bibliography.md).
 

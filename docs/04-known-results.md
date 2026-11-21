@@ -20,7 +20,16 @@ not here (and not standard textbook material from doc 02) must be proved in‑re
 - **Selberg (1942)**: a *positive proportion* of zeros lie on the line.
 - **Levinson (1974)**: ≥ 1/3 of zeros on the line (mollifier method).
 - **Conrey (1989)**: ≥ 2/5 (40.9%); subsequent work (Bui–Conrey–Young, Pratt–Robles–…,
-  ~2020) pushes to ≈ 41.7%. **Still bounded well below 100%.**
+  ~2020) pushes to ≈ 41.7% by mollifiers.
+- **Alpöge–Furman (2026)** [AlpogeFurman2026]: ≥ 2/3 of zeros are simple and on the
+  line and ≥ 5/6 are distinct (0.6725 and 0.8362 with the Montgomery–Taylor window);
+  same for primitive Dirichlet L-functions. Not a mollifier argument: a finite
+  compression of Weil's Hermitian form, Sylvester's law of inertia for off-line pairs,
+  and a rank–trace inequality fed by the unconditional pair-correlation second moment.
+  Formalized in Lean 4. **Lamzouri (2026)** [Lamzouri2026]: shorter proof by a single
+  Hilbert-space inequality. The method is insensitive to `o(N)` off-line zeros and
+  applies to Davenport–Heilbronn; with second-moment data alone its ceiling is about
+  0.682. (Read 2026-11-21 from the arXiv texts; not independently checked here.)
 
 ## C. Zero‑free regions and density
 
@@ -58,6 +67,10 @@ not here (and not standard textbook material from doc 02) must be proved in‑re
 - **Deligne (1974, 1980)**: the **Weil conjectures**, including RH for varieties over
   finite fields, via étale cohomology and a positivity/monodromy argument.
   → Studied intensively for transferable ideas; **no transfer to `ℚ`/ζ is known**.
+- **Stepanov (1969); Bombieri (1974)**: elementary proof of Weil's bound for curves by
+  an auxiliary function vanishing to high multiplicity at rational points. The
+  November 2026 announcement (docs/10) describes itself as a descendant of this method;
+  that claim is unverified.
 
 ## H. Conditional landscape (what RH would give / relations)
 
