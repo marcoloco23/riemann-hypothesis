@@ -90,4 +90,10 @@ none with `Re ρ < ½`. ∎
   `log X`. In Weil's language it is the explicit formula for a test function whose
   transform is `1/(¼+t²)`; the announcement's remark that "Guinand–Weil had the sign"
   is read here as this positivity (our reading, not the author's statement).
+- **Weaker hypothesis suffices (not proved here).** Rubinstein's exposition
+  (hexagon:2611.00832, §I.1 and Part II §1; read in outline 2026-11-24) states that a
+  one-sided bound `F(X) ≤ X^{1/2+ε}` on a sparse sequence of long intervals already
+  implies RH, by a Landau-type theorem. Part (c) above assumes a two-sided bound for all
+  `X`. Proving the one-sided, long-interval version in this repository's standard would
+  be a natural L12.
 - Nothing here bears on whether the announced proof is correct.

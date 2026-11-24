@@ -110,6 +110,38 @@ shorter proof by one Hilbert-space inequality. That method is explicitly insensi
 `o(N)` off-line zeros and holds for Davenport–Heilbronn, so it could not by itself reach
 RH. See docs/04 §B.
 
+## 4a. Readable accounts that have appeared since (read 2026-11-24)
+
+Within days, expositions were posted on Hexagon (hexagonmath.org), a preprint server
+that labels AI involvement. None is peer reviewed; most are AI-written at a
+mathematician's direction and say so. Only abstracts were read here, except the first,
+of which the abstract, front matter and strategy section were read.
+
+- **M. O. Rubinstein, hexagon:2611.00832** (265 pages, working draft). The logical
+  skeleton for ζ: RH follows from a *one-sided* bound `G(x) ≤ x^{1/2+ε}` on a sparse
+  sequence of long intervals `[Y, Y^{3/2}]`, by a variant of Landau's theorem on Mellin
+  transforms of functions of constant sign. `G` is exactly the statistic `F` of
+  [L11](../workspace/lemmas/L11-smoothed-mangoldt-statistic.md). The bound is deduced
+  from one "main inequality (M)" plus two estimates for auxiliary Dirichlet characters.
+  The two estimates are proved there from cited theorems. (M) is **not** proved there:
+  it is reduced to thirteen numbered hypotheses taken from the Lean development.
+- The mechanism of (M), as that paper describes it: Chebyshev's method (compare the
+  divisibility of an object with its size) run with a map between lattices in place of
+  an integer. Divisibility at inert primes comes from derivatives of functions attached
+  to complex multiplication, with exponent about `a(1/p + 1/p³ + …)` and no floor
+  functions; size is controlled through the linear term by a chain of `m` theta lifts;
+  Bost's slope inequality compares the two. The errors `x/m` and `m` balance at
+  `m ≈ √x`, which is where the exponent ½ comes from.
+- **S. Slijepcevic, 2611.00812; M. Jaswal, 2611.00799:** outlines of the Lean
+  development for Dirichlet L-functions. **C. Huang, 2611.00833:** reading as an
+  instance of Bost's slope method after Calegari–Dimitrov–Tang, with unproved steps
+  listed as hypotheses. **"twinheterodox", 2611.00828 and 2611.00839:** proposed
+  simplifications. **G. Park, 2611.00881:** a static audit of the archive.
+
+Status this implies: the analytic shell (zeros ⇐ one-sided prime-sum bound) is
+classical and humanly checked in outline; the arithmetic core (M) is, as of these
+drafts, understood by humans only as a list of hypotheses read off the Lean code.
+
 ## 5. Against this repository's own gates
 
 | Gate | Reading on 2026-11-21 |
@@ -140,5 +172,7 @@ RH. See docs/04 §B.
 - Verification: <https://math.mit.edu/~drew/grh/>;
   <https://github.com/leanprover-community/riemann-hypothesis>.
 - Predecessors: arXiv:2608.13637; arXiv:2609.02882.
+- Expositions on Hexagon: 2611.00832, 2611.00812, 2611.00799, 2611.00833, 2611.00828,
+  2611.00839, 2611.00881 (API `https://hexagonmath.org/api/v1/works`).
 - Press: Scientific American, IBM Think, World Science Festival (video description
   only), 2026-11-20/21.
