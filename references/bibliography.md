@@ -22,6 +22,12 @@ use matches the source. (Page/edition details to be filled in as sources are con
 
 - **[Hardy1914]** G. H. Hardy, *Sur les zéros de la fonction ζ(s) de Riemann*, C. R. Acad.
   Sci. Paris 158 (1914), 1012–1014.
+- **[AlpogeFurman2026]** L. Alpöge, R. Furman, *More than two thirds of the zeta zeros are
+  simple and on the critical line*, arXiv:2608.13637 (2026).
+- **[Lamzouri2026]** Y. Lamzouri, *A new proof that more than 2/3 of the zeros of the
+  Riemann zeta function are simple and on the critical line*, arXiv:2609.02882 (2026).
+- **[Davenport]** H. Davenport (rev. H. Montgomery), *Multiplicative Number Theory*, 3rd
+  ed., Springer GTM 74, 2000. Ch. 12 for the constant `B` in the Hadamard product.
 - **[Selberg1942]** A. Selberg, *On the zeros of Riemann's zeta‑function*, 1942.
 - **[Levinson1974]** N. Levinson, *More than one third of zeros of Riemann's zeta‑function
   are on σ=1/2*, Adv. Math. 13 (1974).

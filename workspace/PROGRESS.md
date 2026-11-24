@@ -7,6 +7,28 @@
 
 ## Current status
 
+**External event (recorded 2026-11-21):** on 2026-11-20 L. Alpöge announced a Lean 4
+proof, made with Claude, of RH and of GRH for Dirichlet L-functions. As of 2026-11-21
+the source compiles, uses only the three standard axioms, and is accepted by the Lean
+kernel and by independent kernels; statement matching against a Mathlib-only challenge
+passes; some long kernel runs were still in progress; there is no written proof. Full
+record with sources: [docs/10](../docs/10-external-claim-2026-11.md). **This
+repository has not reproduced or reviewed it and makes no claim.** Added in the same
+session: [L11](lemmas/L11-smoothed-mangoldt-statistic.md), the explicit formula and
+sharp RH-equivalent bound for the smoothed von Mangoldt statistic the announcement
+names, with a numeric anchor (`scratch/external-claim-2026-11`, PASS); docs/04 §B, §G
+and docs/05 §4a, §6 updated. Machine-assisted; no independent human review.
+
+**Resume here (supersedes the line below until the maintainer decides):**
+1. Re-read the verification pages listed in docs/10 and update its section 2 when the
+   remaining kernel runs and any written account appear.
+2. Maintainer decision: whether the repository's mission changes from "resolve RH" to
+   "audit, explain and reuse" if the proof is accepted.
+3. Useful work that does not depend on that decision: independent review of L9 and
+   L11; the Dimitrov–Xu correspondence; locating in the Lean source the statement
+   corresponding to L11's statistic and to the Weil-form inequalities, as a first step
+   toward a human-readable map of the development.
+
 **Agreed plan completed (2026-09-05):** all foundation-audit, reconstruction,
 DH-calibration and direction-decision deliverables are recorded in
 [the completion checklist](attempts/fourier-rigidity/COMPLETION.md).

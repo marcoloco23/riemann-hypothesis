@@ -53,6 +53,19 @@ element `𝔽₁`**, Connes–Consani, Deninger's conjectural dynamical/cohomolo
 All are frameworks in search of the missing object; none yields the positivity
 unconditionally. This is widely seen as the "deepest" direction and the least complete.
 
+### 4a. Stepanov's method with an automorphic substitute for multiplicity (announced 2026)
+
+**Idea.** Stepanov proves RH for curves by an auxiliary function vanishing to high
+multiplicity at rational points. Over `ℤ` there is no derivative. The announcement
+recorded in [doc 10](10-external-claim-2026-11.md) says multiplicity can be replaced by a
+chain of about `√X` theta lifts between definite unitary groups, applied to a smoothed von
+Mangoldt sum of length `X`, with positivity supplied by Weil-form determinants.
+
+**Status.** A Lean development claiming RH and GRH for Dirichlet L-functions exists and
+has passed independent kernels; no written proof exists and the route has not been
+understood or reviewed by humans as of 2026-11-21. This repository did not anticipate
+this route: section 4 above listed cohomological frameworks only.
+
 ## 5. de Branges (Hilbert spaces of entire functions)
 
 **Idea.** Use de Branges spaces `H(E)` and their structure theory to force zeros onto the
@@ -72,6 +85,11 @@ argument principle to bound the proportion of zeros on the line from below.
 **Status / wall.** Genuinely unconditional and improving, but the method is **structurally
 capped below 100%** — it counts a positive proportion, and pushing to "all" appears to need
 a fundamentally new input. Good for partial results; not a path to full RH as‑is.
+
+**Update 2026.** The record is now 2/3 (doc 04 §B), reached without mollifiers by
+combining the Weil form's inertia with the pair-correlation second moment. Its authors
+state the limit precisely: with trace and Hilbert–Schmidt data only, 2/3 is extremal, and
+more needs prime-pair information beyond the range `X ≤ T`.
 
 ## 7. Probabilistic / statistical‑physics
 
